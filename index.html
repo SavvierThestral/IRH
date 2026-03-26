@@ -65,6 +65,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            white-space: nowrap;
+            flex-shrink: 0;
             transition: color 0.4s;
         }
         .nav.scrolled .nav-logo { color: var(--ink); }
@@ -870,10 +872,12 @@
             .services-grid, .about-grid { grid-template-columns: 1fr; gap: 3rem; }
             .services-quote { position: static; max-width: 100%; margin-top: 1.5rem; }
         }
-        @media (max-width: 768px) {
-            .nav { padding: 0 1.2rem; height: 64px; }
+        @media (max-width: 1100px) {
             .nav-links { display: none; }
             .hamburger { display: flex; }
+        }
+        @media (max-width: 768px) {
+            .nav { padding: 0 1.2rem; height: 64px; }
             .section { padding: 4rem 1.2rem; }
             .stats { padding: 2.5rem 1.2rem; }
             .stats-inner { grid-template-columns: repeat(2, 1fr); }
