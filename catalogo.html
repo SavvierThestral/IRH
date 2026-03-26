@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo | IRH - Iberian Riding Horses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F8F5EE;
+            --warm-white: #FDFBF7;
+            --parchment: #EDE8DC;
+            --gold: #B8935A;
+            --gold-light: #D4AA78;
+            --gold-pale: #F0E4CA;
+            --ink: #1C1B18;
+            --charcoal: #2E2D29;
+            --stone: #6B6860;
+            --stone-light: #A09D96;
+            --moss: #4A5240;
+            --border: rgba(28,27,24,0.12);
+            --border-strong: rgba(28,27,24,0.22);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: 'Jost', sans-serif; background: var(--warm-white); color: var(--ink); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 3rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(253,251,247,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: var(--ink);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-logo svg { width: 26px; height: 26px; }
+        .nav-logo svg path { stroke: var(--ink); }
+        .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+        .nav-links a {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--stone);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-cta {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold) !important;
+            border: 1px solid var(--gold);
+            padding: 0.5rem 1.3rem;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s !important;
+        }
+        .nav-cta:hover { background: var(--gold) !important; color: white !important; }
+
+        /* ─── PAGE HEADER ─── */
+        .page-header {
+            background: var(--ink);
+            padding: 4rem 3rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 80% at 80% 50%, rgba(184,147,90,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 10% 80%, rgba(184,147,90,0.07) 0%, transparent 60%);
+        }
+        .page-header-inner { position: relative; z-index: 1; max-width: 1300px; margin: 0 auto; }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--stone-light);
+            margin-bottom: 1.5rem;
+        }
+        .breadcrumb a { color: var(--stone-light); text-decoration: none; transition: color 0.25s; }
+        .breadcrumb a:hover { color: var(--gold-light); }
+        .breadcrumb span { color: var(--gold-light); }
+        .page-title {
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 400;
+            color: var(--warm-white);
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+        }
+        .page-title em { font-style: italic; color: var(--gold-light); }
+        .page-subtitle {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(253,251,247,0.55);
+            max-width: 480px;
+        }
+        .results-count {
+            margin-top: 1.8rem;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--stone-light);
+        }
+        .results-count strong { color: var(--gold-light); font-weight: 500; }
+
+        /* ─── LAYOUT ─── */
+        .catalog-layout {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 3rem 3rem 6rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* ─── SIDEBAR FILTERS ─── */
+        .sidebar {
+            position: sticky;
+            top: 88px;
+            background: white;
+            border: 1px solid var(--border);
+        }
+        .sidebar-header {
+            padding: 1.4rem 1.6rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .sidebar-title {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+        .clear-btn {
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+        .clear-btn:hover { opacity: 0.7; }
+
+        .filter-group { border-bottom: 1px solid var(--border); }
+        .filter-group-header {
+            padding: 1.1rem 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            user-select: none;
+        }
+        .filter-group-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+        .filter-chevron {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.25s;
+            color: var(--stone-light);
+        }
+        .filter-group.open .filter-chevron { transform: rotate(180deg); }
+        .filter-group-body {
+            padding: 0 1.6rem 1.2rem;
+            display: none;
+        }
+        .filter-group.open .filter-group-body { display: block; }
+
+        /* Checkbox options */
+        .filter-option {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.38rem 0;
+            cursor: pointer;
+        }
+        .filter-option input[type="checkbox"] {
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            border: 1.5px solid var(--border-strong);
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .filter-option input[type="checkbox"]:checked {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+        .filter-option input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            top: 2px; left: 4px;
+            width: 5px; height: 8px;
+            border: 1.5px solid white;
+            border-top: none;
+            border-left: none;
+            transform: rotate(45deg);
+        }
+        .filter-option-label {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--charcoal);
+        }
+        .filter-option-count {
+            margin-left: auto;
+            font-size: 0.72rem;
+            color: var(--stone-light);
+        }
+
+        /* Range slider */
+        .range-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.78rem;
+            color: var(--stone);
+            font-weight: 300;
+        }
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--gold);
+            cursor: pointer;
+        }
+
+        /* ─── CATALOG TOOLBAR ─── */
+        .catalog-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .active-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .active-filter-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--gold-pale);
+            color: var(--ink);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.7rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .active-filter-tag:hover { background: #e0d0af; }
+        .active-filter-tag svg { width: 10px; height: 10px; }
+
+        .sort-group { display: flex; align-items: center; gap: 0.8rem; }
+        .sort-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--stone); }
+        .sort-select {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.82rem;
+            color: var(--ink);
+            border: 1px solid var(--border-strong);
+            background: white;
+            padding: 0.45rem 0.9rem;
+            cursor: pointer;
+            outline: none;
+        }
+        .sort-select:focus { border-color: var(--gold); }
+
+        /* ─── HORSE GRID ─── */
+        .horse-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+        }
+        .horse-card {
+            background: white;
+            transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 2px 12px rgba(28,27,24,0.07), 0 1px 3px rgba(28,27,24,0.05);
+        }
+        .horse-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(28,27,24,0.12), 0 2px 8px rgba(28,27,24,0.07); }
+        .horse-card:hover .horse-img { transform: scale(1.06); }
+        .horse-card:hover .card-overlay { opacity: 1; }
+        .horse-img-wrap {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+        .horse-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .card-discipline {
+            position: absolute;
+            top: 1rem; left: 1rem;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: white;
+            padding: 0.28rem 0.75rem;
+        }
+        .card-gender {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background: rgba(28,27,24,0.75);
+            color: rgba(253,251,247,0.9);
+            padding: 0.28rem 0.6rem;
+            backdrop-filter: blur(4px);
+        }
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(28,27,24,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .card-inquire {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.7);
+            padding: 0.65rem 1.5rem;
+            cursor: pointer;
+            background: transparent;
+            font-family: 'Jost', sans-serif;
+            transition: background 0.25s;
+        }
+        .card-inquire:hover { background: var(--gold); border-color: var(--gold); }
+        .card-body { padding: 1.3rem 1.5rem 1.6rem; border: 1px solid var(--border); border-top: none; }
+        .card-name { font-size: 1.3rem; font-weight: 400; color: var(--ink); margin-bottom: 0.25rem; }
+        .card-meta { font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em; color: var(--stone-light); text-transform: uppercase; margin-bottom: 0.7rem; }
+        .card-level {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border: 1px solid var(--border-strong);
+            color: var(--stone);
+            padding: 0.18rem 0.6rem;
+            margin-bottom: 0.7rem;
+        }
+        .card-desc { font-size: 0.87rem; font-weight: 300; line-height: 1.7; color: var(--stone); }
+        .card-footer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-tag { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+        .horse-card { cursor: pointer; }
+
+        /* ─── EMPTY STATE ─── */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        .empty-state svg { width: 48px; height: 48px; color: var(--stone-light); margin: 0 auto 1.5rem; display: block; }
+        .empty-state h3 { font-size: 1.4rem; font-weight: 400; color: var(--ink); margin-bottom: 0.6rem; }
+        .empty-state p { font-size: 0.9rem; font-weight: 300; color: var(--stone); }
+
+        /* ─── MOBILE ─── */
+        .mobile-filter-btn {
+            display: none;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--ink);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.4rem;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(28,27,24,0.5);
+            z-index: 199;
+        }
+        .sidebar-overlay.open { display: block; }
+
+        @media (max-width: 900px) {
+            .catalog-layout { grid-template-columns: 1fr; padding: 2rem 1.5rem 4rem; gap: 0; }
+            .sidebar {
+                position: fixed;
+                top: 0; left: -310px; bottom: 0;
+                width: 300px;
+                z-index: 200;
+                overflow-y: auto;
+                transition: left 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+            .sidebar.open { left: 0; }
+            .mobile-filter-btn { display: flex; }
+            .horse-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+            .nav { padding: 0 1.5rem; }
+            .page-header { padding: 3rem 1.5rem 2.5rem; }
+            .catalog-toolbar { flex-direction: column; align-items: flex-start; gap: 1rem; }
+        }
+        @media (max-width: 540px) {
+            .horse-grid { grid-template-columns: 1fr; }
+        }
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+        .lang-switcher { display: flex; align-items: center; border: 1px solid var(--border-strong); overflow: hidden; }
+        .lang-btn { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; padding: 0.35rem 0.7rem; background: transparent; border: none; color: var(--stone-light); cursor: pointer; transition: background 0.25s, color 0.25s; }
+        .lang-btn.active { background: var(--gold); color: white; }
+        .lang-btn:hover:not(.active) { color: var(--gold); }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="index.html" class="nav-logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 26c0-6 4-10 10-12 3-1 6-3 7-6" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 14c-1-3 0-7 3-9" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M19 5c1 0 3 1 4 3" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6 26l2-4" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M10 26l1-4" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        IRH - Iberian Riding Horses
+    </a>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="catalogo.html" class="active" style="color:var(--gold);" data-i18n="nav_catalog">Catálogo</a></li>
+            <li><a href="index.html#services" data-i18n="nav_services">Services</a></li>
+            <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+            <li><a href="index.html#contact" class="nav-cta" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLang('es')">ES</button>
+            <button class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+    </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+    <div class="page-header-inner">
+        <div class="breadcrumb">
+            <a href="index.html" data-i18n="nav_home">Home</a>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="nav_catalog">Catálogo</span>
+        </div>
+        <h1 class="page-title" data-i18n="page_title">Caballos <em>Disponibles</em></h1>
+        <p class="page-subtitle" data-i18n="page_subtitle">Selección curada de sport horses evaluados para nivel de entrenamiento, temperamento y potencial competitivo.</p>
+        <div class="results-count"><strong id="count">0</strong> <span data-i18n="results_label">caballos encontrados</span></div>
+    </div>
+</div>
+
+<!-- CATALOG -->
+<div class="catalog-layout">
+
+    <!-- MOBILE FILTER TRIGGER -->
+    <button class="mobile-filter-btn" onclick="openSidebar()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg>
+        Filtros
+    </button>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-title" data-i18n="filter_title">Filtros</span>
+            <button class="clear-btn" onclick="clearAll()" data-i18n="filter_clear">Limpiar todo</button>
+        </div>
+
+        <!-- Disciplina -->
+        <div class="filter-group open" id="grp-disciplina">
+            <div class="filter-group-header" onclick="toggleGroup('grp-disciplina')">
+                <span class="filter-group-label">Disciplina</span>
+                <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+            </div>
+            <div class="filter-group-body">
+                <label class="filter-option"><input type="checkbox" data-filter="disciplina" value="doma" onchange="applyFilters()"><span class="filter-option-label">Doma Clásica</span><span class="filter-option-count">6</span></label>
+            </div>
+        </div>
+
+        <!-- Nivel de entrenamiento -->
+        <div class="filter-group open" id="grp-nivel">
+            <div class="filter-group-header" onclick="toggleGroup('grp-nivel')">
+                <span class="filter-group-label">Nivel de Entrenamiento</span>
+                <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+            </div>
+            <div class="filter-group-body">
+                <label class="filter-option"><input type="checkbox" data-filter="nivel" value="basico" onchange="applyFilters()"><span class="filter-option-label">Nivel 1–2</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="nivel" value="intermedio" onchange="applyFilters()"><span class="filter-option-label">Nivel 3–4</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="nivel" value="avanzado" onchange="applyFilters()"><span class="filter-option-label">Nivel 4 · Passage</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="nivel" value="gran-prix" onchange="applyFilters()"><span class="filter-option-label">San Jorge · Piaffe · Passage</span></label>
+            </div>
+        </div>
+
+        <!-- Género -->
+        <div class="filter-group" id="grp-genero">
+            <div class="filter-group-header" onclick="toggleGroup('grp-genero')">
+                <span class="filter-group-label">Género</span>
+                <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+            </div>
+            <div class="filter-group-body">
+                <label class="filter-option"><input type="checkbox" data-filter="genero" value="yegua" onchange="applyFilters()"><span class="filter-option-label">Yegua</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="genero" value="castrado" onchange="applyFilters()"><span class="filter-option-label">Castrado</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="genero" value="semental" onchange="applyFilters()"><span class="filter-option-label">Semental</span></label>
+            </div>
+        </div>
+
+        <!-- Rango de edad -->
+        <div class="filter-group" id="grp-edad">
+            <div class="filter-group-header" onclick="toggleGroup('grp-edad')">
+                <span class="filter-group-label">Edad</span>
+                <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+            </div>
+            <div class="filter-group-body">
+                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="joven" onchange="applyFilters()"><span class="filter-option-label">Joven (3–5 años)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="prime" onchange="applyFilters()"><span class="filter-option-label">Prime (6–10 años)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="maduro" onchange="applyFilters()"><span class="filter-option-label">Maduro (11–15 años)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="senior" onchange="applyFilters()"><span class="filter-option-label">Senior (+15 años)</span></label>
+            </div>
+        </div>
+
+        <!-- Para quién -->
+        <div class="filter-group" id="grp-perfil">
+            <div class="filter-group-header" onclick="toggleGroup('grp-perfil')">
+                <span class="filter-group-label">Perfil del Jinete</span>
+                <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+            </div>
+            <div class="filter-group-body">
+                <label class="filter-option"><input type="checkbox" data-filter="perfil" value="amateur" onchange="applyFilters()"><span class="filter-option-label">Amateur</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="perfil" value="profesional" onchange="applyFilters()"><span class="filter-option-label">Profesional</span></label>
+            </div>
+        </div>
+
+
+        <!-- Altura -->
+        <div class="filter-group" id="grp-altura">
+            <div class="filter-group-header" onclick="toggleGroup('grp-altura')">
+                <span class="filter-group-label">Alzada</span>
+                <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+            </div>
+            <div class="filter-group-body">
+                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="small" onchange="applyFilters()"><span class="filter-option-label">Pequeño (–15.2 hh)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="medium" onchange="applyFilters()"><span class="filter-option-label">Mediano (15.3–16.1 hh)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="large" onchange="applyFilters()"><span class="filter-option-label">Grande (16.2–16.3 hh)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="xlarge" onchange="applyFilters()"><span class="filter-option-label">Muy grande (17+ hh)</span></label>
+            </div>
+        </div>
+    </div>
+    <!-- /SIDEBAR -->
+
+    <!-- MAIN CONTENT -->
+    <div>
+        <div class="catalog-toolbar">
+            <div class="active-filters" id="active-filters"></div>
+            <div class="sort-group">
+                <span class="sort-label" data-i18n="sort_label">Ordenar:</span>
+                <select class="sort-select" onchange="applyFilters()" id="sort-select">
+                    <option value="default" data-i18n="sort_featured">Destacados</option>
+                    <option value="age-asc" data-i18n="sort_young">Más joven primero</option>
+                    <option value="age-desc" data-i18n="sort_old">Mayor primero</option>
+                    <option value="name-asc" data-i18n="sort_name">Nombre A–Z</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="horse-grid" id="horse-grid"></div>
+    </div>
+</div>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<script>
+/* ── TRANSLATIONS ── */
+const t = {
+    es: {
+        nav_home:'Inicio', nav_catalog:'Catálogo', nav_services:'Servicios', nav_about:'Nosotros', nav_contact:'Contacto',
+        page_title:'Caballos <em>Disponibles</em>', page_subtitle:'Selección curada de sport horses evaluados para nivel de entrenamiento, temperamento y potencial competitivo.',
+        results_label:'caballos encontrados', filter_title:'Filtros', filter_clear:'Limpiar todo',
+        sort_label:'Ordenar:', sort_featured:'Destacados', sort_young:'Más joven primero', sort_old:'Mayor primero', sort_name:'Nombre A–Z',
+        card_inquire:'Ver Detalles →', empty_title:'Sin resultados', empty_body:'Intenta ajustar los filtros para ver más caballos.'
+    },
+    en: {
+        nav_home:'Home', nav_catalog:'Catalogue', nav_services:'Services', nav_about:'About', nav_contact:'Contact',
+        page_title:'Available <em>Horses</em>', page_subtitle:'Curated selection of sport horses evaluated for training level, temperament and competitive potential.',
+        results_label:'horses found', filter_title:'Filters', filter_clear:'Clear all',
+        sort_label:'Sort:', sort_featured:'Featured', sort_young:'Youngest first', sort_old:'Oldest first', sort_name:'Name A–Z',
+        card_inquire:'View Details →', empty_title:'No results', empty_body:'Try adjusting the filters to see more horses.'
+    }
+};
+let currentLang = 'es';
+
+const horses = [
+    { id:1, name:"Santo",     breed:"Pura Raza Española (PRE)", raza:"pre", age:5,  height:"1.63 m", altura_cat:"medium", disciplina:"doma", nivel:"intermedio", genero:"semental", perfil:"profesional", image:"https://placehold.co/600x450/1C1B18/D4AA78?text=Santo",                                              nacimiento:"10/04/2020", capa:"Torda",    piro:"Positivo", talla:"1.63 m", padre:"Livino de Martet", madre:"Fer Bonita", criador:"Finca Lo Tacon", desc:"Semental PRE de capa torda, Nivel 4 de Doma Clásica confirmado. Hijo de Livino de Martet sobre Fer Bonita. Piroplasmosis positiva, controlada y sin impedimento deportivo. San Pedro del Pinatar, Murcia.", tag:"Nivel 4 · Doma" },
+    { id:2, name:"Évora",     breed:"Pura Raza Española (PRE)", raza:"pre", age:5,  height:"1.59 m", altura_cat:"medium", disciplina:"doma", nivel:"basico",     genero:"yegua",    perfil:"amateur",     image:"https://placehold.co/600x450/EDE8DC/B8935A?text=Évora",                                nacimiento:"2021",       capa:"Torda",    piro:"Negativo", talla:"1.59 m", desc:"Yegua PRE de capa torda nacida en 2021. Nivel 2 de Doma Clásica, temperamento dócil y gran potencial. Placas correctas. Piro negativa. Ideal para amateur que quiera progresar en la doma clásica. San Pedro del Pinatar, Murcia.", tag:"Nivel 2 · Doma" },
+    { id:3, name:"Limeño",    breed:"Pura Raza Española (PRE)", raza:"pre", age:8,  height:"1.74 m", altura_cat:"xlarge", disciplina:"doma", nivel:"avanzado",   genero:"semental", perfil:"profesional", image:"caballos/Limeño/Limeño/limeño1.jpeg",                                                 nacimiento:"2018",       capa:"Castaña",  piro:"Negativo", talla:"1.74 m", desc:"Semental PRE castaño de 1.74 m, talla excepcional. Nivel 4 con Passage confirmado, movimientos elevados y gran presencia en pista. Placas correctas. Piro negativo. San Pedro del Pinatar, Murcia.", tag:"Nivel 4 · Passage" },
+    { id:4, name:"Halconero", breed:"Pura Raza Española (PRE)", raza:"pre", age:11, height:"1.67 m", altura_cat:"large",  disciplina:"doma", nivel:"gran-prix",  genero:"castrado", perfil:"profesional", image:"caballos/Talconero/Halconero/Halconero1.jpeg",                                        nacimiento:"2015",       capa:"Castaña",  piro:"Negativo", talla:"1.67 m", desc:"PRE castrado castaño, el ejemplar más experimentado del catálogo. Nivel San Jorge completo con Piaffe y Passage confirmados. Equilibrado y de fácil manejo. Placas correctas. Piro negativo. San Pedro del Pinatar, Murcia.", tag:"San Jorge · Piaffe · Passage" },
+    { id:5, name:"Umero",     breed:"Pura Raza Española (PRE)", raza:"pre", age:7,  height:"1.66 m", altura_cat:"large",  disciplina:"doma", nivel:"gran-prix",  genero:"semental", perfil:"profesional", image:"https://placehold.co/600x450/1C1B18/D4AA78?text=Umero",                                nacimiento:"2019",       capa:"Torda",    piro:"Negativo", talla:"1.66 m", desc:"Semental PRE tordo nacido en 2019. Nivel 7 / San Jorge alcanzado con tan solo 7 años, progresión excepcional. Gran motor y presencia. Entero. Placas correctas. Piro negativo. San Pedro del Pinatar, Murcia.", tag:"San Jorge · Nivel 7" },
+    { id:6, name:"Festina",   breed:"Pura Raza Española (PRE)", raza:"pre", age:0,  height:"Consultar", altura_cat:"medium", disciplina:"doma", nivel:"intermedio", genero:"yegua",   perfil:"amateur",     image:"https://placehold.co/600x450/EDE8DC/B8935A?text=Festina",                             nacimiento:"—",          capa:"—",        piro:"—",       talla:"—",   desc:"Información próximamente disponible. Contacte con nosotros para conocer los detalles de esta yegua PRE. San Pedro del Pinatar, Murcia.", tag:"PRE" },
+];
+
+let activeFilters = {};
+
+function getChecked(attr) {
+    return [...document.querySelectorAll(`input[data-filter="${attr}"]:checked`)].map(i => i.value);
+}
+
+function applyFilters() {
+    const disciplina  = getChecked('disciplina');
+    const nivel       = getChecked('nivel');
+    const genero      = getChecked('genero');
+    const edad_cat    = getChecked('edad_cat');
+    const perfil      = getChecked('perfil');
+    const raza        = getChecked('raza');
+    const altura_cat  = getChecked('altura_cat');
+    const sort        = document.getElementById('sort-select').value;
+
+    let result = horses.filter(h => {
+        if (disciplina.length && !disciplina.includes(h.disciplina)) return false;
+        if (nivel.length && !nivel.includes(h.nivel)) return false;
+        if (genero.length && !genero.includes(h.genero)) return false;
+        if (perfil.length && !perfil.includes(h.perfil)) return false;
+        if (raza.length && !raza.includes(h.raza)) return false;
+        if (altura_cat.length && !altura_cat.includes(h.altura_cat)) return false;
+        if (edad_cat.length) {
+            const cat = edad_cat;
+            const a = h.age;
+            const ok = cat.some(c =>
+                (c === 'joven'  && a >= 3 && a <= 5) ||
+                (c === 'prime'  && a >= 6 && a <= 10) ||
+                (c === 'maduro' && a >= 11 && a <= 15) ||
+                (c === 'senior' && a > 15)
+            );
+            if (!ok) return false;
+        }
+        return true;
+    });
+
+    if (sort === 'age-asc')   result.sort((a,b) => a.age - b.age);
+    if (sort === 'age-desc')  result.sort((a,b) => b.age - a.age);
+    if (sort === 'name-asc')  result.sort((a,b) => a.name.localeCompare(b.name));
+
+    renderGrid(result);
+    renderActiveTags({ disciplina, nivel, genero, edad_cat, perfil, raza, altura_cat });
+    document.getElementById('count').textContent = result.length;
+}
+
+const labelMap = {
+    disciplina: { salto:'Salto', doma:'Doma', hunter:'Hunter', eventing:'Eventing', western:'Western', endurance:'Endurance' },
+    nivel: { verde:'Verde', basico:'Básico', intermedio:'Intermedio', avanzado:'Avanzado', 'gran-prix':'Grand Prix' },
+    genero: { yegua:'Yegua', castrado:'Castrado', semental:'Semental' },
+    edad_cat: { joven:'3–5 años', prime:'6–10 años', maduro:'11–15 años', senior:'+15 años' },
+    perfil: { amateur:'Amateur', junior:'Junior', profesional:'Profesional', club:'Club' },
+    raza: { 'dutch-warmblood':'KWPN', oldenburg:'Oldenburg', hanoverian:'Hanoverian', belgian:'BWP', thoroughbred:'PS / Árabe', irish:'Irish SH', selle:'Selle Français', pre:'PRE' },
+    altura_cat: { small:'–15.2 hh', medium:'15.3–16.1 hh', large:'16.2–16.3 hh', xlarge:'17+ hh' }
+};
+
+function renderActiveTags(filters) {
+    const container = document.getElementById('active-filters');
+    const tags = [];
+    for (const [key, vals] of Object.entries(filters)) {
+        vals.forEach(v => {
+            const label = (labelMap[key] && labelMap[key][v]) || v;
+            tags.push(`<span class="active-filter-tag" onclick="removeFilter('${key}','${v}')">
+                ${label}
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+            </span>`);
+        });
+    }
+    container.innerHTML = tags.join('');
+}
+
+function removeFilter(key, val) {
+    const cb = document.querySelector(`input[data-filter="${key}"][value="${val}"]`);
+    if (cb) { cb.checked = false; applyFilters(); }
+}
+
+function clearAll() {
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    applyFilters();
+}
+
+function renderGrid(list) {
+    const grid = document.getElementById('horse-grid');
+    if (!list.length) {
+        const lt = (typeof currentLang !== 'undefined' && t[currentLang]) ? t[currentLang] : t.es;
+        grid.innerHTML = `<div class="empty-state">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <h3>${lt.empty_title}</h3>
+            <p>${lt.empty_body}</p>
+        </div>`;
+        return;
+    }
+    grid.innerHTML = list.map(h => `
+        <div class="horse-card" onclick="window.location='caballo.html?id=${h.id}'">
+            <div class="horse-img-wrap">
+                <img src="${h.image}" alt="${h.name}" class="horse-img" loading="lazy">
+                <span class="card-discipline">${h.disciplina}</span>
+                <span class="card-gender">${h.genero}</span>
+                <div class="card-overlay">
+                    <span class="card-inquire">${(typeof currentLang !== 'undefined' && t[currentLang]) ? t[currentLang].card_inquire : 'Ver Detalles →'}</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="card-name">${h.name}</p>
+                <p class="card-meta">${h.breed} &nbsp;·&nbsp; ${h.age} años &nbsp;·&nbsp; ${h.height}</p>
+                <span class="card-level">${h.nivel.replace('-',' ').replace(/\b\w/g, c => c.toUpperCase())} · ${h.perfil}</span>
+                <p class="card-desc">${h.desc}</p>
+                <div class="card-footer">
+                    <span class="card-tag">${h.tag}</span>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function toggleGroup(id) {
+    document.getElementById(id).classList.toggle('open');
+}
+
+function openSidebar() {
+    document.getElementById('sidebar').classList.add('open');
+    document.getElementById('sidebar-overlay').classList.add('open');
+}
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebar-overlay').classList.remove('open');
+}
+
+// Init
+applyFilters();
+
+function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[lang][key] !== undefined) el.innerHTML = t[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+    applyFilters();
+}
+</script>
+</body>
+</html>

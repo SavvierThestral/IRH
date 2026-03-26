@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRH - Iberian Riding Horses</title>
+    <meta name="description" content="IRH - Iberian Riding Horses. Selección de caballos ibéricos de alta competición en Murcia, España.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F8F5EE;
+            --warm-white: #FDFBF7;
+            --parchment: #EDE8DC;
+            --gold: #B8935A;
+            --gold-light: #D4AA78;
+            --gold-pale: #F0E4CA;
+            --ink: #1C1B18;
+            --charcoal: #2E2D29;
+            --stone: #6B6860;
+            --stone-light: #A09D96;
+            --moss: #4A5240;
+            --border: rgba(28,27,24,0.12);
+            --border-strong: rgba(28,27,24,0.22);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--warm-white);
+            color: var(--ink);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
+
+        /* ─── NAVBAR ─── */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 0 3rem;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.4s, border-color 0.4s;
+        }
+        .nav.scrolled {
+            background: rgba(253,251,247,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            color: var(--warm-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.4s;
+        }
+        .nav.scrolled .nav-logo { color: var(--ink); }
+        .nav-logo svg { width: 28px; height: 28px; transition: stroke 0.4s; }
+        .nav-logo svg path { stroke: currentColor; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav.scrolled .nav-links a { color: var(--stone); }
+        .nav-links a:hover { color: var(--gold-light) !important; }
+        .nav-cta {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--gold) !important;
+            border: 1px solid var(--gold);
+            padding: 0.55rem 1.4rem;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s !important;
+        }
+        .nav-cta:hover { background: var(--gold) !important; color: white !important; }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        /* Full-bleed background image */
+        .hero-left { display: none; }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 70%;
+        }
+        /* Dark gradient: solid black on left (where text is) fading to transparent on right */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to right,
+                    rgba(8,6,4,0.92) 0%,
+                    rgba(8,6,4,0.70) 38%,
+                    rgba(8,6,4,0.15) 72%,
+                    rgba(8,6,4,0.0) 100%
+                ),
+                linear-gradient(
+                    to top,
+                    rgba(8,6,4,0.75) 0%,
+                    transparent 50%
+                );
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 100px 4rem 7rem 8%;
+            max-width: 680px;
+        }
+        .hero-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 1.5rem;
+        }
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.08;
+            color: var(--warm-white);
+            margin-bottom: 1.8rem;
+        }
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(253,251,247,0.7);
+            max-width: 480px;
+            margin-bottom: 2.8rem;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gold);
+            color: white;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            color: rgba(253,251,247,0.85);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 0.9rem 0;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(253,251,247,0.35);
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .btn-ghost:hover { color: white; border-color: white; }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .hero-scroll span {
+            font-size: 0.65rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(253,251,247,0.5);
+        }
+        .scroll-line {
+            width: 1px;
+            height: 48px;
+            background: rgba(253,251,247,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-light);
+            animation: scrollLine 2s 2s ease-in-out infinite;
+        }
+        @keyframes scrollLine {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        /* ─── SECTION SHARED ─── */
+        .section {
+            padding: 7rem 3rem;
+        }
+        .section-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--ink);
+            margin-bottom: 1.2rem;
+        }
+        .section-body {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.85;
+            color: var(--stone);
+            max-width: 540px;
+        }
+        .max-w { max-width: 1200px; margin: 0 auto; }
+
+        /* ─── HORSES SECTION ─── */
+        .horses-section { background: var(--warm-white); }
+        .horses-header { text-align: center; margin-bottom: 3.5rem; }
+        .horses-header .section-body { margin: 0 auto; }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.55rem 1.4rem;
+            border: 1px solid var(--border-strong);
+            background: transparent;
+            color: var(--stone);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+        .filter-btn.active {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: var(--warm-white);
+        }
+
+        /* Horse Grid */
+        .horse-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        .horse-card {
+            background: var(--warm-white);
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardIn 0.6s ease-out forwards;
+        }
+        @keyframes cardIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .horse-card:hover .horse-img { transform: scale(1.06); }
+        .horse-card:hover .card-overlay { opacity: 1; }
+        .horse-img-wrap {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+        .horse-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .card-discipline {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.2rem;
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: var(--gold);
+            color: white;
+            padding: 0.32rem 0.8rem;
+        }
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(28,27,24,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .card-inquire {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.7);
+            padding: 0.7rem 1.6rem;
+            cursor: pointer;
+            background: transparent;
+            transition: background 0.25s;
+        }
+        .card-inquire:hover { background: var(--gold); border-color: var(--gold); }
+        .card-body {
+            padding: 1.5rem 1.8rem 1.8rem;
+            border: 1px solid var(--border);
+            border-top: none;
+        }
+        .card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 0.3rem;
+        }
+        .card-meta {
+            font-size: 0.73rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            color: var(--stone-light);
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+        }
+        .card-desc {
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--stone);
+        }
+        .card-footer {
+            margin-top: 1.2rem;
+            padding-top: 1.1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-tag {
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .card-wishlist {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--stone-light);
+            transition: color 0.25s;
+            display: flex;
+            align-items: center;
+        }
+        .card-wishlist:hover { color: var(--gold); }
+
+        /* ─── SERVICES ─── */
+        .services-section { background: var(--ivory); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .services-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 2rem; }
+        .service-item { display: flex; gap: 1.4rem; }
+        .service-icon {
+            width: 46px;
+            height: 46px;
+            background: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .service-icon svg { width: 20px; height: 20px; stroke: var(--gold-light); fill: none; stroke-width: 1.5; }
+        .service-item h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+        .service-item p {
+            font-size: 0.88rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--stone);
+        }
+        .services-image-wrap { position: relative; }
+        .services-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        .services-quote {
+            position: absolute;
+            bottom: -2rem;
+            left: -2rem;
+            background: var(--ink);
+            padding: 1.8rem 2rem;
+            max-width: 280px;
+        }
+        .services-quote p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.65;
+            color: rgba(253,251,247,0.85);
+            margin-bottom: 0.8rem;
+        }
+        .services-quote cite {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        /* ─── TESTIMONIAL ─── */
+        .testimonial-section {
+            position: relative;
+            padding: 8rem 3rem;
+            overflow: hidden;
+        }
+        .testimonial-bg {
+            position: absolute;
+            inset: 0;
+        }
+        .testimonial-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .testimonial-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(28,27,24,0.88);
+        }
+        .testimonial-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            line-height: 0.5;
+            color: var(--gold);
+            opacity: 0.4;
+            margin-bottom: 2rem;
+            display: block;
+        }
+        .testimonial-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.55;
+            color: rgba(253,251,247,0.92);
+            margin-bottom: 2.5rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+        .author-info { text-align: left; }
+        .author-name {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 0.2rem;
+        }
+        .author-title {
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* ─── ABOUT ─── */
+        .about-section { background: var(--warm-white); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        .about-image-col { position: relative; }
+        .about-image-main {
+            width: 85%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        .about-image-accent {
+            position: absolute;
+            bottom: -2.5rem;
+            right: 0;
+            width: 48%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border: 4px solid var(--warm-white);
+        }
+        .about-text p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--stone);
+            margin-bottom: 1.2rem;
+        }
+        .credentials {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .cred {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .cred-org {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+        .cred-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--stone-light);
+        }
+        .cred-divider { width: 1px; background: var(--border); align-self: stretch; }
+
+        /* ─── CONTACT ─── */
+        .contact-section { background: var(--ivory); }
+        .contact-inner { max-width: 700px; margin: 0 auto; }
+        .contact-header { text-align: center; margin-bottom: 3rem; }
+        .contact-form { background: white; padding: 3rem; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group:last-child { margin-bottom: 0; }
+        label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--stone);
+            margin-bottom: 0.5rem;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-strong);
+            background: var(--warm-white);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.25s;
+            appearance: none;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--gold);
+        }
+        textarea { resize: vertical; min-height: 120px; }
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--ink);
+            color: white;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            margin-top: 1.5rem;
+        }
+        .btn-submit:hover { background: var(--charcoal); }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .contact-info-item p { font-size: 0.88rem; font-weight: 400; color: var(--ink); margin-top: 0.4rem; }
+        .contact-info-item span { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone-light); }
+        .info-icon { color: var(--gold); margin-bottom: 0.6rem; }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--ink);
+            color: rgba(253,251,247,0.6);
+            padding: 4rem 3rem 2.5rem;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--warm-white);
+            margin-bottom: 0.8rem;
+        }
+        .footer-tagline {
+            font-size: 0.85rem;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 280px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-social { display: flex; gap: 0.8rem; }
+        .social-link {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: border-color 0.25s, color 0.25s;
+        }
+        .social-link:hover { border-color: var(--gold); color: var(--gold); }
+        .social-link svg { width: 16px; height: 16px; }
+        .footer-col h4 {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .footer-links a {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba(253,251,247,0.55);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+        .footer-links a:hover { color: var(--warm-white); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            font-weight: 300;
+        }
+
+        /* ─── NAV RIGHT GROUP ─── */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        /* ─── LANG SWITCHER ─── */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.35);
+            overflow: hidden;
+            transition: border-color 0.4s;
+        }
+        .nav.scrolled .lang-switcher { border-color: var(--border-strong); }
+        .lang-btn {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            padding: 0.35rem 0.7rem;
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.55);
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s;
+        }
+        .nav.scrolled .lang-btn { color: var(--stone-light); }
+        .lang-btn.active {
+            background: var(--gold);
+            color: white;
+        }
+        .lang-btn:hover:not(.active) { color: var(--gold-light); }
+        .nav.scrolled .lang-btn:hover:not(.active) { color: var(--gold); }
+
+        /* ─── MOBILE MENU ─── */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: white;
+            transition: background 0.4s;
+        }
+        .nav.scrolled .hamburger span { background: var(--ink); }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            background: var(--ink);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: rgba(253,251,247,0.8);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+        .mobile-menu a:hover { color: var(--gold-light); }
+        .mobile-close {
+            position: absolute;
+            top: 1.8rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+
+        /* ─── REVEAL ANIMATION ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .horse-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid, .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .services-quote { position: static; max-width: 100%; margin-top: 1.5rem; }
+        }
+        @media (max-width: 768px) {
+            .nav { padding: 0 1.2rem; height: 64px; }
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .section { padding: 4rem 1.2rem; }
+            .stats { padding: 2.5rem 1.2rem; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .horse-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .contact-info { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+            .credentials { flex-wrap: wrap; }
+            .about-image-accent { display: none; }
+            .hero-content { padding: 90px 1.2rem 5rem; max-width: 100%; }
+            .hero-scroll { left: 50%; transform: translateX(-50%); }
+            .hero-title { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+            .btn-primary, .btn-ghost { padding: 1rem 1.6rem; min-height: 48px; }
+            .filter-btn { min-height: 44px; padding: 0.6rem 1rem; }
+            .nav-cta { padding: 0.7rem 1rem; min-height: 44px; }
+        }
+        @media (max-width: 480px) {
+            .hero { min-height: 600px; }
+            .hero-content { padding: 0 1rem; }
+            .hero-title { font-size: clamp(2rem, 10vw, 2.8rem); }
+            .hero-subtitle { font-size: 0.9rem; }
+            .section { padding: 3rem 1rem; }
+            .contact-info { grid-template-columns: 1fr; }
+            .footer-grid { padding-bottom: 2rem; }
+            .credentials { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+    <a href="#home" class="nav-logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 26c0-6 4-10 10-12 3-1 6-3 7-6" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 14c-1-3 0-7 3-9" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M19 5c1 0 3 1 4 3" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6 26l2-4" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M10 26l1-4" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        IRH - Iberian Riding Horses
+    </a>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="#home" data-i18n="nav_home">Home</a></li>
+            <li><a href="catalogo.html" style="color:var(--gold-light) !important; font-weight:600;">Catálogo</a></li>
+            <li><a href="#services" data-i18n="nav_services">Services</a></li>
+            <li><a href="#about" data-i18n="nav_about">About</a></li>
+            <li><a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+        <div class="lang-switcher">
+            <button class="lang-btn active" id="btn-es" onclick="setLanguage('es')">ES</button>
+            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+        </div>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-close" onclick="toggleMenu()">✕</button>
+    <a href="#home" onclick="toggleMenu()" data-i18n="nav_home">Home</a>
+    <a href="catalogo.html" onclick="toggleMenu()">Catálogo</a>
+    <a href="#services" onclick="toggleMenu()" data-i18n="nav_services">Services</a>
+    <a href="#about" onclick="toggleMenu()" data-i18n="nav_about">About</a>
+    <a href="#contact" onclick="toggleMenu()" data-i18n="nav_contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <p class="hero-eyebrow" data-i18n="hero_eyebrow">Elite Horse Brokerage</p>
+        <h1 class="hero-title" data-i18n="hero_title">
+            Connecting Discerning<br>
+            <em>Riders</em> with Exceptional<br>
+            Horses
+        </h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
+            Specialized in matching elite sport horses with competitive riders and discerning enthusiasts.
+            Expertise in hunters, jumpers, dressage, and eventing prospects.
+        </p>
+        <div class="hero-actions">
+            <a href="catalogo.html" class="btn-primary">
+                <span data-i18n="hero_btn_listings">View Listings</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#contact" class="btn-ghost">
+                <span data-i18n="hero_btn_consult">Schedule Consultation</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+    <div class="hero-bg">
+        <img src="10c56b1a6e83b99876000a2c1b480232.jpg" alt="Caballos ibéricos" style="object-position: center 75%;">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-scroll">
+        <span data-i18n="hero_scroll">Deslizar</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+
+<!-- HORSES -->
+<section class="horses-section section" id="horses">
+    <div class="max-w">
+        <div class="horses-header reveal">
+            <span class="section-eyebrow" data-i18n="horses_eyebrow">Current Selection</span>
+            <h2 class="section-title" data-i18n="horses_title">Available Horses</h2>
+            <p class="section-body" data-i18n="horses_body">Each horse has been carefully evaluated for temperament, training, and competition potential. All horses are vetted and available for trial.</p>
+        </div>
+
+
+        <div class="horse-grid" id="horse-grid"></div>
+
+        <div style="text-align:center; margin-top:3.5rem;" class="reveal">
+            <a href="catalogo.html" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem;">
+                Ver Catálogo Completo
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ABOUT -->
+<section class="about-section section" id="about">
+    <div class="max-w">
+        <div class="about-grid">
+            <div class="about-image-col reveal">
+                <img src="horse-cancer-800x560-l.jpg" alt="Broker with horse" class="about-image-main">
+                <img src="https://images.unsplash.com/photo-1598974357801-cbca100e65d3?auto=format&fit=crop&w=400&q=80" alt="Horse detail" class="about-image-accent">
+            </div>
+            <div class="about-text reveal" style="transition-delay:0.15s">
+                <span class="section-eyebrow" data-i18n="about_eyebrow">About Us</span>
+                <h2 class="section-title" data-i18n="about_title">Decades of Equine Expertise</h2>
+                <p data-i18n="about_p1">Founded by professional riders and trainers, Premier Equine Partners bridges the gap between exceptional horses and ambitious riders. We understand that buying a horse is more than a transaction — it's the beginning of a partnership.</p>
+                <p data-i18n="about_p2">Our selective approach means we only represent horses we believe in. Every prospect undergoes rigorous evaluation for soundness, temperament, and training level. We specialize in competition prospects from amateur-friendly to Grand Prix level.</p>
+                <p data-i18n="about_p3">With connections across the United States, Canada, and Europe, we access inventory unavailable to the general public. Our reputation depends on successful matches, not quick sales.</p>
+                <div class="credentials">
+                    <div class="cred">
+                        <span class="cred-org">USHJA</span>
+                        <span class="cred-label" data-i18n="cred_member">Member</span>
+                    </div>
+                    <div class="cred-divider"></div>
+                    <div class="cred">
+                        <span class="cred-org">USEF</span>
+                        <span class="cred-label" data-i18n="cred_registered">Registered</span>
+                    </div>
+                    <div class="cred-divider"></div>
+                    <div class="cred">
+                        <span class="cred-org">FEI</span>
+                        <span class="cred-label" data-i18n="cred_certified">Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section section" id="contact">
+    <div class="max-w">
+        <div class="contact-inner">
+            <div class="contact-header reveal">
+                <span class="section-eyebrow" data-i18n="contact_eyebrow">Get Started</span>
+                <h2 class="section-title" data-i18n="contact_title">Begin Your Search</h2>
+                <p class="section-body" style="margin:0 auto;" data-i18n="contact_body">Tell us about your riding goals, experience, and preferences. We'll curate a selection matched specifically to your needs.</p>
+            </div>
+            <div class="contact-form reveal" style="transition-delay:0.1s">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div><label data-i18n="form_firstname">First Name</label><input type="text" required placeholder="Jane"></div>
+                        <div><label data-i18n="form_lastname">Last Name</label><input type="text" required placeholder="Doe"></div>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_email">Email</label><input type="email" required placeholder="jane@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_discipline">Discipline</label>
+                        <select id="select-discipline">
+                            <option data-i18n="disc_hj">Hunter / Jumper</option>
+                            <option data-i18n="disc_dr">Dressage</option>
+                            <option data-i18n="disc_ev">Eventing</option>
+                            <option data-i18n="disc_eq">Equitation</option>
+                            <option data-i18n="disc_ot">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_experience">Experience Level</label>
+                        <select id="select-experience">
+                            <option data-i18n="exp_am">Amateur / Adult Amateur</option>
+                            <option data-i18n="exp_jr">Junior Competitor</option>
+                            <option data-i18n="exp_pr">Professional</option>
+                            <option data-i18n="exp_pl">Pleasure / Trail</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="form_message">Message</label>
+                        <textarea id="form-textarea" placeholder="Tell us about your experience, current horse, and what you're looking for..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">
+                        <span data-i18n="form_submit">Send Inquiry</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </form>
+            </div>
+            <div class="contact-info reveal" style="transition-delay:0.2s">
+                <div class="contact-info-item">
+                    <div class="info-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <p>Finca Lo Tacon s/n, San Pedro del Pinatar 30740 (Murcia)</p>
+                    <span data-i18n="info_office">Ubicación</span>
+                </div>
+                <div class="contact-info-item">
+                    <div class="info-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <p>info@premierequine.com</p>
+                    <span data-i18n="info_email">Email</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <p class="footer-brand-name">IRH - Iberian Riding Horses</p>
+            <p class="footer-tagline" data-i18n="footer_tagline">Elite horse brokerage specializing in competition prospects and partnership matching for discerning equestrians.</p>
+            <div class="footer-social">
+                <a href="#" class="social-link" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="#" class="social-link" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                </a>
+            </div>
+        </div>
+        <div>
+            <h4 data-i18n="footer_links_title">Quick Links</h4>
+            <ul class="footer-links">
+                <li><a href="#horses" data-i18n="footer_horses">Available Horses</a></li>
+                <li><a href="#services" data-i18n="nav_services">Services</a></li>
+                <li><a href="#about" data-i18n="footer_about">About Us</a></li>
+                <li><a href="#" data-i18n="footer_sold">Sold Horses</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 data-i18n="footer_legal_title">Legal</h4>
+            <ul class="footer-links">
+                <li><a href="#" data-i18n="footer_privacy">Privacy Policy</a></li>
+                <li><a href="#" data-i18n="footer_terms">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p data-i18n="footer_copy">&copy; 2025 IRH - Iberian Riding Horses. Todos los derechos reservados.</p>
+        <p data-i18n="footer_sub">Professional Horse Brokerage Services</p>
+    </div>
+</footer>
+
+<script>
+    /* ── TRANSLATIONS ── */
+    const translations = {
+        en: {
+            nav_home: 'Home', nav_horses: 'Horses', nav_services: 'Services', nav_about: 'About', nav_contact: 'Contact',
+            hero_eyebrow: 'Elite Horse Brokerage',
+            hero_title: 'Connecting Discerning<br><em>Riders</em> with Exceptional<br>Horses',
+            hero_subtitle: 'Specialized in matching elite sport horses with competitive riders and discerning enthusiasts. Expertise in hunters, jumpers, dressage, and eventing prospects.',
+            hero_btn_listings: 'View Listings', hero_btn_consult: 'Schedule Consultation', hero_scroll: 'Slide',
+            horses_eyebrow: 'Current Selection', horses_title: 'Horses <em>for Sale</em>',
+            horses_body: 'Pura Raza Española selected for dressage level, genetics and temperament. All located in San Pedro del Pinatar, Murcia, Spain.',
+            filter_all: 'All Horses', filter_jumper: 'Jumpers', filter_hunter: 'Hunters', filter_dressage: 'Dressage', filter_eventing: 'Eventing',
+            horses_upcoming: 'Inquire About Upcoming Listings', card_inquire: 'Inquire Now',
+            svc_eyebrow: 'What We Offer', svc_title: 'Comprehensive Brokerage Services',
+            svc_body: 'From initial consultation to final purchase, we provide end-to-end support for buyers and sellers — ensuring the perfect match between horse and rider.',
+            svc1_title: 'Horse Sourcing', svc1_body: 'Access to an exclusive network of breeders and private sellers across North America and Europe.',
+            svc2_title: 'Pre-Purchase Evaluation', svc2_body: 'Comprehensive vetting coordination, trial arrangement, and professional assessment of every prospect.',
+            svc3_title: 'Sales Representation', svc3_body: 'Professional marketing, showing, and skilled negotiation services for sellers seeking the right partnership.',
+            svc4_title: 'Import & Export', svc4_body: 'Complete logistics handling including quarantine management, international transport, and documentation.',
+            svc_quote: '"Exceptional attention to detail and an extraordinary understanding of both horse and rider."',
+            svc_cite: '— International Grand Prix Rider',
+            testimonial_text: 'Premier Equine Partners found me the perfect Grand Prix prospect. Their knowledge of bloodlines and honest assessment saved me months of searching — and the match has been extraordinary.',
+            testimonial_title: 'Grand Prix Show Jumper · Wellington, FL',
+            about_eyebrow: 'About Us', about_title: 'Decades of Equine Expertise',
+            about_p1: "Founded by professional riders and trainers, Premier Equine Partners bridges the gap between exceptional horses and ambitious riders. We understand that buying a horse is more than a transaction — it's the beginning of a partnership.",
+            about_p2: 'Our selective approach means we only represent horses we believe in. Every prospect undergoes rigorous evaluation for soundness, temperament, and training level. We specialize in competition prospects from amateur-friendly to Grand Prix level.',
+            about_p3: 'With connections across the United States, Canada, and Europe, we access inventory unavailable to the general public. Our reputation depends on successful matches, not quick sales.',
+            cred_member: 'Member', cred_registered: 'Registered', cred_certified: 'Certified',
+            contact_eyebrow: 'Get Started', contact_title: 'Begin Your Search',
+            contact_body: "Tell us about your riding goals, experience, and preferences. We'll curate a selection matched specifically to your needs.",
+            form_firstname: 'First Name', form_lastname: 'Last Name', form_email: 'Email', form_phone: 'Phone',
+            form_discipline: 'Discipline', form_experience: 'Experience Level', form_message: 'Message', form_submit: 'Send Inquiry',
+            disc_hj: 'Hunter / Jumper', disc_dr: 'Dressage', disc_ev: 'Eventing', disc_eq: 'Equitation', disc_ot: 'Other',
+            exp_am: 'Amateur / Adult Amateur', exp_jr: 'Junior Competitor', exp_pr: 'Professional', exp_pl: 'Pleasure / Trail',
+            info_office: 'Ubicación', info_email: 'Email',
+            footer_tagline: 'Selección de caballos ibéricos de élite para competición y deporte ecuestre en Murcia, España.',
+            footer_links_title: 'Quick Links', footer_horses: 'Available Horses', footer_about: 'About Us',
+            footer_testimonials: 'Testimonials', footer_sold: 'Sold Horses',
+            footer_legal_title: 'Legal', footer_privacy: 'Privacy Policy', footer_terms: 'Terms of Service', footer_purchase: 'Purchase Agreement',
+            footer_copy: '© 2025 IRH - Iberian Riding Horses. All rights reserved.',
+            footer_sub: 'Iberian Riding Horses · Murcia, España',
+            alert_msg: 'Thank you for your inquiry! We will contact you within 24 hours to discuss your horse search.'
+        },
+        es: {
+            nav_home: 'Inicio', nav_horses: 'Caballos', nav_services: 'Servicios', nav_about: 'Nosotros', nav_contact: 'Contacto',
+            hero_eyebrow: 'Corretaje Ecuestre de Élite',
+            hero_title: 'Conectando Jinetes<br><em>Exigentes</em> con Caballos<br>Excepcionales',
+            hero_subtitle: 'Especializados en unir caballos de deporte de élite con jinetes competitivos y entusiastas exigentes. Expertos en hunters, saltadores, doma y concurso completo.',
+            hero_btn_listings: 'Ver Caballos', hero_btn_consult: 'Agendar Consulta', hero_scroll: 'Deslizar',
+            horses_eyebrow: 'Selección Actual', horses_title: 'Caballos <em>en Venta</em>',
+            horses_body: 'Pura Raza Española seleccionados por nivel de doma, genética y temperamento. Todos ubicados en San Pedro del Pinatar, Murcia.',
+            filter_all: 'Todos', filter_jumper: 'Saltadores', filter_hunter: 'Hunters', filter_dressage: 'Doma', filter_eventing: 'Concurso Completo',
+            horses_upcoming: 'Consultar Próximas Incorporaciones', card_inquire: 'Consultar Ahora',
+            svc_eyebrow: 'Lo Que Ofrecemos', svc_title: 'Servicios Integrales de Corretaje',
+            svc_body: 'Desde la consulta inicial hasta la compra final, brindamos apoyo integral a compradores y vendedores — garantizando la combinación perfecta entre caballo y jinete.',
+            svc1_title: 'Búsqueda de Caballos', svc1_body: 'Acceso a una red exclusiva de criadores y vendedores privados en América del Norte y Europa.',
+            svc2_title: 'Evaluación Precompra', svc2_body: 'Coordinación completa de revisión veterinaria y evaluación profesional de cada prospecto.',
+            svc3_title: 'Representación de Ventas', svc3_body: 'Servicios profesionales de marketing, presentación y negociación para vendedores que buscan la asociación correcta.',
+            svc4_title: 'Importación y Exportación', svc4_body: 'Gestión logística completa incluyendo cuarentena, transporte internacional y documentación.',
+            svc_quote: '"Atención excepcional al detalle y una comprensión extraordinaria tanto del caballo como del jinete."',
+            svc_cite: '— Jinete Internacional de Gran Premio',
+            testimonial_text: 'Premier Equine Partners encontró para mí el prospecto perfecto de Gran Premio. Su conocimiento de líneas de sangre y su evaluación honesta me ahorraron meses de búsqueda — y la combinación ha sido extraordinaria.',
+            testimonial_title: 'Saltadora de Gran Premio · Wellington, FL',
+            about_eyebrow: 'Sobre Nosotros', about_title: 'Décadas de Experiencia Ecuestre',
+            about_p1: 'Fundada por jinetes y entrenadores profesionales, Premier Equine Partners une a caballos excepcionales con jinetes ambiciosos. Entendemos que comprar un caballo es más que una transacción — es el inicio de una sociedad.',
+            about_p2: 'Nuestro enfoque selectivo significa que solo representamos caballos en los que creemos. Cada prospecto es evaluado rigurosamente en salud, temperamento y nivel de entrenamiento. Nos especializamos en prospectos de competencia desde nivel aficionado hasta Gran Premio.',
+            about_p3: 'Con conexiones en Estados Unidos, Canadá y Europa, accedemos a inventario no disponible al público general. Nuestra reputación depende de combinaciones exitosas, no de ventas rápidas.',
+            cred_member: 'Miembro', cred_registered: 'Registrado', cred_certified: 'Certificado',
+            contact_eyebrow: 'Comenzar', contact_title: 'Inicia tu Búsqueda',
+            contact_body: 'Cuéntanos sobre tus objetivos ecuestres, experiencia y preferencias. Crearemos una selección adaptada específicamente a tus necesidades.',
+            form_firstname: 'Nombre', form_lastname: 'Apellido', form_email: 'Correo Electrónico', form_phone: 'Teléfono',
+            form_discipline: 'Disciplina', form_experience: 'Nivel de Experiencia', form_message: 'Mensaje', form_submit: 'Enviar Consulta',
+            disc_hj: 'Hunter / Saltador', disc_dr: 'Doma Clásica', disc_ev: 'Concurso Completo', disc_eq: 'Equitación', disc_ot: 'Otro',
+            exp_am: 'Aficionado / Amateur Adulto', exp_jr: 'Competidor Junior', exp_pr: 'Profesional', exp_pl: 'Placer / Paseo',
+            info_office: 'Ubicación', info_email: 'Correo',
+            footer_tagline: 'Selección de caballos ibéricos de élite para competición y deporte ecuestre en Murcia, España.',
+            footer_links_title: 'Enlaces Rápidos', footer_horses: 'Caballos Disponibles', footer_about: 'Nosotros',
+            footer_testimonials: 'Testimonios', footer_sold: 'Caballos Vendidos',
+            footer_legal_title: 'Legal', footer_privacy: 'Política de Privacidad', footer_terms: 'Términos de Servicio', footer_purchase: 'Contrato de Compra',
+            footer_copy: '© 2025 IRH - Iberian Riding Horses. Todos los derechos reservados.',
+            footer_sub: 'Iberian Riding Horses · Murcia, España',
+            alert_msg: '¡Gracias por tu consulta! Nos pondremos en contacto contigo en 24 horas para hablar sobre tu búsqueda.'
+        }
+    };
+
+    let currentLang = 'es';
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+        // Update textarea placeholder separately
+        const ta = document.getElementById('form-textarea');
+        if (ta) ta.placeholder = lang === 'es'
+            ? 'Cuéntanos sobre tu experiencia, caballo actual y lo que buscas...'
+            : 'Tell us about your experience, current horse, and what you\'re looking for...';
+        // Toggle active state on lang buttons
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+        // Re-render cards so "Inquire Now" text updates
+        const activeFilter = document.querySelector('.filter-btn.active');
+        renderHorses(activeFilter ? activeFilter.dataset.filter : 'all');
+    }
+
+    const horses = [
+        { id:1, name:"Santo",     breed:"P.R.E.", age:{ es:"5 años", en:"5 yrs" }, height:"1.63 m", discipline:"doma",
+          image:"https://placehold.co/600x450/1C1B18/D4AA78?text=Santo",
+          desc:{ es:"Semental de capa torda con Nivel 4 de Doma Clásica confirmado. Hijo de Livino de Martet, pedigree de élite y gran valor genético.", en:"Grey stallion with confirmed Level 4 Classical Dressage. Son of Livino de Martet, elite pedigree and outstanding genetic value." },
+          tag:{ es:"Nivel 4 · Doma", en:"Level 4 · Dressage" } },
+        { id:3, name:"Limeño",    breed:"P.R.E.", age:{ es:"8 años", en:"8 yrs" }, height:"1.74 m", discipline:"doma",
+          image:"caballos/Limeño/Limeño/limeño1.jpeg",
+          desc:{ es:"Semental castaño de talla excepcional. Nivel 4 con Passage confirmado, movimientos elevados y presencia de alto nivel.", en:"Exceptional chestnut stallion at 1.74m. Level 4 with confirmed Passage, elevated movements and top-level presence." },
+          tag:{ es:"Nivel 4 · Passage", en:"Level 4 · Passage" } },
+        { id:4, name:"Halconero", breed:"P.R.E.", age:{ es:"11 años", en:"11 yrs" }, height:"1.67 m", discipline:"doma",
+          image:"caballos/Talconero/Halconero/Halconero1.jpeg",
+          desc:{ es:"El ejemplar más experimentado del catálogo. San Jorge completo con Piaffe y Passage. Castrado, equilibrado y de fácil manejo.", en:"The most experienced horse in the catalog. Full Grand Prix with Piaffe and Passage. Gelding, balanced and easy to ride." },
+          tag:{ es:"San Jorge · Piaffe · Passage", en:"Grand Prix · Piaffe · Passage" } },
+        { id:5, name:"Umero",     breed:"P.R.E.", age:{ es:"7 años", en:"7 yrs" }, height:"1.66 m", discipline:"doma",
+          image:"https://placehold.co/600x450/1C1B18/D4AA78?text=Umero",
+          desc:{ es:"Semental tordo con progresión excepcional. Nivel 7 y San Jorge alcanzados a los 7 años. Gran motor y presencia en pista.", en:"Grey stallion with exceptional progression. Level 7 and Grand Prix achieved at just 7 years old. Great engine and ring presence." },
+          tag:{ es:"San Jorge · Nivel 7", en:"Grand Prix · Level 7" } },
+        { id:2, name:"Évora",     breed:"P.R.E.", age:{ es:"5 años", en:"5 yrs" }, height:"1.59 m", discipline:"doma",
+          image:"https://placehold.co/600x450/EDE8DC/B8935A?text=Évora",
+          desc:{ es:"Yegua torda joven con Nivel 2 confirmado. Temperamento dócil y gran potencial de desarrollo. Ideal para jinete amateur.", en:"Young grey mare with confirmed Level 2. Gentle temperament and great development potential. Ideal for an amateur rider." },
+          tag:{ es:"Nivel 2 · Doma", en:"Level 2 · Dressage" } },
+        { id:6, name:"Festina",   breed:"P.R.E.", age:{ es:"—", en:"—" }, height:"—", discipline:"doma",
+          image:"https://placehold.co/600x450/EDE8DC/B8935A?text=Festina",
+          desc:{ es:"Yegua PRE disponible. Información detallada próximamente. Contacte para más detalles.", en:"PRE mare available. Full details coming soon. Contact us for more information." },
+          tag:{ es:"PRE", en:"PRE" } }
+    ];
+
+    function renderHorses(filter) {
+        const grid = document.getElementById('horse-grid');
+        const filtered = (filter === 'all' ? horses : horses.filter(h => h.discipline === filter)).slice(0, 3);
+        const lang = currentLang;
+        const disciplineLabel = lang === 'es' ? 'Doma Clásica' : 'Classical Dressage';
+        const detailsLabel = lang === 'es' ? 'Ver Detalles →' : 'View Details →';
+        grid.innerHTML = filtered.map((h, i) => `
+            <div class="horse-card" style="animation-delay:${i * 0.08}s; cursor:pointer;" onclick="window.location='caballo.html?id=${h.id}'">
+                <div class="horse-img-wrap">
+                    <img src="${h.image}" alt="${h.name}" class="horse-img" loading="lazy">
+                    <span class="card-discipline">${disciplineLabel}</span>
+                    <div class="card-overlay">
+                        <span class="card-inquire">${detailsLabel}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-name">${h.name}</p>
+                    <p class="card-meta">${h.breed} &nbsp;·&nbsp; ${h.age[lang]} &nbsp;·&nbsp; ${h.height}</p>
+                    <p class="card-desc">${h.desc[lang]}</p>
+                    <div class="card-footer">
+                        <span class="card-tag">${h.tag[lang]}</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function filterHorses(filter, btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderHorses(filter);
+    }
+
+    function scrollToContact() {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+        document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        alert(translations[currentLang].alert_msg);
+        e.target.reset();
+    }
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Init
+    setLanguage('es');
+</script>
+</body>
+</html>
