@@ -52,6 +52,8 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         .nav-logo svg { width: 26px; height: 26px; }
         .nav-logo svg path { stroke: var(--ink); }
@@ -85,10 +87,11 @@
         .lang-btn.active { background: var(--gold); color: white; }
         .lang-btn:hover:not(.active) { color: var(--gold); }
 
+        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+        }
         @media (max-width: 768px) {
             .nav { padding: 0 1.2rem; height: 60px; }
-            .nav-links { gap: 1rem; }
-            .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none; }
         }
 
         /* ─── HERO IMAGE ─── */
@@ -135,7 +138,7 @@
         }
         .horse-hero-name {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            font-size: clamp(2rem, 4vw, 4rem);
             font-weight: 400;
             color: var(--warm-white);
             line-height: 1.05;
