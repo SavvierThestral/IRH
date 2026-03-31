@@ -333,29 +333,35 @@
             aspect-ratio: 4/3;
         }
         .horse-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .card-discipline {
+        .card-tags {
             position: absolute;
-            bottom: 1rem; left: 1rem;
-            font-size: 0.6rem;
+            bottom: 0.8rem;
+            left: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.3rem;
+        }
+        .card-discipline {
+            font-size: 0.52rem;
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             background: var(--gold);
             color: white;
-            padding: 0.28rem 0.75rem;
+            padding: 0.2rem 0.55rem;
         }
         .card-gender {
-            position: absolute;
-            bottom: 1rem; right: 1rem;
-            font-size: 0.6rem;
+            font-size: 0.52rem;
             font-weight: 500;
             letter-spacing: 0.14em;
             text-transform: uppercase;
             background: rgba(28,27,24,0.75);
             color: rgba(253,251,247,0.9);
-            padding: 0.28rem 0.6rem;
+            padding: 0.2rem 0.55rem;
             backdrop-filter: blur(4px);
         }
+        .horse-img.mirror { transform: scaleX(-1); }
         .card-overlay {
             position: absolute;
             inset: 0;
@@ -754,9 +760,11 @@ function renderGrid(list) {
     grid.innerHTML = list.map(h => `
         <div class="horse-card" onclick="window.location='caballo.html?id=${h.id}'">
             <div class="horse-img-wrap">
-                <img src="${h.image}" alt="${h.name}" class="horse-img" loading="lazy">
-                <span class="card-discipline">${h.disciplinaLabel}</span>
-                <span class="card-gender">${h.generoLabel}</span>
+                <img src="${h.image}" alt="${h.name}" class="horse-img${[2,5].includes(h.id) ? ' mirror' : ''}" loading="lazy">
+                <div class="card-tags">
+                    <span class="card-gender">${h.generoLabel}</span>
+                    <span class="card-discipline">${h.disciplinaLabel}</span>
+                </div>
                 <div class="card-overlay">
                     <span class="card-inquire">${(typeof currentLang !== 'undefined' && t[currentLang]) ? t[currentLang].card_inquire : 'Ver Detalles →'}</span>
                 </div>

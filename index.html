@@ -363,18 +363,35 @@
             object-fit: cover;
             transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        .card-discipline {
+        .card-tags {
             position: absolute;
-            bottom: 1.2rem;
-            left: 1.2rem;
-            font-size: 0.62rem;
-            font-weight: 500;
+            bottom: 0.8rem;
+            left: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.3rem;
+        }
+        .card-discipline {
+            font-size: 0.52rem;
+            font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
             background: var(--gold);
             color: white;
-            padding: 0.32rem 0.8rem;
+            padding: 0.2rem 0.55rem;
         }
+        .card-gender {
+            font-size: 0.52rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background: rgba(28,27,24,0.75);
+            color: rgba(253,251,247,0.9);
+            padding: 0.2rem 0.55rem;
+            backdrop-filter: blur(4px);
+        }
+        .horse-img.mirror { transform: scaleX(-1); }
         .card-overlay {
             position: absolute;
             inset: 0;
@@ -1270,8 +1287,11 @@
         grid.innerHTML = filtered.map((h, i) => `
             <div class="horse-card" style="animation-delay:${i * 0.08}s; cursor:pointer;" onclick="window.location='caballo.html?id=${h.id}'">
                 <div class="horse-img-wrap">
-                    <img src="${h.image}" alt="${h.name}" class="horse-img" loading="lazy">
-                    <span class="card-discipline">${disciplineLabel}</span>
+                    <img src="${h.image}" alt="${h.name}" class="horse-img${[2,5].includes(h.id) ? ' mirror' : ''}" loading="lazy">
+                    <div class="card-tags">
+                        <span class="card-gender">${h.generoLabel}</span>
+                        <span class="card-discipline">${disciplineLabel}</span>
+                    </div>
                     <div class="card-overlay">
                         <span class="card-inquire">${detailsLabel}</span>
                     </div>
