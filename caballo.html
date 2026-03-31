@@ -125,12 +125,6 @@
             background: var(--ink);
             overflow: hidden;
         }
-        .horse-photo-col.has-gallery {
-            position: relative;
-            top: 0;
-            height: auto;
-            overflow: visible;
-        }
         .horse-photo-col img {
             width: 100%;
             height: 100%;
@@ -138,13 +132,53 @@
             object-position: center center;
             display: block;
             opacity: 0.92;
+            position: absolute;
+            inset: 0;
+            transition: opacity 0.4s;
         }
-        .horse-photo-col.has-gallery img {
-            height: calc(100vh - 72px);
+        .horse-photo-col img.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
-        .horse-photo-col.has-gallery img + img {
-            margin-top: 4px;
+        /* slider buttons */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background: rgba(28,27,24,0.55);
+            border: 1px solid rgba(184,147,90,0.4);
+            color: var(--gold-light);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            transition: background 0.25s;
         }
+        .slider-btn:hover { background: rgba(184,147,90,0.35); }
+        .slider-btn.prev { left: 1rem; }
+        .slider-btn.next { right: 1rem; }
+        .slider-dots {
+            position: absolute;
+            bottom: 5.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+        .slider-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(253,251,247,0.35);
+            cursor: pointer;
+            transition: background 0.25s;
+        }
+        .slider-dot.active { background: var(--gold); }
         .horse-photo-badge {
             position: absolute;
             bottom: 2rem;
@@ -453,10 +487,19 @@ function render() {
         <div class="horse-split">
 
             <!-- IZQUIERDA: foto -->
-            <div class="horse-photo-col${horse.images && horse.images.length > 1 ? ' has-gallery' : ''}">
-                ${horse.images && horse.images.length > 1
-                    ? horse.images.map((src, i) => `<img src="${src}" alt="${horse.name} ${i+1}">`).join('')
-                    : `<img src="${horse.image}" alt="${horse.name}">`}
+            <div class="horse-photo-col" id="photo-col">
+                ${(horse.images && horse.images.length > 1 ? horse.images : [horse.image])
+                    .map((src, i) => `<img src="${src}" alt="${horse.name} ${i+1}"${i > 0 ? ' class="hidden"' : ''}>`).join('')}
+                ${horse.images && horse.images.length > 1 ? `
+                <button class="slider-btn prev" onclick="slidePhoto(-1)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="slider-btn next" onclick="slidePhoto(1)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <div class="slider-dots">
+                    ${horse.images.map((_, i) => `<div class="slider-dot${i === 0 ? ' active' : ''}" onclick="goToPhoto(${i})"></div>`).join('')}
+                </div>` : ''}
                 <div class="horse-photo-badge">
                     <span class="horse-photo-badge-tag">${horse.disciplinaLabel} &nbsp;·&nbsp; ${horse.tag[currentLang]}</span>
                     <span class="horse-photo-badge-name">${horse.name}</span>
@@ -528,6 +571,21 @@ function render() {
 }
 
 render();
+
+let currentSlide = 0;
+function slidePhoto(dir) {
+    const imgs = document.querySelectorAll('#photo-col img');
+    const dots = document.querySelectorAll('.slider-dot');
+    if (!imgs.length) return;
+    imgs[currentSlide].classList.add('hidden');
+    if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + dir + imgs.length) % imgs.length;
+    imgs[currentSlide].classList.remove('hidden');
+    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+}
+function goToPhoto(index) {
+    slidePhoto(index - currentSlide);
+}
 </script>
 </body>
 </html>
