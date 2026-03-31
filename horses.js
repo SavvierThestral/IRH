@@ -30,8 +30,8 @@ const horses = [
 
         capa: "Torda",
         piro: "Positivo",
-        image: "caballos/SANTO/tanto.jpeg",
-        images: ["caballos/SANTO/tanto.jpeg", "caballos/SANTO/Tanto2.jpeg"],
+        image: "caballos/SANTO/tanto.webp",
+        images: ["caballos/SANTO/tanto.webp", "caballos/SANTO/Tanto2.webp"],
 
         /* Pedigree (solo Tanto tiene datos completos) */
         padre: "Livino de Martet",
@@ -73,7 +73,7 @@ const horses = [
 
         capa: "Torda",
         piro: "Negativo",
-        image: "caballos/EVORA/tevora.jpeg",
+        image: "caballos/EVORA/tevora.webp",
 
         desc: {
             es: "Tevora es una yegua Pura Raza Española de capa torda nacida en 2021, con Nivel 2 de Doma Clásica confirmado. Ejemplar joven con gran potencial de desarrollo, temperamento dócil y movimientos naturales propios de la raza. Placas radiológicas en perfecto estado. Piroplasmosis negativa. La opción ideal para un jinete amateur que quiera progresar en la doma clásica. San Pedro del Pinatar, Murcia.",
@@ -108,7 +108,7 @@ const horses = [
 
         capa: "Castaña",
         piro: "Negativo",
-        image: "caballos/Limeno/timeño.jpeg",
+        image: "caballos/Limeno/timeño.webp",
 
         desc: {
             es: "Timeño es un semental Pura Raza Española de capa castaña nacido en 2018. Su talla excepcional de 1.74 m lo convierte en uno de los ejemplares más imponentes del catálogo. Con Nivel 4 y Passage confirmados. Entero. Placas radiológicas correctas. Piroplasmosis negativa. San Pedro del Pinatar, Murcia.",
@@ -143,7 +143,7 @@ const horses = [
 
         capa: "Castaña",
         piro: "Negativo",
-        image: "caballos/Talconero/talconero.jpeg",
+        image: "caballos/Talconero/talconero.webp",
 
         desc: {
             es: "Talconero es un macho Pura Raza Española castrado de capa castaña nacido en 2015. El ejemplar más experimentado del catálogo: Nivel San Jorge completo con Piaffe y Passage confirmados. Equilibrado y de fácil manejo. Placas radiológicas correctas. Piroplasmosis negativa. San Pedro del Pinatar, Murcia.",
@@ -178,7 +178,7 @@ const horses = [
 
         capa: "Torda",
         piro: "Negativo",
-        image: "caballos/UMERO/tumero.jpeg",
+        image: "caballos/UMERO/tumero.webp",
 
         desc: {
             es: "Tumero es un semental Pura Raza Española de capa torda nacido en 2019. Con tan solo 7 años ha alcanzado el Nivel 7 de Doma Clásica y el nivel San Jorge. Entero. Gran motor y presencia en la pista. Placas radiológicas en perfecto estado. Piroplasmosis negativa. San Pedro del Pinatar, Murcia.",
@@ -213,7 +213,7 @@ const horses = [
 
         capa: "Castaña",
         piro: "Consultar",
-        image: "caballos/Sweet/sweet.JPG",
+        image: "caballos/Sweet/sweet.webp",
 
         desc: {
             es: "Sweet es una yegua Pony de capa castaña nacida en 2013, con Nivel II-III de Doma Clásica confirmado. 13 años de edad, talla 1.48 m. San Pedro del Pinatar, Murcia.",
