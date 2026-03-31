@@ -517,10 +517,6 @@ function setLang(lang) {
     });
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
     render();
-// Set lightbox images after render
-const _id = parseInt(new URLSearchParams(window.location.search).get('id'));
-const _horse = horses.find(h => h.id === _id);
-if (_horse) lbImages = (_horse.images && _horse.images.length > 1) ? _horse.images : [_horse.image];
 }
 
 function getParam(name) {
@@ -688,6 +684,12 @@ function slidePhoto(dir) {
 function goToPhoto(index) {
     slidePhoto(index - currentSlide);
 }
+
+// Initial render
+render();
+const _id = parseInt(new URLSearchParams(window.location.search).get('id'));
+const _horse = horses.find(h => h.id === _id);
+if (_horse) lbImages = (_horse.images && _horse.images.length > 1) ? _horse.images : [_horse.image];
 </script>
 </body>
 </html>
