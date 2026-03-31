@@ -190,6 +190,41 @@ const horses = [
     },
     {
         id: 6,
+        name: "Sweet",
+        breed: "Pony",
+        breedShort: "Pony",
+        raza: "pre",
+        age: 13,
+        nacimiento: "2013",
+        height: "1.48 m",
+        talla: "1.48 m",
+        altura_cat: "small",
+
+        disciplina: "doma",
+        nivel: "intermedio",
+        genero: "yegua",
+        perfil: "amateur",
+
+        disciplinaLabel: "Doma Clásica",
+        nivelLabel: "Nivel II-III",
+        generoLabel: "Yegua",
+        perfilLabel: "Amateur",
+
+        capa: "Consultar",
+        piro: "Consultar",
+        image: "https://placehold.co/800x600",
+
+        desc: {
+            es: "Sweet es una yegua Pony nacida en 2013, con Nivel II-III de Doma Clásica confirmado. 13 años de edad, talla 1.48 m. San Pedro del Pinatar, Murcia.",
+            en: "Sweet is a Pony mare born in 2013, with confirmed Level II-III Classical Dressage. 13 years old, 1.48 m height. San Pedro del Pinatar, Murcia."
+        },
+        tag: {
+            es: "Nivel II-III · Doma",
+            en: "Level II-III · Dressage"
+        }
+    },
+    {
+        id: 7,
         name: "Festina",
         breed: "Pura Raza Española (PRE)",
         breedShort: "P.R.E.",
