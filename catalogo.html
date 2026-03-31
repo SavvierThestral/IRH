@@ -401,7 +401,9 @@
             padding: 0.18rem 0.6rem;
             margin-bottom: 0.7rem;
         }
-        .card-desc { font-size: 0.87rem; font-weight: 300; line-height: 1.7; color: var(--stone); }
+        .card-desc { font-size: 0.87rem; font-weight: 300; line-height: 1.7; color: var(--stone); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .card-readmore { display: inline-block; margin-top: 0.6rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gold); text-decoration: none; transition: color 0.25s; }
+        .card-readmore:hover { color: var(--ink); }
         .card-footer {
             margin-top: 1rem;
             padding-top: 1rem;
@@ -504,8 +506,8 @@
             <li><a href="index.html#contact" class="nav-cta" data-i18n="nav_contact">Contact</a></li>
         </ul>
         <div class="lang-switcher">
-            <button class="lang-btn active" onclick="setLang('es')">ES</button>
-            <button class="lang-btn" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" onclick="setLang('es')">ES</button>
+            <button class="lang-btn active" onclick="setLang('en')">EN</button>
         </div>
     </div>
 </nav>
@@ -652,17 +654,17 @@ const t = {
         page_title:'Caballos <em>Disponibles</em>', page_subtitle:'Selección curada de sport horses evaluados para nivel de entrenamiento, temperamento y potencial competitivo.',
         results_label:'caballos encontrados', filter_title:'Filtros', filter_clear:'Limpiar todo',
         sort_label:'Ordenar:', sort_featured:'Destacados', sort_young:'Más joven primero', sort_old:'Mayor primero', sort_name:'Nombre A–Z',
-        card_inquire:'Ver Detalles →', empty_title:'Sin resultados', empty_body:'Intenta ajustar los filtros para ver más caballos.'
+        card_inquire:'Ver Detalles →', card_readmore:'Leer más →', empty_title:'Sin resultados', empty_body:'Intenta ajustar los filtros para ver más caballos.'
     },
     en: {
         nav_home:'Home', nav_catalog:'Catalogue', nav_services:'Services', nav_about:'About', nav_contact:'Contact',
         page_title:'Available <em>Horses</em>', page_subtitle:'Curated selection of sport horses evaluated for training level, temperament and competitive potential.',
         results_label:'horses found', filter_title:'Filters', filter_clear:'Clear all',
         sort_label:'Sort:', sort_featured:'Featured', sort_young:'Youngest first', sort_old:'Oldest first', sort_name:'Name A–Z',
-        card_inquire:'View Details →', empty_title:'No results', empty_body:'Try adjusting the filters to see more horses.'
+        card_inquire:'View Details →', card_readmore:'Read more →', empty_title:'No results', empty_body:'Try adjusting the filters to see more horses.'
     }
 };
-let currentLang = 'es';
+let currentLang = 'en';
 
 /* Datos cargados desde horses.js */
 
@@ -775,6 +777,7 @@ function renderGrid(list) {
                 <p class="card-meta">${h.breed} &nbsp;·&nbsp; ${h.age} años &nbsp;·&nbsp; ${h.height}</p>
                 <span class="card-level">${h.nivelLabel} · ${h.perfilLabel}</span>
                 <p class="card-desc">${h.desc[currentLang]}</p>
+                <a href="caballo.html?id=${h.id}" class="card-readmore" onclick="event.stopPropagation()">${t[currentLang].card_readmore}</a>
                 <div class="card-footer">
                     <span class="card-tag">${h.tag[currentLang]}</span>
                 </div>

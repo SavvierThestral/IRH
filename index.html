@@ -440,6 +440,10 @@
             font-size: 0.9rem;
             font-weight: 300;
             line-height: 1.75;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
             color: var(--stone);
         }
         .card-footer {
@@ -450,6 +454,17 @@
             justify-content: space-between;
             align-items: center;
         }
+        .card-readmore {
+            display: inline-block;
+            margin-top: 0.8rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+        .card-readmore:hover { color: var(--ink); }
         .card-tag {
             font-size: 0.68rem;
             letter-spacing: 0.1em;
@@ -955,8 +970,8 @@
             <li><a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact</a></li>
         </ul>
         <div class="lang-switcher">
-            <button class="lang-btn active" id="btn-es" onclick="setLanguage('es')">ES</button>
-            <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" id="btn-es" onclick="setLanguage('es')">ES</button>
+            <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
         </div>
         <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -1181,7 +1196,7 @@
             hero_btn_listings: 'View Listings', hero_btn_consult: 'Schedule Consultation', hero_scroll: 'Slide',
             horses_eyebrow: 'Current Selection', horses_title: 'Horses <em>for Sale</em>',
             horses_body: 'Pura Raza Española selected for dressage level, genetics and temperament. All located in San Pedro del Pinatar, Murcia, Spain.',
-            filter_all: 'All Horses', filter_dressage: 'Dressage',
+            filter_all: 'All Horses', filter_dressage: 'Dressage', card_readmore: 'Read more →',
             horses_upcoming: 'Inquire About Upcoming Listings', card_inquire: 'Inquire Now',
             svc_eyebrow: 'What We Offer', svc_title: 'Comprehensive Brokerage Services',
             svc_body: 'From initial consultation to final purchase, we provide end-to-end support for buyers and sellers — ensuring the perfect match between horse and rider.',
@@ -1221,7 +1236,7 @@
             hero_btn_listings: 'Ver Caballos', hero_btn_consult: 'Agendar Consulta', hero_scroll: 'Deslizar',
             horses_eyebrow: 'Selección Actual', horses_title: 'Caballos <em>en Venta</em>',
             horses_body: 'Pura Raza Española seleccionados por nivel de doma, genética y temperamento. Todos ubicados en San Pedro del Pinatar, Murcia.',
-            filter_all: 'Todos', filter_dressage: 'Doma',
+            filter_all: 'Todos', filter_dressage: 'Doma', card_readmore: 'Leer más →',
             horses_upcoming: 'Consultar Próximas Incorporaciones', card_inquire: 'Consultar Ahora',
             svc_eyebrow: 'Lo Que Ofrecemos', svc_title: 'Servicios Integrales de Corretaje',
             svc_body: 'Desde la consulta inicial hasta la compra final, brindamos apoyo integral a compradores y vendedores — garantizando la combinación perfecta entre caballo y jinete.',
@@ -1255,7 +1270,7 @@
         }
     };
 
-    let currentLang = 'es';
+    let currentLang = 'en';
 
     function setLanguage(lang) {
         currentLang = lang;
@@ -1301,6 +1316,7 @@
                     <p class="card-name">${h.name}</p>
                     <p class="card-meta">${h.breedShort} &nbsp;·&nbsp; ${h.age ? h.age + ' ' + (lang === 'es' ? 'años' : 'yrs') : '—'} &nbsp;·&nbsp; ${h.height}</p>
                     <p class="card-desc">${h.desc[lang]}</p>
+                    <a href="caballo.html?id=${h.id}" class="card-readmore" onclick="event.stopPropagation()">${translations[lang].card_readmore}</a>
                     <div class="card-footer">
                         <span class="card-tag">${h.tag[lang]}</span>
                     </div>
