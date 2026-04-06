@@ -17,6 +17,7 @@
             --gold: #B8935A;
             --gold-light: #D4AA78;
             --gold-pale: #F0E4CA;
+            --gold-bg: #7A5C2E;
             --ink: #1C1B18;
             --charcoal: #2E2D29;
             --stone: #6B6860;
@@ -189,7 +190,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            background: var(--gold);
+            background: var(--gold-bg);
             color: white;
             font-size: 0.78rem;
             font-weight: 500;
@@ -201,7 +202,7 @@
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
         }
-        .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+        .btn-primary:hover { background: var(--gold-bg); transform: translateY(-1px); }
         .btn-ghost {
             display: inline-flex;
             align-items: center;
@@ -379,7 +380,7 @@
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            background: var(--gold);
+            background: var(--gold-bg);
             color: white;
             padding: 0.2rem 0.55rem;
         }
@@ -780,7 +781,7 @@
         }
         .social-link:hover { border-color: var(--gold); color: var(--gold); }
         .social-link svg { width: 16px; height: 16px; }
-        .footer-col h4 {
+        .footer-col h3, .footer-col h4, .footer-grid div h3, .footer-grid div h4 {
             font-size: 0.68rem;
             font-weight: 500;
             letter-spacing: 0.22em;
@@ -838,7 +839,7 @@
         }
         .nav.scrolled .lang-btn { color: var(--stone-light); }
         .lang-btn.active {
-            background: var(--gold);
+            background: var(--gold-bg);
             color: white;
         }
         .lang-btn:hover:not(.active) { color: var(--gold-light); }
@@ -990,6 +991,9 @@
     <a href="#contact" onclick="toggleMenu()" data-i18n="nav_contact">Contact</a>
 </div>
 
+<!-- MAIN CONTENT -->
+<main>
+
 <!-- HERO -->
 <section class="hero" id="home">
     <div class="hero-content">
@@ -1101,14 +1105,14 @@
                         <label data-i18n="form_email">Email</label><input type="email" required placeholder="jane@example.com">
                     </div>
                     <div class="form-group">
-                        <label data-i18n="form_discipline">Discipline</label>
+                        <label for="select-discipline" data-i18n="form_discipline">Discipline</label>
                         <select id="select-discipline">
                             <option data-i18n="disc_dr">Dressage</option>
                             <option data-i18n="disc_ot">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label data-i18n="form_experience">Experience Level</label>
+                        <label for="select-experience" data-i18n="form_experience">Experience Level</label>
                         <select id="select-experience">
                             <option data-i18n="exp_am">Amateur / Adult Amateur</option>
                             <option data-i18n="exp_jr">Junior Competitor</option>
@@ -1146,6 +1150,8 @@
     </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
     <div class="footer-grid">
@@ -1165,7 +1171,7 @@
             </div>
         </div>
         <div>
-            <h4 data-i18n="footer_links_title">Quick Links</h4>
+            <h3 data-i18n="footer_links_title">Quick Links</h3>
             <ul class="footer-links">
                 <li><a href="#horses" data-i18n="footer_horses">Available Horses</a></li>
                 <li><a href="#services" data-i18n="nav_services">Services</a></li>
@@ -1173,7 +1179,7 @@
             </ul>
         </div>
         <div>
-            <h4 data-i18n="footer_legal_title">Legal</h4>
+            <h3 data-i18n="footer_legal_title">Legal</h3>
             <ul class="footer-links">
                 <li><a href="#" data-i18n="footer_privacy">Privacy Policy</a></li>
                 <li><a href="#" data-i18n="footer_terms">Terms of Service</a></li>
