@@ -801,6 +801,10 @@ function goToPhoto(i) {
 }
 
 /* ── INIT ── */
+document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+});
+
 function getLang() { try { return localStorage.getItem('irh-lang') || 'en'; } catch(e) { return 'en'; } }
 currentLang = getLang();
 render();

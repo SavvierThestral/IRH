@@ -855,6 +855,11 @@ function closeSidebar() {
 function getLang() { try { return localStorage.getItem('irh-lang') || 'en'; } catch(e) { return 'en'; } }
 function saveLang(l) { try { localStorage.setItem('irh-lang', l); } catch(e) {} }
 
+// Disable right-click on images
+document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+});
+
 // Init
 setLang(getLang());
 
