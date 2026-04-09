@@ -519,7 +519,7 @@
 </div>
 
 <footer>
-    <p>&copy; 2025 IRH - Iberian Riding Horses &nbsp;·&nbsp; Finca Lo Tacon s/n, San Pedro del Pinatar 30740 (Murcia) &nbsp;·&nbsp; <a href="index.html">Inicio</a> &nbsp;·&nbsp; <a href="catalogo.html">Catálogo</a></p>
+    <p>&copy; 2025 IRH - Iberian Riding Horses &nbsp;·&nbsp; Finca Lo Tacon s/n, San Pedro del Pinatar 30740 (Murcia) &nbsp;·&nbsp; <a href="index.html" data-i18n="nav_home">Home</a> &nbsp;·&nbsp; <a href="catalogo.html" data-i18n="nav_catalog">Catalogue</a></p>
 </footer>
 
 <script src="horses.js"></script>
@@ -554,6 +554,7 @@ const horseLabelTrans = {
     genero: { en: { 'Semental':'Stallion', 'Yegua':'Mare', 'Castrado':'Gelding' } },
     perfil: { en: { 'Profesional':'Professional', 'Amateur':'Amateur' } },
     disciplina: { en: { 'Doma Clásica':'Classical Dressage' } },
+    breed:  { en: { 'Pura Raza Española (PRE)':'Pure Spanish Breed (PRE)', 'Pony':'Pony' } },
     nivel: { en: {
         'Nivel 2':'Level 2', 'Nivel 4':'Level 4', 'Nivel 4 · Passage':'Level 4 · Passage',
         'Nivel II-III':'Level II-III',
@@ -638,7 +639,7 @@ function render() {
             <!-- DERECHA: info -->
             <div class="horse-info-col">
                 <h1 class="horse-name">${horse.name}</h1>
-                <p class="horse-sub">${horse.breed} &nbsp;·&nbsp; ${horse.age} ${l.years} &nbsp;·&nbsp; ${horse.height}</p>
+                <p class="horse-sub">${tlbl('breed', horse.breed)} &nbsp;·&nbsp; ${horse.age} ${l.years} &nbsp;·&nbsp; ${horse.height}</p>
 
                 <div class="specs-grid">
                     <div class="spec-item">

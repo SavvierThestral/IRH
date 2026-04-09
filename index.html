@@ -1045,7 +1045,7 @@
 
         <div style="text-align:center; margin-top:3.5rem;" class="reveal">
             <a href="catalogo.html" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem;">
-                Ver Catálogo Completo
+                <span data-i18n="catalog_btn">View Full Catalogue</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
         </div>
@@ -1174,8 +1174,8 @@
         </div>
     </div>
     <div class="footer-bottom">
-        <p data-i18n="footer_copy">&copy; 2025 IRH - Iberian Riding Horses. Todos los derechos reservados.</p>
-        <p data-i18n="footer_sub">Professional Horse Brokerage Services</p>
+        <p data-i18n="footer_copy">&copy; 2025 IRH - Iberian Riding Horses. All rights reserved.</p>
+        <p data-i18n="footer_sub">Iberian Riding Horses · Murcia, Spain</p>
     </div>
 </footer>
 
@@ -1191,6 +1191,7 @@
             hero_btn_listings: 'View Listings', hero_btn_consult: 'Schedule Consultation', hero_scroll: 'Slide for more',
             horses_eyebrow: 'Current Selection', horses_title: 'Horses <em>for Sale</em>',
             horses_body: 'Pura Raza Española selected for dressage level, genetics and temperament. All located in San Pedro del Pinatar, Murcia, Spain.',
+            catalog_btn: 'View Full Catalogue',
             filter_all: 'All Horses', filter_dressage: 'Dressage', card_readmore: 'Read more →',
             horses_upcoming: 'Inquire About Upcoming Listings', card_inquire: 'Inquire Now',
             svc_eyebrow: 'What We Offer', svc_title: 'Comprehensive Brokerage Services',
@@ -1231,6 +1232,7 @@
             hero_btn_listings: 'Ver Caballos', hero_btn_consult: 'Agendar Consulta', hero_scroll: 'Deslizar',
             horses_eyebrow: 'Selección Actual', horses_title: 'Caballos <em>en Venta</em>',
             horses_body: 'Pura Raza Española seleccionados por nivel de doma, genética y temperamento. Todos ubicados en San Pedro del Pinatar, Murcia.',
+            catalog_btn: 'Ver Catálogo Completo',
             filter_all: 'Todos', filter_dressage: 'Doma', card_readmore: 'Leer más →',
             horses_upcoming: 'Consultar Próximas Incorporaciones', card_inquire: 'Consultar Ahora',
             svc_eyebrow: 'Lo Que Ofrecemos', svc_title: 'Servicios Integrales de Corretaje',
@@ -1268,7 +1270,8 @@
     let currentLang = 'en';
 
     const horseLabelTrans = {
-        genero: { en: { 'Semental':'Stallion', 'Yegua':'Mare', 'Castrado':'Gelding' } }
+        genero: { en: { 'Semental':'Stallion', 'Yegua':'Mare', 'Castrado':'Gelding' } },
+        breed:  { en: { 'Pura Raza Española (PRE)':'Pure Spanish Breed (PRE)', 'Pony':'Pony' } }
     };
     function tlbl(category, val) {
         if (currentLang === 'es') return val;

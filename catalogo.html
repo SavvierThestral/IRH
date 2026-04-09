@@ -767,6 +767,7 @@ const horseLabelTrans = {
     genero: { en: { 'Semental':'Stallion', 'Yegua':'Mare', 'Castrado':'Gelding' } },
     perfil: { en: { 'Profesional':'Professional', 'Amateur':'Amateur' } },
     disciplina: { en: { 'Doma Clásica':'Classical Dressage' } },
+    breed:  { en: { 'Pura Raza Española (PRE)':'Pure Spanish Breed (PRE)', 'Pony':'Pony' } },
     nivel: { en: {
         'Nivel 2':'Level 2', 'Nivel 4':'Level 4', 'Nivel 4 · Passage':'Level 4 · Passage',
         'Nivel II-III':'Level II-III', 'Nivel 7':'Level 7',
@@ -832,7 +833,7 @@ function renderGrid(list) {
             </div>
             <div class="card-body">
                 <p class="card-name">${h.name}</p>
-                <p class="card-meta">${h.breed} &nbsp;·&nbsp; ${h.age} ${t[currentLang].age_unit} &nbsp;·&nbsp; ${h.height}</p>
+                <p class="card-meta">${tlbl('breed', h.breed)} &nbsp;·&nbsp; ${h.age} ${t[currentLang].age_unit} &nbsp;·&nbsp; ${h.height}</p>
                 <span class="card-level">${tlbl('nivel', h.nivelLabel)} · ${tlbl('perfil', h.perfilLabel)}</span>
                 <p class="card-desc">${h.desc[currentLang]}</p>
                 <a href="caballo.html?id=${h.id}" class="card-readmore" onclick="event.stopPropagation()">${t[currentLang].card_readmore}</a>
