@@ -83,7 +83,7 @@
         .nav-cta:hover { background: var(--gold) !important; color: white !important; }
         .nav-right { display: flex; align-items: center; gap: 1.5rem; }
         .lang-switcher { display: flex; align-items: center; border: 1px solid var(--border-strong); overflow: hidden; }
-        .lang-btn { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; padding: 0.35rem 0.7rem; background: transparent; border: none; color: var(--stone-light); cursor: pointer; transition: background 0.25s, color 0.25s; }
+        .lang-btn { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0; padding: 0.3rem 0.55rem; background: transparent; border: none; color: var(--stone-light); cursor: pointer; transition: background 0.25s, color 0.25s; line-height: 1; }
         .lang-btn.active { background: var(--gold); color: white; }
         .lang-btn:hover:not(.active) { color: var(--gold); }
 
@@ -488,8 +488,8 @@
             <li><a href="index.html#contact" class="nav-cta" data-i18n="nav_contact">Contacto</a></li>
         </ul>
         <div class="lang-switcher">
-            <button class="lang-btn" onclick="setLang('es')">ES</button>
-            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" data-lang="es" onclick="setLang('es')">🇪🇸</button>
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇬🇧</button>
         </div>
     </div>
 </nav>
@@ -545,13 +545,32 @@ const tr = {
 };
 let currentLang = 'en';
 
+const horseLabelTrans = {
+    genero: { en: { 'Semental':'Stallion', 'Yegua':'Mare', 'Castrado':'Gelding' } },
+    perfil: { en: { 'Profesional':'Professional', 'Amateur':'Amateur' } },
+    disciplina: { en: { 'Doma Clásica':'Classical Dressage' } },
+    nivel: { en: {
+        'Nivel 2':'Level 2', 'Nivel 4':'Level 4', 'Nivel 4 · Passage':'Level 4 · Passage',
+        'Nivel II-III':'Level II-III',
+        'San Jorge · Piaffe · Passage':'Grand Prix · Piaffe · Passage',
+        'San Jorge · Nivel 7':'Grand Prix · Level 7',
+        'Consultar':'Inquire'
+    }}
+};
+
+function tlbl(category, val) {
+    if (currentLang === 'es') return val;
+    return (horseLabelTrans[category] && horseLabelTrans[category].en && horseLabelTrans[category].en[val]) || val;
+}
+
 function setLang(lang) {
     currentLang = lang;
+    try { localStorage.setItem('irh-lang', lang); } catch(e) {}
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (tr[lang][key] !== undefined) el.innerHTML = tr[lang][key];
     });
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     render();
     initPhotoCol();
 }
@@ -606,7 +625,7 @@ function render() {
                     ${horse.images.map((_, i) => `<div class="slider-dot${i === 0 ? ' active' : ''}"></div>`).join('')}
                 </div>` : ''}
                 <div class="horse-photo-badge">
-                    <span class="horse-photo-badge-tag">${horse.disciplinaLabel} &nbsp;·&nbsp; ${horse.tag[currentLang]}</span>
+                    <span class="horse-photo-badge-tag">${tlbl('disciplina', horse.disciplinaLabel)} &nbsp;·&nbsp; ${horse.tag[currentLang]}</span>
                     <span class="horse-photo-badge-name">${horse.name}</span>
                 </div>
             </div>
@@ -619,15 +638,15 @@ function render() {
                 <div class="specs-grid">
                     <div class="spec-item">
                         <span class="spec-label">${l.spec_discipline}</span>
-                        <span class="spec-value highlight">${horse.disciplinaLabel}</span>
+                        <span class="spec-value highlight">${tlbl('disciplina', horse.disciplinaLabel)}</span>
                     </div>
                     <div class="spec-item">
                         <span class="spec-label">${l.spec_level}</span>
-                        <span class="spec-value">${horse.nivelLabel}</span>
+                        <span class="spec-value">${tlbl('nivel', horse.nivelLabel)}</span>
                     </div>
                     <div class="spec-item">
                         <span class="spec-label">${l.spec_gender}</span>
-                        <span class="spec-value">${horse.generoLabel}</span>
+                        <span class="spec-value">${tlbl('genero', horse.generoLabel)}</span>
                     </div>
                     <div class="spec-item">
                         <span class="spec-label">${l.spec_age}</span>
@@ -639,7 +658,7 @@ function render() {
                     </div>
                     <div class="spec-item">
                         <span class="spec-label">${l.spec_profile}</span>
-                        <span class="spec-value">${horse.perfilLabel}</span>
+                        <span class="spec-value">${tlbl('perfil', horse.perfilLabel)}</span>
                     </div>
                 </div>
 
@@ -782,11 +801,14 @@ function goToPhoto(i) {
 }
 
 /* ── INIT ── */
+function getLang() { try { return localStorage.getItem('irh-lang') || 'en'; } catch(e) { return 'en'; } }
+currentLang = getLang();
 render();
 const _id = parseInt(new URLSearchParams(window.location.search).get('id'));
 const _horse = horses.find(h => h.id === _id);
 if (_horse) lbImages = (_horse.images && _horse.images.length > 1) ? _horse.images : [_horse.image];
 initPhotoCol();
+setLang(currentLang);
 </script>
 </body>
 </html>

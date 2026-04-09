@@ -38,8 +38,8 @@ const horses = [
         microchip: "100100007241310000129010",
 
         desc: {
-            es: "Tanto es un semental Pura Raza Española de capa torda nacido en 2020, con Nivel 4 de Doma Clásica confirmado. Entero. Placas radiológicas correctas. Piroplasmosis positiva, condición habitual y controlable en caballos de la zona mediterránea, sin impedimento para su actividad deportiva con el protocolo veterinario adecuado. San Pedro del Pinatar, Murcia.",
-            en: "Tanto is a grey PRE stallion born in 2020, with confirmed Level 4 Classical Dressage. Entire. Correct radiological plates. Positive piroplasmosis, a common and manageable condition in Mediterranean horses with no impact on sporting activity under the appropriate veterinary protocol. San Pedro del Pinatar, Murcia."
+            es: "Tanto es un semental Pura Raza Española de capa torda nacido en 2020, con Nivel 4 de Doma Clásica confirmado. Entero. Placas radiológicas correctas. San Pedro del Pinatar, Murcia.",
+            en: "Tanto is a grey PRE stallion born in 2020, with confirmed Level 4 Classical Dressage. Entire. Correct radiological plates. San Pedro del Pinatar, Murcia."
         },
         tag: {
             es: "Nivel 4 · Doma",

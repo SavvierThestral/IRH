@@ -471,15 +471,20 @@
             .mobile-filter-btn { display: flex; }
             .horse-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
             .nav { padding: 0 1.5rem; }
-            .page-header { padding: 3rem 1.5rem 2.5rem; }
+            .page-header { padding: 3rem 1.8rem 2.5rem; }
             .catalog-toolbar { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .card-body { padding: 1.2rem 1.2rem 1rem; }
+            .card-desc { font-size: 0.82rem; }
         }
         @media (max-width: 540px) {
             .horse-grid { grid-template-columns: 1fr; }
+            .catalog-layout { padding: 1.5rem 1.2rem 4rem; }
+            .page-header { padding: 2.5rem 1.2rem 2rem; }
+            .card-body { padding: 1rem 1rem 0.9rem; }
         }
         .nav-right { display: flex; align-items: center; gap: 1.5rem; }
         .lang-switcher { display: flex; align-items: center; border: 1px solid var(--border-strong); overflow: hidden; }
-        .lang-btn { font-family: 'Jost', sans-serif; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; padding: 0.35rem 0.7rem; background: transparent; border: none; color: var(--stone-light); cursor: pointer; transition: background 0.25s, color 0.25s; }
+        .lang-btn { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0; padding: 0.3rem 0.55rem; background: transparent; border: none; color: var(--stone-light); cursor: pointer; transition: background 0.25s, color 0.25s; line-height: 1; }
         .lang-btn.active { background: var(--gold); color: white; }
         .lang-btn:hover:not(.active) { color: var(--gold); }
     </style>
@@ -501,13 +506,13 @@
     <div class="nav-right">
         <ul class="nav-links">
             <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-            <li><a href="catalogo.html" class="active" style="color:var(--gold);" data-i18n="nav_catalog">Catálogo</a></li>
+            <li><a href="catalogo.html" class="active" style="color:var(--gold);" data-i18n="nav_catalog">Catalogue</a></li>
             <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
             <li><a href="index.html#contact" class="nav-cta" data-i18n="nav_contact">Contact</a></li>
         </ul>
         <div class="lang-switcher">
-            <button class="lang-btn" onclick="setLang('es')">ES</button>
-            <button class="lang-btn active" onclick="setLang('en')">EN</button>
+            <button class="lang-btn" data-lang="es" onclick="setLang('es')">🇪🇸</button>
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇬🇧</button>
         </div>
     </div>
 </nav>
@@ -518,11 +523,11 @@
         <div class="breadcrumb">
             <a href="index.html" data-i18n="nav_home">Home</a>
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span data-i18n="nav_catalog">Catálogo</span>
+            <span data-i18n="nav_catalog">Catalogue</span>
         </div>
-        <h1 class="page-title" data-i18n="page_title">Caballos <em>Disponibles</em></h1>
-        <p class="page-subtitle" data-i18n="page_subtitle">Selección curada de sport horses evaluados para nivel de entrenamiento, temperamento y potencial competitivo.</p>
-        <div class="results-count"><strong id="count">0</strong> <span data-i18n="results_label">caballos encontrados</span></div>
+        <h1 class="page-title" data-i18n="page_title">Available <em>Horses</em></h1>
+        <p class="page-subtitle" data-i18n="page_subtitle">Curated selection of sport horses evaluated for training level, temperament and competitive potential.</p>
+        <div class="results-count"><strong id="count">0</strong> <span data-i18n="results_label">horses found</span></div>
     </div>
 </div>
 
@@ -532,31 +537,31 @@
     <!-- MOBILE FILTER TRIGGER -->
     <button class="mobile-filter-btn" onclick="openSidebar()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg>
-        Filtros
+        <span data-i18n="mobile_filter_btn">Filters</span>
     </button>
 
     <!-- SIDEBAR -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <span class="sidebar-title" data-i18n="filter_title">Filtros</span>
-            <button class="clear-btn" onclick="clearAll()" data-i18n="filter_clear">Limpiar todo</button>
+            <span class="sidebar-title" data-i18n="filter_title">Filters</span>
+            <button class="clear-btn" onclick="clearAll()" data-i18n="filter_clear">Clear all</button>
         </div>
 
         <!-- Disciplina -->
         <div class="filter-group open" id="grp-disciplina">
             <div class="filter-group-header" onclick="toggleGroup('grp-disciplina')">
-                <span class="filter-group-label">Disciplina</span>
+                <span class="filter-group-label" data-i18n="fgrp_disciplina">Disciplina</span>
                 <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
             </div>
             <div class="filter-group-body">
-                <label class="filter-option"><input type="checkbox" data-filter="disciplina" value="doma" onchange="applyFilters()"><span class="filter-option-label">Doma Clásica</span><span class="filter-option-count">6</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="disciplina" value="doma" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_doma">Doma Clásica</span><span class="filter-option-count">6</span></label>
             </div>
         </div>
 
         <!-- Nivel de entrenamiento -->
         <div class="filter-group open" id="grp-nivel">
             <div class="filter-group-header" onclick="toggleGroup('grp-nivel')">
-                <span class="filter-group-label">Nivel de Entrenamiento</span>
+                <span class="filter-group-label" data-i18n="fgrp_nivel">Nivel de Entrenamiento</span>
                 <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
             </div>
             <div class="filter-group-body">
@@ -570,39 +575,39 @@
         <!-- Género -->
         <div class="filter-group" id="grp-genero">
             <div class="filter-group-header" onclick="toggleGroup('grp-genero')">
-                <span class="filter-group-label">Género</span>
+                <span class="filter-group-label" data-i18n="fgrp_genero">Género</span>
                 <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
             </div>
             <div class="filter-group-body">
-                <label class="filter-option"><input type="checkbox" data-filter="genero" value="yegua" onchange="applyFilters()"><span class="filter-option-label">Yegua</span></label>
-                <label class="filter-option"><input type="checkbox" data-filter="genero" value="castrado" onchange="applyFilters()"><span class="filter-option-label">Castrado</span></label>
-                <label class="filter-option"><input type="checkbox" data-filter="genero" value="semental" onchange="applyFilters()"><span class="filter-option-label">Semental</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="genero" value="yegua" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_yegua">Yegua</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="genero" value="castrado" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_castrado">Castrado</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="genero" value="semental" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_semental">Semental</span></label>
             </div>
         </div>
 
         <!-- Rango de edad -->
         <div class="filter-group" id="grp-edad">
             <div class="filter-group-header" onclick="toggleGroup('grp-edad')">
-                <span class="filter-group-label">Edad</span>
+                <span class="filter-group-label" data-i18n="fgrp_edad">Edad</span>
                 <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
             </div>
             <div class="filter-group-body">
-                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="joven" onchange="applyFilters()"><span class="filter-option-label">Joven (3–5 años)</span></label>
-                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="prime" onchange="applyFilters()"><span class="filter-option-label">Prime (6–10 años)</span></label>
-                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="maduro" onchange="applyFilters()"><span class="filter-option-label">Maduro (11–15 años)</span></label>
-                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="senior" onchange="applyFilters()"><span class="filter-option-label">Senior (+15 años)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="joven" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_joven">Joven (3–5 años)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="prime" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_prime">Prime (6–10 años)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="maduro" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_maduro">Maduro (11–15 años)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="edad_cat" value="senior" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_senior">Senior (+15 años)</span></label>
             </div>
         </div>
 
         <!-- Para quién -->
         <div class="filter-group" id="grp-perfil">
             <div class="filter-group-header" onclick="toggleGroup('grp-perfil')">
-                <span class="filter-group-label">Perfil del Jinete</span>
+                <span class="filter-group-label" data-i18n="fgrp_perfil">Perfil del Jinete</span>
                 <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
             </div>
             <div class="filter-group-body">
-                <label class="filter-option"><input type="checkbox" data-filter="perfil" value="amateur" onchange="applyFilters()"><span class="filter-option-label">Amateur</span></label>
-                <label class="filter-option"><input type="checkbox" data-filter="perfil" value="profesional" onchange="applyFilters()"><span class="filter-option-label">Profesional</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="perfil" value="amateur" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_amateur">Amateur</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="perfil" value="profesional" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_profesional">Profesional</span></label>
             </div>
         </div>
 
@@ -610,14 +615,14 @@
         <!-- Altura -->
         <div class="filter-group" id="grp-altura">
             <div class="filter-group-header" onclick="toggleGroup('grp-altura')">
-                <span class="filter-group-label">Alzada</span>
+                <span class="filter-group-label" data-i18n="fgrp_altura">Alzada</span>
                 <svg class="filter-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
             </div>
             <div class="filter-group-body">
-                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="small" onchange="applyFilters()"><span class="filter-option-label">Pequeño (–15.2 hh)</span></label>
-                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="medium" onchange="applyFilters()"><span class="filter-option-label">Mediano (15.3–16.1 hh)</span></label>
-                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="large" onchange="applyFilters()"><span class="filter-option-label">Grande (16.2–16.3 hh)</span></label>
-                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="xlarge" onchange="applyFilters()"><span class="filter-option-label">Muy grande (17+ hh)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="small" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_small">Pequeño (–15.2 hh)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="medium" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_medium">Mediano (15.3–16.1 hh)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="large" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_large">Grande (16.2–16.3 hh)</span></label>
+                <label class="filter-option"><input type="checkbox" data-filter="altura_cat" value="xlarge" onchange="applyFilters()"><span class="filter-option-label" data-i18n="flbl_xlarge">Muy grande (17+ hh)</span></label>
             </div>
         </div>
     </div>
@@ -654,14 +659,32 @@ const t = {
         page_title:'Caballos <em>Disponibles</em>', page_subtitle:'Selección curada de sport horses evaluados para nivel de entrenamiento, temperamento y potencial competitivo.',
         results_label:'caballos encontrados', filter_title:'Filtros', filter_clear:'Limpiar todo',
         sort_label:'Ordenar:', sort_featured:'Destacados', sort_young:'Más joven primero', sort_old:'Mayor primero', sort_name:'Nombre A–Z',
-        card_inquire:'Ver Detalles →', card_readmore:'Leer más →', empty_title:'Sin resultados', empty_body:'Intenta ajustar los filtros para ver más caballos.'
+        mobile_filter_btn:'Filtros',
+        card_inquire:'Ver Detalles →', card_readmore:'Leer más →', empty_title:'Sin resultados', empty_body:'Intenta ajustar los filtros para ver más caballos.',
+        age_unit:'años',
+        fgrp_disciplina:'Disciplina', fgrp_nivel:'Nivel de Entrenamiento', fgrp_genero:'Género',
+        fgrp_edad:'Edad', fgrp_perfil:'Perfil del Jinete', fgrp_altura:'Alzada',
+        flbl_doma:'Doma Clásica',
+        flbl_yegua:'Yegua', flbl_castrado:'Castrado', flbl_semental:'Semental',
+        flbl_joven:'Joven (3–5 años)', flbl_prime:'Prime (6–10 años)', flbl_maduro:'Maduro (11–15 años)', flbl_senior:'Senior (+15 años)',
+        flbl_amateur:'Amateur', flbl_profesional:'Profesional',
+        flbl_small:'Pequeño (–15.2 hh)', flbl_medium:'Mediano (15.3–16.1 hh)', flbl_large:'Grande (16.2–16.3 hh)', flbl_xlarge:'Muy grande (17+ hh)'
     },
     en: {
         nav_home:'Home', nav_catalog:'Catalogue', nav_services:'Services', nav_about:'About', nav_contact:'Contact',
         page_title:'Available <em>Horses</em>', page_subtitle:'Curated selection of sport horses evaluated for training level, temperament and competitive potential.',
         results_label:'horses found', filter_title:'Filters', filter_clear:'Clear all',
         sort_label:'Sort:', sort_featured:'Featured', sort_young:'Youngest first', sort_old:'Oldest first', sort_name:'Name A–Z',
-        card_inquire:'View Details →', card_readmore:'Read more →', empty_title:'No results', empty_body:'Try adjusting the filters to see more horses.'
+        mobile_filter_btn:'Filters',
+        card_inquire:'View Details →', card_readmore:'Read more →', empty_title:'No results', empty_body:'Try adjusting the filters to see more horses.',
+        age_unit:'yrs',
+        fgrp_disciplina:'Discipline', fgrp_nivel:'Training Level', fgrp_genero:'Gender',
+        fgrp_edad:'Age', fgrp_perfil:'Rider Profile', fgrp_altura:'Height',
+        flbl_doma:'Classical Dressage',
+        flbl_yegua:'Mare', flbl_castrado:'Gelding', flbl_semental:'Stallion',
+        flbl_joven:'Young (3–5 yrs)', flbl_prime:'Prime (6–10 yrs)', flbl_maduro:'Mature (11–15 yrs)', flbl_senior:'Senior (+15 yrs)',
+        flbl_amateur:'Amateur', flbl_profesional:'Professional',
+        flbl_small:'Small (–15.2 hh)', flbl_medium:'Medium (15.3–16.1 hh)', flbl_large:'Large (16.2–16.3 hh)', flbl_xlarge:'Very Large (17+ hh)'
     }
 };
 let currentLang = 'en';
@@ -715,21 +738,51 @@ function applyFilters() {
 }
 
 const labelMap = {
-    disciplina: { doma:'Doma Clásica' },
-    nivel: { verde:'Verde', basico:'Básico', intermedio:'Intermedio', avanzado:'Avanzado', 'gran-prix':'Grand Prix' },
-    genero: { yegua:'Yegua', castrado:'Castrado', semental:'Semental' },
-    edad_cat: { joven:'3–5 años', prime:'6–10 años', maduro:'11–15 años', senior:'+15 años' },
-    perfil: { amateur:'Amateur', junior:'Junior', profesional:'Profesional', club:'Club' },
-    raza: { 'dutch-warmblood':'KWPN', oldenburg:'Oldenburg', hanoverian:'Hanoverian', belgian:'BWP', thoroughbred:'PS / Árabe', irish:'Irish SH', selle:'Selle Français', pre:'PRE' },
-    altura_cat: { small:'–15.2 hh', medium:'15.3–16.1 hh', large:'16.2–16.3 hh', xlarge:'17+ hh' }
+    es: {
+        disciplina: { doma:'Doma Clásica' },
+        nivel: { verde:'Verde', basico:'Básico', intermedio:'Intermedio', avanzado:'Avanzado', 'gran-prix':'Grand Prix' },
+        genero: { yegua:'Yegua', castrado:'Castrado', semental:'Semental' },
+        edad_cat: { joven:'3–5 años', prime:'6–10 años', maduro:'11–15 años', senior:'+15 años' },
+        perfil: { amateur:'Amateur', junior:'Junior', profesional:'Profesional', club:'Club' },
+        raza: { 'dutch-warmblood':'KWPN', oldenburg:'Oldenburg', hanoverian:'Hanoverian', belgian:'BWP', thoroughbred:'PS / Árabe', irish:'Irish SH', selle:'Selle Français', pre:'PRE' },
+        altura_cat: { small:'–15.2 hh', medium:'15.3–16.1 hh', large:'16.2–16.3 hh', xlarge:'17+ hh' }
+    },
+    en: {
+        disciplina: { doma:'Classical Dressage' },
+        nivel: { verde:'Green', basico:'Basic', intermedio:'Intermediate', avanzado:'Advanced', 'gran-prix':'Grand Prix' },
+        genero: { yegua:'Mare', castrado:'Gelding', semental:'Stallion' },
+        edad_cat: { joven:'3–5 yrs', prime:'6–10 yrs', maduro:'11–15 yrs', senior:'+15 yrs' },
+        perfil: { amateur:'Amateur', junior:'Junior', profesional:'Professional', club:'Club' },
+        raza: { 'dutch-warmblood':'KWPN', oldenburg:'Oldenburg', hanoverian:'Hanoverian', belgian:'BWP', thoroughbred:'PS / Arab', irish:'Irish SH', selle:'Selle Français', pre:'PRE' },
+        altura_cat: { small:'–15.2 hh', medium:'15.3–16.1 hh', large:'16.2–16.3 hh', xlarge:'17+ hh' }
+    }
 };
+
+const horseLabelTrans = {
+    genero: { en: { 'Semental':'Stallion', 'Yegua':'Mare', 'Castrado':'Gelding' } },
+    perfil: { en: { 'Profesional':'Professional', 'Amateur':'Amateur' } },
+    disciplina: { en: { 'Doma Clásica':'Classical Dressage' } },
+    nivel: { en: {
+        'Nivel 2':'Level 2', 'Nivel 4':'Level 4', 'Nivel 4 · Passage':'Level 4 · Passage',
+        'Nivel II-III':'Level II-III', 'Nivel 7':'Level 7',
+        'San Jorge · Piaffe · Passage':'Grand Prix · Piaffe · Passage',
+        'San Jorge · Nivel 7':'Grand Prix · Level 7',
+        'Consultar':'Inquire'
+    }}
+};
+
+function tlbl(category, val) {
+    if (currentLang === 'es') return val;
+    return (horseLabelTrans[category] && horseLabelTrans[category].en && horseLabelTrans[category].en[val]) || val;
+}
 
 function renderActiveTags(filters) {
     const container = document.getElementById('active-filters');
+    const lm = labelMap[currentLang] || labelMap.es;
     const tags = [];
     for (const [key, vals] of Object.entries(filters)) {
         vals.forEach(v => {
-            const label = (labelMap[key] && labelMap[key][v]) || v;
+            const label = (lm[key] && lm[key][v]) || v;
             tags.push(`<span class="active-filter-tag" onclick="removeFilter('${key}','${v}')">
                 ${label}
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
@@ -765,8 +818,8 @@ function renderGrid(list) {
             <div class="horse-img-wrap">
                 <img src="${h.image}" alt="${h.name}" class="horse-img${[2,5].includes(h.id) ? ' mirror' : ''}" loading="lazy">
                 <div class="card-tags">
-                    <span class="card-gender">${h.generoLabel}</span>
-                    <span class="card-discipline">${h.disciplinaLabel}</span>
+                    <span class="card-gender">${tlbl('genero', h.generoLabel)}</span>
+                    <span class="card-discipline">${tlbl('disciplina', h.disciplinaLabel)}</span>
                 </div>
                 <div class="card-overlay">
                     <span class="card-inquire">${(typeof currentLang !== 'undefined' && t[currentLang]) ? t[currentLang].card_inquire : 'Ver Detalles →'}</span>
@@ -774,8 +827,8 @@ function renderGrid(list) {
             </div>
             <div class="card-body">
                 <p class="card-name">${h.name}</p>
-                <p class="card-meta">${h.breed} &nbsp;·&nbsp; ${h.age} años &nbsp;·&nbsp; ${h.height}</p>
-                <span class="card-level">${h.nivelLabel} · ${h.perfilLabel}</span>
+                <p class="card-meta">${h.breed} &nbsp;·&nbsp; ${h.age} ${t[currentLang].age_unit} &nbsp;·&nbsp; ${h.height}</p>
+                <span class="card-level">${tlbl('nivel', h.nivelLabel)} · ${tlbl('perfil', h.perfilLabel)}</span>
                 <p class="card-desc">${h.desc[currentLang]}</p>
                 <a href="caballo.html?id=${h.id}" class="card-readmore" onclick="event.stopPropagation()">${t[currentLang].card_readmore}</a>
                 <div class="card-footer">
@@ -799,16 +852,20 @@ function closeSidebar() {
     document.getElementById('sidebar-overlay').classList.remove('open');
 }
 
+function getLang() { try { return localStorage.getItem('irh-lang') || 'en'; } catch(e) { return 'en'; } }
+function saveLang(l) { try { localStorage.setItem('irh-lang', l); } catch(e) {} }
+
 // Init
-applyFilters();
+setLang(getLang());
 
 function setLang(lang) {
     currentLang = lang;
+    saveLang(lang);
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[lang][key] !== undefined) el.innerHTML = t[lang][key];
     });
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
     applyFilters();
 }
 </script>

@@ -29,7 +29,7 @@
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html { scroll-behavior: smooth; font-size: 16px; }
+        html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 80px; }
 
         body {
             font-family: 'Jost', sans-serif;
@@ -827,15 +827,16 @@
         .nav.scrolled .lang-switcher { border-color: var(--border-strong); }
         .lang-btn {
             font-family: 'Jost', sans-serif;
-            font-size: 0.68rem;
+            font-size: 1rem;
             font-weight: 600;
-            letter-spacing: 0.14em;
-            padding: 0.35rem 0.7rem;
+            letter-spacing: 0;
+            padding: 0.3rem 0.55rem;
             background: transparent;
             border: none;
             color: rgba(255,255,255,0.55);
             cursor: pointer;
             transition: background 0.25s, color 0.25s;
+            line-height: 1;
         }
         .nav.scrolled .lang-btn { color: var(--stone-light); }
         .lang-btn.active {
@@ -916,6 +917,7 @@
             .nav-logo-short { display: inline; }
         }
         @media (max-width: 768px) {
+            html { scroll-padding-top: 64px; }
             .nav { padding: 0 1.2rem; height: 64px; }
             .section { padding: 4rem 1.2rem; }
             .stats { padding: 2.5rem 1.2rem; }
@@ -968,13 +970,13 @@
     <div class="nav-right">
         <ul class="nav-links">
             <li><a href="#home" data-i18n="nav_home">Home</a></li>
-            <li><a href="catalogo.html" style="color:var(--gold-light) !important; font-weight:600;">Catálogo</a></li>
+            <li><a href="catalogo.html" style="color:var(--gold-light) !important; font-weight:600;" data-i18n="nav_catalog">Catálogo</a></li>
             <li><a href="#about" data-i18n="nav_about">About</a></li>
             <li><a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact</a></li>
         </ul>
         <div class="lang-switcher">
-            <button class="lang-btn" id="btn-es" onclick="setLanguage('es')">ES</button>
-            <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">EN</button>
+            <button class="lang-btn" id="btn-es" onclick="setLanguage('es')">🇪🇸</button>
+            <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')">🇬🇧</button>
         </div>
         <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
             <span></span><span></span><span></span>
@@ -986,7 +988,7 @@
 <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-close" onclick="toggleMenu()">✕</button>
     <a href="#home" onclick="toggleMenu()" data-i18n="nav_home">Home</a>
-    <a href="catalogo.html" onclick="toggleMenu()">Catálogo</a>
+    <a href="catalogo.html" onclick="toggleMenu()" data-i18n="nav_catalog">Catálogo</a>
     <a href="#about" onclick="toggleMenu()" data-i18n="nav_about">About</a>
     <a href="#contact" onclick="toggleMenu()" data-i18n="nav_contact">Contact</a>
 </div>
@@ -1065,22 +1067,6 @@
                 <p data-i18n="about_p1">Founded by professional riders and trainers, Premier Equine Partners bridges the gap between exceptional horses and ambitious riders. We understand that buying a horse is more than a transaction — it's the beginning of a partnership.</p>
                 <p data-i18n="about_p2">Our selective approach means we only represent horses we believe in. Every prospect undergoes rigorous evaluation for soundness, temperament, and training level. We specialize in competition prospects from amateur-friendly to Grand Prix level.</p>
                 <p data-i18n="about_p3">With connections across the United States, Canada, and Europe, we access inventory unavailable to the general public. Our reputation depends on successful matches, not quick sales.</p>
-                <div class="credentials">
-                    <div class="cred">
-                        <span class="cred-org">USHJA</span>
-                        <span class="cred-label" data-i18n="cred_member">Member</span>
-                    </div>
-                    <div class="cred-divider"></div>
-                    <div class="cred">
-                        <span class="cred-org">USEF</span>
-                        <span class="cred-label" data-i18n="cred_registered">Registered</span>
-                    </div>
-                    <div class="cred-divider"></div>
-                    <div class="cred">
-                        <span class="cred-org">FEI</span>
-                        <span class="cred-label" data-i18n="cred_certified">Certified</span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -1197,11 +1183,11 @@
     /* ── TRANSLATIONS ── */
     const translations = {
         en: {
-            nav_home: 'Home', nav_horses: 'Horses', nav_services: 'Services', nav_about: 'About', nav_contact: 'Contact',
+            nav_home: 'Home', nav_catalog: 'Catalogue', nav_horses: 'Horses', nav_services: 'Services', nav_about: 'About', nav_contact: 'Contact',
             hero_eyebrow: 'Elite Horse Brokerage',
             hero_title: 'Connecting Discerning <em>Riders</em> with Exceptional Horses',
             hero_subtitle: 'Specialized in matching elite sport horses with competitive riders and discerning enthusiasts. Experts in classical dressage.',
-            hero_btn_listings: 'View Listings', hero_btn_consult: 'Schedule Consultation', hero_scroll: 'Slide',
+            hero_btn_listings: 'View Listings', hero_btn_consult: 'Schedule Consultation', hero_scroll: 'Slide for more',
             horses_eyebrow: 'Current Selection', horses_title: 'Horses <em>for Sale</em>',
             horses_body: 'Pura Raza Española selected for dressage level, genetics and temperament. All located in San Pedro del Pinatar, Murcia, Spain.',
             filter_all: 'All Horses', filter_dressage: 'Dressage', card_readmore: 'Read more →',
@@ -1227,17 +1213,17 @@
             form_discipline: 'Discipline', form_experience: 'Experience Level', form_message: 'Message', form_submit: 'Send Inquiry',
             disc_dr: 'Dressage', disc_ot: 'Other',
             exp_am: 'Amateur / Adult Amateur', exp_jr: 'Junior Competitor', exp_pr: 'Professional', exp_pl: 'Pleasure / Trail',
-            info_office: 'Ubicación', info_email: 'Email',
-            footer_tagline: 'Selección de caballos ibéricos de élite para competición y deporte ecuestre en Murcia, España.',
+            info_office: 'Location', info_email: 'Email',
+            footer_tagline: 'Elite selection of Iberian horses for competition and equestrian sport in Murcia, Spain.',
             footer_links_title: 'Quick Links', footer_horses: 'Available Horses', footer_about: 'About Us',
             footer_testimonials: 'Testimonials', footer_sold: 'Sold Horses',
             footer_legal_title: 'Legal', footer_privacy: 'Privacy Policy', footer_terms: 'Terms of Service', footer_purchase: 'Purchase Agreement',
             footer_copy: '© 2025 IRH - Iberian Riding Horses. All rights reserved.',
-            footer_sub: 'Iberian Riding Horses · Murcia, España',
+            footer_sub: 'Iberian Riding Horses · Murcia, Spain',
             alert_msg: 'Thank you for your inquiry! We will contact you within 24 hours to discuss your horse search.'
         },
         es: {
-            nav_home: 'Inicio', nav_horses: 'Caballos', nav_services: 'Servicios', nav_about: 'Nosotros', nav_contact: 'Contacto',
+            nav_home: 'Inicio', nav_catalog: 'Catálogo', nav_horses: 'Caballos', nav_services: 'Servicios', nav_about: 'Nosotros', nav_contact: 'Contacto',
             hero_eyebrow: 'Corretaje Ecuestre de Élite',
             hero_title: 'Conectando Jinetes <em>Exigentes</em> con Caballos Excepcionales',
             hero_subtitle: 'Especializados en unir caballos de deporte de élite con jinetes competitivos y entusiastas exigentes. Expertos en doma clásica.',
@@ -1280,8 +1266,20 @@
 
     let currentLang = 'en';
 
+    const horseLabelTrans = {
+        genero: { en: { 'Semental':'Stallion', 'Yegua':'Mare', 'Castrado':'Gelding' } }
+    };
+    function tlbl(category, val) {
+        if (currentLang === 'es') return val;
+        return (horseLabelTrans[category] && horseLabelTrans[category].en && horseLabelTrans[category].en[val]) || val;
+    }
+
+    function getLang() { try { return localStorage.getItem('irh-lang') || 'en'; } catch(e) { return 'en'; } }
+    function saveLang(l) { try { localStorage.setItem('irh-lang', l); } catch(e) {} }
+
     function setLanguage(lang) {
         currentLang = lang;
+        saveLang(lang);
         const t = translations[lang];
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
@@ -1313,7 +1311,7 @@
                 <div class="horse-img-wrap">
                     <img src="${h.image}" alt="${h.name}" class="horse-img${[2,5].includes(h.id) ? ' mirror' : ''}" loading="lazy">
                     <div class="card-tags">
-                        <span class="card-gender">${h.generoLabel}</span>
+                        <span class="card-gender">${tlbl('genero', h.generoLabel)}</span>
                         <span class="card-discipline">${disciplineLabel}</span>
                     </div>
                     <div class="card-overlay">
@@ -1365,7 +1363,7 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // Init
-    setLanguage('es');
+    setLanguage(getLang());
 </script>
 </body>
 </html>
