@@ -83,9 +83,10 @@
         .nav-cta:hover { background: var(--gold) !important; color: white !important; }
         .nav-right { display: flex; align-items: center; gap: 1.5rem; }
         .lang-switcher { display: flex; align-items: center; border: 1px solid var(--border-strong); overflow: hidden; }
-        .lang-btn { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0; padding: 0.3rem 0.55rem; background: transparent; border: none; color: var(--stone-light); cursor: pointer; transition: background 0.25s, color 0.25s; line-height: 1; }
-        .lang-btn.active { background: var(--gold); color: white; }
-        .lang-btn:hover:not(.active) { color: var(--gold); }
+        .lang-btn { display: flex; align-items: center; justify-content: center; padding: 0.3rem 0.6rem; background: transparent; border: none; cursor: pointer; transition: background 0.25s, opacity 0.25s; opacity: 0.55; line-height: 1; }
+        .lang-btn svg { display: block; border-radius: 2px; }
+        .lang-btn.active { background: rgba(184,147,90,0.18); opacity: 1; }
+        .lang-btn:hover:not(.active) { opacity: 0.85; }
 
         @media (max-width: 1100px) { .nav-links { display: none; } }
         @media (max-width: 768px) {
@@ -488,8 +489,12 @@
             <li><a href="index.html#contact" class="nav-cta" data-i18n="nav_contact">Contacto</a></li>
         </ul>
         <div class="lang-switcher">
-            <button class="lang-btn" data-lang="es" onclick="setLang('es')">🇪🇸</button>
-            <button class="lang-btn active" data-lang="en" onclick="setLang('en')">🇬🇧</button>
+            <button class="lang-btn" data-lang="es" onclick="setLang('es')" title="Español">
+                <svg width="22" height="15" viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="15" fill="#c60b1e"/><rect y="3.75" width="22" height="7.5" fill="#ffc400"/></svg>
+            </button>
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')" title="English">
+                <svg width="22" height="15" viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="15" fill="#012169"/><path d="M0,0 L22,15 M22,0 L0,15" stroke="white" stroke-width="3"/><path d="M0,0 L22,15 M22,0 L0,15" stroke="#C8102E" stroke-width="1.8"/><path d="M11,0 V15 M0,7.5 H22" stroke="white" stroke-width="5"/><path d="M11,0 V15 M0,7.5 H22" stroke="#C8102E" stroke-width="3"/></svg>
+            </button>
         </div>
     </div>
 </nav>
