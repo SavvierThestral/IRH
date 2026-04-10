@@ -290,37 +290,6 @@
         }
 
         /* contact CTA */
-        .contact-cta {
-            background: var(--ink);
-            padding: 1.4rem 1.6rem;
-            margin-bottom: 1.5rem;
-        }
-        .contact-cta-tag {
-            display: inline-block;
-            font-size: 0.58rem;
-            font-weight: 600;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            background: var(--gold);
-            color: white;
-            padding: 0.25rem 0.7rem;
-            margin-bottom: 1.2rem;
-        }
-        .contact-cta h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 400;
-            color: var(--warm-white);
-            margin-bottom: 0.5rem;
-            line-height: 1.25;
-        }
-        .contact-cta p {
-            font-size: 0.85rem;
-            font-weight: 300;
-            line-height: 1.7;
-            color: rgba(253,251,247,0.55);
-            margin-bottom: 1.5rem;
-        }
         .btn-contact {
             display: flex;
             align-items: center;
@@ -359,6 +328,9 @@
             transition: color 0.25s, border-color 0.25s;
         }
         .back-link:hover { color: var(--gold); border-color: var(--gold); }
+        .back-link-mobile {
+            display: none;
+        }
 
         /* ─── MOBILE ─── */
         @media (max-width: 860px) {
@@ -371,6 +343,23 @@
                 max-height: 480px;
             }
             .horse-info-col { padding: 2.5rem 1.5rem 4rem; }
+            .back-link { display: none; }
+            .back-link-mobile {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: var(--stone);
+                text-decoration: none;
+                font-size: 0.76rem;
+                font-weight: 500;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                border-bottom: 1px solid var(--border-strong);
+                padding-bottom: 3px;
+                transition: color 0.25s, border-color 0.25s;
+                margin-bottom: 1.2rem;
+            }
+            .back-link-mobile:hover { color: var(--gold); border-color: var(--gold); }
         }
         @media (max-width: 480px) {
             .horse-info-col { padding: 2rem 1rem 3rem; }
@@ -666,6 +655,10 @@ function render() {
 
             <!-- DERECHA: info -->
             <div class="horse-info-col">
+                <a href="catalogo.html" class="back-link-mobile">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    ${l.back}
+                </a>
                 <h1 class="horse-name">${horse.name}</h1>
                 <p class="horse-sub">${tlbl('breed', horse.breed)} &nbsp;·&nbsp; ${horse.age} ${l.years} &nbsp;·&nbsp; ${horse.height}</p>
 
@@ -696,6 +689,11 @@ function render() {
                     </div>
                 </div>
 
+                <a href="index.html#contact" class="btn-contact" style="margin-bottom:1.8rem;">
+                    ${l.contact_btn}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </a>
+
                 ${horse.padre ? `
                 <span class="section-label" style="margin-top:0.5rem;">${l.section_pedigree}</span>
                 <div class="specs-grid" style="margin-bottom:2.5rem;">
@@ -710,16 +708,6 @@ function render() {
 
                 <span class="section-label">${l.section_desc}</span>
                 <p class="horse-desc">${horse.desc[currentLang]}</p>
-
-                <div class="contact-cta">
-                    <span class="contact-cta-tag">${horse.tag[currentLang]}</span>
-                    <h3>${l.contact_title} <em style="font-style:italic; color:var(--gold-light);">${horse.name}</em>?</h3>
-                    <p>${l.contact_body}</p>
-                    <a href="index.html#contact" class="btn-contact">
-                        ${l.contact_btn}
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                    </a>
-                </div>
 
                 <a href="catalogo.html" class="back-link">${l.back}</a>
             </div>
