@@ -306,7 +306,7 @@
             position: relative;
             z-index: 1;
             background: var(--warm-white);
-            padding: 7rem 3rem;
+            padding: 5rem 3rem;
         }
         .section-eyebrow {
             font-size: 0.68rem;
@@ -705,7 +705,7 @@
         /* ─── CONTACT ─── */
         .contact-section { background: var(--ivory); }
         .contact-inner { max-width: 700px; margin: 0 auto; }
-        .contact-header { text-align: center; margin-bottom: 3rem; }
+        .contact-header { text-align: center; margin-bottom: 2rem; }
         .contact-form { background: white; padding: 3rem; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
         .form-group { margin-bottom: 1.2rem; }
@@ -954,7 +954,7 @@
         @media (max-width: 768px) {
             html { scroll-padding-top: 64px; }
             .nav { padding: 0 1.2rem; height: 64px; }
-            .section { padding: 4rem 1.2rem; }
+            .section { padding: 3rem 1.2rem; }
             .stats { padding: 2.5rem 1.2rem; }
             .stats-inner { grid-template-columns: repeat(2, 1fr); }
             .horse-grid { grid-template-columns: 1fr; gap: 1.2rem; }
@@ -980,7 +980,7 @@
             .hero-content { padding: 0 1rem; }
             .hero-title { font-size: clamp(2rem, 10vw, 2.8rem); }
             .hero-subtitle { font-size: 0.9rem; }
-            .section { padding: 3rem 1rem; }
+            .section { padding: 2.5rem 1rem; }
             .contact-info { grid-template-columns: 1fr; }
             .footer-grid { padding-bottom: 2rem; }
             .credentials { gap: 1rem; }
@@ -1064,7 +1064,7 @@
                 <span data-i18n="hero_btn_listings">See All Horses</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="#contact" class="btn-ghost">
+            <a href="#contact-form" class="btn-ghost">
                 <span data-i18n="hero_btn_consult">Schedule Consultation</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
@@ -1132,7 +1132,7 @@
                 <h2 class="section-title" data-i18n="contact_title">Begin Your Search</h2>
                 <p class="section-body" style="margin:0 auto;" data-i18n="contact_body">Tell us about your riding goals, experience, and preferences. We'll curate a selection matched specifically to your needs.</p>
             </div>
-            <div class="contact-form reveal" style="transition-delay:0.1s">
+            <div class="contact-form reveal" id="contact-form" style="transition-delay:0.1s">
                 <iframe
                     src="https://link.ltlexpansion.com/widget/form/f9r5ZX6uBpSmdlwWezVI"
                     style="width:100%;height:100%;border:none;border-radius:3px"
