@@ -35,7 +35,6 @@ const horses = [
         madre: "Fer Bonita",
         criador: "Finca Lo Tacon",
         titular: "Finca Lo Tacon",
-        microchip: "100100007241310000129010",
 
         desc: {
             es: "Tanto es un semental Pura Raza Española de capa torda nacido en 2020, con Nivel 4 de Doma Clásica confirmado. Entero. Placas radiológicas correctas. San Pedro del Pinatar, Murcia.",
@@ -226,38 +225,38 @@ const horses = [
     },
     {
         id: 7,
-        hidden: true,
         name: "Testina",
         breed: "Pura Raza Española (PRE)",
         breedShort: "P.R.E.",
         raza: "pre",
-        age: 0,
+        age: null,
         nacimiento: "—",
-        height: "Consultar",
-        talla: "—",
+        height: "1.62 m",
+        talla: "1.62 m",
         altura_cat: "medium",
 
         disciplina: "doma",
-        nivel: "intermedio",
+        nivel: "gran-prix",
         genero: "yegua",
-        perfil: "amateur",
+        perfil: "profesional",
 
         disciplinaLabel: "Doma Clásica",
-        nivelLabel: "Consultar",
+        nivelLabel: "Intermedia · Ejercicios de Gran Premio",
         generoLabel: "Yegua",
-        perfilLabel: "Amateur",
+        perfilLabel: "Profesional",
 
-        capa: "—",
-        piro: "—",
-        image: "caballos/TESTINA/_Piebald horse_ Sticker for Sale by Grypis.jpg",
+        capa: "Torda",
+        piro: "Negativo",
+        image: "caballos/TESTINA/testina1.jpeg",
+        images: ["caballos/TESTINA/testina1.jpeg", "caballos/TESTINA/testina2.jpeg", "caballos/TESTINA/testina3.jpeg"],
 
         desc: {
-            es: "Información próximamente disponible. Contacte con nosotros para conocer los detalles de esta yegua PRE. San Pedro del Pinatar, Murcia.",
-            en: "Full details coming soon. Contact us to learn more about this PRE mare. San Pedro del Pinatar, Murcia."
+            es: "Testina es una yegua Pura Raza Española de capa torda, talla 1.62 m. Nivel San Jorge / Intermedia con ejercicios de Gran Premio en trabajo. Placas radiológicas correctas. Piroplasmosis negativa. Precio a consultar. Ubicación: Madrid.",
+            en: "Testina is a grey PRE mare, 1.62 m tall. Competing at Intermediate / San Jorge level with Grand Prix exercises in training. Correct radiological plates. Negative piroplasmosis. Price on request. Location: Madrid."
         },
         tag: {
-            es: "PRE",
-            en: "PRE"
+            es: "Intermedia · Ejercicios GP",
+            en: "Intermediate · GP Exercises"
         }
     }
 ];
