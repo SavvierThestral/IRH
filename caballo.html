@@ -312,6 +312,19 @@
         }
         .btn-contact:hover { background: var(--gold-light); transform: translateY(-1px); }
         .btn-contact:active { transform: translateY(0); }
+        .sold-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--ink);
+            color: var(--gold-light);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            padding: 1rem 2rem;
+            width: 100%;
+        }
 
         .back-link {
             display: inline-flex;
@@ -689,10 +702,13 @@ function render() {
                     </div>
                 </div>
 
-                <a href="index.html#contact-form" class="btn-contact" style="margin-bottom:1.8rem;">
+                ${horse.sold
+                    ? `<div class="sold-banner" style="margin-bottom:1.8rem;">${currentLang === 'es' ? 'Este caballo ya ha sido vendido' : 'This horse has been sold'}</div>`
+                    : `<a href="index.html#contact-form" class="btn-contact" style="margin-bottom:1.8rem;">
                     ${l.contact_btn}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                </a>
+                </a>`
+                }
 
                 ${horse.padre ? `
                 <span class="section-label" style="margin-top:0.5rem;">${l.section_pedigree}</span>
