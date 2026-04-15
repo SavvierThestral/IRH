@@ -225,6 +225,7 @@ const horses = [
     },
     {
         id: 7,
+        sold: true,
         name: "Testina",
         breed: "Pura Raza Española (PRE)",
         breedShort: "P.R.E.",

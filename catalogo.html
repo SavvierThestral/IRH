@@ -379,6 +379,19 @@
             backdrop-filter: blur(4px);
         }
         .horse-img.mirror { transform: scaleX(-1); }
+        .card-sold-badge {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: #1C1B18;
+            color: #D4AA78;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.75rem;
+            z-index: 5;
+            pointer-events: none;
+        }
         .card-overlay {
             position: absolute;
             inset: 0;
@@ -851,6 +864,7 @@ function renderGrid(list) {
         <div class="horse-card" onclick="window.location='caballo.html?id=${h.id}'">
             <div class="horse-img-wrap">
                 <img src="${h.image}" alt="${h.name}" class="horse-img${[2,5].includes(h.id) ? ' mirror' : ''}" loading="lazy">
+                ${h.sold ? `<div class="card-sold-badge">${currentLang === 'es' ? 'Vendido' : 'Sold'}</div>` : ''}
                 <div class="card-tags">
                     <span class="card-gender">${tlbl('genero', h.generoLabel)}</span>
                     <span class="card-discipline">${tlbl('disciplina', h.disciplinaLabel)}</span>
