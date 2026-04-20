@@ -69,7 +69,7 @@ const horses = [
 
         capa: "Torda",
         piro: "Negativo",
-        image: "caballos/TEVORA/tevora.webp",
+        image: "caballos/TEVORA/tevora.webp?v=2",
 
         desc: {
             es: "Tevora es una yegua Pura Raza Española de capa torda nacida en 2021, con Nivel 2 de Doma Clásica confirmado. Ejemplar joven con gran potencial de desarrollo, temperamento dócil y movimientos naturales propios de la raza. Placas radiológicas en perfecto estado. Piroplasmosis negativa. La opción ideal para un jinete amateur que quiera progresar en la doma clásica. San Pedro del Pinatar, Murcia.",
