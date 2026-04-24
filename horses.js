@@ -5,7 +5,7 @@
 
 const horses = [
     {
-        id: 1,
+        id: 'tanto',
         name: "Tanto",
         breed: "Pura Raza Española (PRE)",
         breedShort: "P.R.E.",
@@ -46,7 +46,7 @@ const horses = [
         }
     },
     {
-        id: 2,
+        id: 'tevora',
         name: "Tevora",
         breed: "Pura Raza Española (PRE)",
         breedShort: "P.R.E.",
@@ -81,7 +81,7 @@ const horses = [
         }
     },
     {
-        id: 3,
+        id: 'timeno',
         name: "Timeño",
         breed: "Pura Raza Española (PRE)",
         breedShort: "P.R.E.",
@@ -117,7 +117,7 @@ const horses = [
         }
     },
     {
-        id: 4,
+        id: 'talconero',
         name: "Talconero",
         breed: "Pura Raza Española (PRE)",
         breedShort: "P.R.E.",
@@ -153,7 +153,7 @@ const horses = [
         }
     },
     {
-        id: 5,
+        id: 'tumero',
         name: "Tumero",
         breed: "Pura Raza Española (PRE)",
         breedShort: "P.R.E.",
@@ -188,7 +188,7 @@ const horses = [
         }
     },
     {
-        id: 6,
+        id: 'tsweet',
         name: "Tsweet",
         breed: "Pony",
         breedShort: "Pony",
@@ -224,7 +224,7 @@ const horses = [
         }
     },
     {
-        id: 7,
+        id: 'testina',
         sold: true,
         name: "Testina",
         breed: "Pura Raza Española (PRE)",

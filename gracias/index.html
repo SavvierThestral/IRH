@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gracias | IRH - Iberian Riding Horses</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <!-- Meta Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1256567715971355');
+    fbq('track', 'PageView');
+    fbq('track', 'Contact');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1256567715971355&ev=Contact&noscript=1"/></noscript>
+    <!-- End Meta Pixel -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Georgia', serif;
+            background: #FAF9F6;
+            color: #1C1B18;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 2rem;
+        }
+        .container { max-width: 520px; }
+        .checkmark {
+            width: 64px; height: 64px;
+            background: #1C1B18;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 2rem;
+        }
+        .checkmark svg { stroke: #D4AA78; }
+        h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 0.95rem;
+            color: #6B6860;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .redirect-note {
+            font-size: 0.78rem;
+            color: #9B9890;
+            letter-spacing: 0.08em;
+        }
+        .bar {
+            width: 100%;
+            height: 2px;
+            background: #E8E4DC;
+            margin-top: 0.5rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            background: #D4AA78;
+            width: 0%;
+            animation: fill 3s linear forwards;
+        }
+        @keyframes fill { to { width: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="checkmark">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+            </svg>
+        </div>
+        <h1>¡Consulta recibida!</h1>
+        <p>Gracias por tu interés. Nuestro equipo se pondrá en contacto contigo a la brevedad para darte más información.</p>
+        <p class="redirect-note">Redirigiendo a WhatsApp...</p>
+        <div class="bar"><div class="bar-fill"></div></div>
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = 'https://irh.iberianridinghorses.com/whatsapp';
+        }, 3000);
+    </script>
+</body>
+</html>
