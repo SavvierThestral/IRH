@@ -50,9 +50,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://link.ltlexpansion.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap"></noscript>
-    <link rel="preload" as="image" href="hero-main.webp" fetchpriority="high">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap">
+    <link rel="preload" as="image" href="hero-main.webp" type="image/webp" fetchpriority="high">
     <style>
         :root {
             --ivory: #F8F5EE;
@@ -1171,7 +1170,7 @@
             </div>
             <div class="contact-form reveal" id="contact-form" style="transition-delay:0.1s">
                 <iframe
-                    src="https://link.ltlexpansion.com/widget/form/f9r5ZX6uBpSmdlwWezVI"
+                    data-src="https://link.ltlexpansion.com/widget/form/f9r5ZX6uBpSmdlwWezVI"
                     style="width:100%;height:100%;border:none;border-radius:3px"
                     id="inline-f9r5ZX6uBpSmdlwWezVI"
                     data-layout="{'id':'INLINE'}"
@@ -1194,12 +1193,14 @@
                     var obs = new IntersectionObserver(function(entries) {
                         if (entries[0].isIntersecting && !loaded) {
                             loaded = true;
+                            var iframe = document.getElementById('inline-f9r5ZX6uBpSmdlwWezVI');
+                            if (iframe) iframe.src = iframe.dataset.src;
                             var s = document.createElement('script');
                             s.src = 'https://link.ltlexpansion.com/js/form_embed.js';
                             document.body.appendChild(s);
                             obs.disconnect();
                         }
-                    }, { rootMargin: '300px' });
+                    }, { rootMargin: '200px' });
                     obs.observe(el);
                 })();
                 </script>
