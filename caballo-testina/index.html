@@ -665,7 +665,7 @@ function render() {
             <!-- IZQUIERDA: foto -->
             <div class="horse-photo-col" id="photo-col">
                 ${(horse.images && horse.images.length > 1 ? horse.images : [horse.image])
-                    .map((src, i) => `<img src="${src}" alt="${horse.name} ${i+1}"${i > 0 ? ` class="hidden${['tevora','tumero'].includes(horse.id) ? ' mirror' : ''}"` : (['tevora','tumero'].includes(horse.id) ? ' class="mirror"' : '')}>`).join('')}
+                    .map((src, i) => `<img src="${src}" alt="${horse.name} ${i+1}"${i > 0 ? ` class="hidden${['tevora','tumero','testina'].includes(horse.id) ? ' mirror' : ''}"` : (['tevora','tumero','testina'].includes(horse.id) ? ' class="mirror"' : '')}>`).join('')}
                 ${horse.images && horse.images.length > 1 ? `
                 <button class="slider-btn prev">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>

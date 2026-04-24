@@ -864,7 +864,7 @@ function renderGrid(list) {
     grid.innerHTML = list.map(h => `
         <div class="horse-card" onclick="window.location='/caballo-${h.id}/'">
             <div class="horse-img-wrap">
-                <img src="${h.image}" alt="${h.name}" class="horse-img${['tevora','tumero'].includes(h.id) ? ' mirror' : ''}" loading="lazy">
+                <img src="${h.image}" alt="${h.name}" class="horse-img${['tevora','tumero','testina'].includes(h.id) ? ' mirror' : ''}" loading="lazy">
                 ${h.sold ? `<div class="card-sold-badge">${currentLang === 'es' ? 'Vendido' : 'Sold'}</div>` : ''}
                 <div class="card-tags">
                     <span class="card-gender">${tlbl('genero', h.generoLabel)}</span>
