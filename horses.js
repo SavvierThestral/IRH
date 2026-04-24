@@ -28,8 +28,8 @@ const horses = [
 
         capa: "Torda",
         piro: "Positivo",
-        image: "caballos/TANTO/tanto.webp",
-        images: ["caballos/TANTO/tanto.webp", "caballos/TANTO/Tanto2.webp"],
+        image: "caballos/TANTO/Tanto2.webp",
+        images: ["caballos/TANTO/Tanto2.webp", "caballos/TANTO/tanto.webp"],
 
         padre: "Livino de Martet",
         madre: "Fer Bonita",
