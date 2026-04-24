@@ -1388,7 +1388,7 @@
         grid.innerHTML = filtered.map((h, i) => `
             <div class="horse-card" style="animation-delay:${i * 0.08}s; cursor:pointer;" onclick="window.location='/caballo-${h.id}/'">
                 <div class="horse-img-wrap">
-                    <img src="${h.image}" alt="${h.name}" class="horse-img${['tevora','tumero'].includes(h.id) ? ' mirror' : ''}" loading="lazy">
+                    <img src="${h.image}" alt="${h.name}" class="horse-img${['tumero'].includes(h.id) ? ' mirror' : ''}" loading="lazy">
                     ${h.sold ? `<div class="card-sold-badge">${lang === 'es' ? 'Vendido' : 'Sold'}</div>` : ''}
                     <div class="card-tags">
                         <span class="card-gender">${tlbl('genero', h.generoLabel)}</span>
