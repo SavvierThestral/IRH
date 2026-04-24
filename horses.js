@@ -46,41 +46,6 @@ const horses = [
         }
     },
     {
-        id: 'tevora',
-        name: "Tevora",
-        breed: "Pura Raza Española (PRE)",
-        breedShort: "P.R.E.",
-        raza: "pre",
-        age: 5,
-        nacimiento: "2021",
-        height: "1.59 m",
-        talla: "1.59 m",
-        altura_cat: "medium",
-
-        disciplina: "doma",
-        nivel: "basico",
-        genero: "yegua",
-        perfil: "amateur",
-
-        disciplinaLabel: "Doma Clásica",
-        nivelLabel: "Nivel 2",
-        generoLabel: "Yegua",
-        perfilLabel: "Amateur",
-
-        capa: "Torda",
-        piro: "Negativo",
-        image: "caballos/TEVORA/tevora-800.webp",
-
-        desc: {
-            es: "Tevora es una yegua Pura Raza Española de capa torda nacida en 2021, con Nivel 2 de Doma Clásica confirmado. Ejemplar joven con gran potencial de desarrollo, temperamento dócil y movimientos naturales propios de la raza. Placas radiológicas en perfecto estado. Piroplasmosis negativa. La opción ideal para un jinete amateur que quiera progresar en la doma clásica. San Pedro del Pinatar, Murcia.",
-            en: "Tevora is a grey PRE mare born in 2021, with confirmed Level 2 Classical Dressage. A young horse with great development potential, a gentle temperament and natural movements typical of the breed. Perfect radiological plates. Negative piroplasmosis. The ideal choice for an amateur rider looking to progress in classical dressage. San Pedro del Pinatar, Murcia."
-        },
-        tag: {
-            es: "Nivel 2 · Doma",
-            en: "Level 2 · Dressage"
-        }
-    },
-    {
         id: 'timeno',
         name: "Timeño",
         breed: "Pura Raza Española (PRE)",
@@ -117,6 +82,76 @@ const horses = [
         }
     },
     {
+        id: 'tumero',
+        name: "Tumero",
+        breed: "Pura Raza Española (PRE)",
+        breedShort: "P.R.E.",
+        raza: "pre",
+        age: 7,
+        nacimiento: "2019",
+        height: "1.66 m",
+        talla: "1.66 m",
+        altura_cat: "large",
+
+        disciplina: "doma",
+        nivel: "gran-prix",
+        genero: "semental",
+        perfil: "profesional",
+
+        disciplinaLabel: "Doma Clásica",
+        nivelLabel: "San Jorge · Nivel 7",
+        generoLabel: "Semental",
+        perfilLabel: "Profesional",
+
+        capa: "Torda",
+        piro: "Negativo",
+        image: "caballos/TUMERO/tumero.webp",
+
+        desc: {
+            es: "Tumero es un semental Pura Raza Española de capa torda nacido en 2019. Con tan solo 7 años ha alcanzado el Nivel 7 de Doma Clásica y el nivel San Jorge. Entero. Gran motor y presencia en la pista. Placas radiológicas en perfecto estado. Piroplasmosis negativa. San Pedro del Pinatar, Murcia.",
+            en: "Tumero is a grey PRE stallion born in 2019. At just 7 years old he has reached Level 7 of Classical Dressage and Grand Prix level. Entire. Great engine and ring presence. Perfect radiological plates. Negative piroplasmosis. San Pedro del Pinatar, Murcia."
+        },
+        tag: {
+            es: "San Jorge · Nivel 7",
+            en: "Grand Prix · Level 7"
+        }
+    },
+    {
+        id: 'tevora',
+        name: "Tevora",
+        breed: "Pura Raza Española (PRE)",
+        breedShort: "P.R.E.",
+        raza: "pre",
+        age: 5,
+        nacimiento: "2021",
+        height: "1.59 m",
+        talla: "1.59 m",
+        altura_cat: "medium",
+
+        disciplina: "doma",
+        nivel: "basico",
+        genero: "yegua",
+        perfil: "amateur",
+
+        disciplinaLabel: "Doma Clásica",
+        nivelLabel: "Nivel 2",
+        generoLabel: "Yegua",
+        perfilLabel: "Amateur",
+
+        capa: "Torda",
+        piro: "Negativo",
+        image: "caballos/TEVORA/tevora-800.webp",
+
+        desc: {
+            es: "Tevora es una yegua Pura Raza Española de capa torda nacida en 2021, con Nivel 2 de Doma Clásica confirmado. Ejemplar joven con gran potencial de desarrollo, temperamento dócil y movimientos naturales propios de la raza. Placas radiológicas en perfecto estado. Piroplasmosis negativa. La opción ideal para un jinete amateur que quiera progresar en la doma clásica. San Pedro del Pinatar, Murcia.",
+            en: "Tevora is a grey PRE mare born in 2021, with confirmed Level 2 Classical Dressage. A young horse with great development potential, a gentle temperament and natural movements typical of the breed. Perfect radiological plates. Negative piroplasmosis. The ideal choice for an amateur rider looking to progress in classical dressage. San Pedro del Pinatar, Murcia."
+        },
+        tag: {
+            es: "Nivel 2 · Doma",
+            en: "Level 2 · Dressage"
+        }
+    },
+    {
         id: 'talconero',
         name: "Talconero",
         breed: "Pura Raza Española (PRE)",
@@ -150,41 +185,6 @@ const horses = [
         tag: {
             es: "San Jorge · Piaffe · Passage",
             en: "Grand Prix · Piaffe · Passage"
-        }
-    },
-    {
-        id: 'tumero',
-        name: "Tumero",
-        breed: "Pura Raza Española (PRE)",
-        breedShort: "P.R.E.",
-        raza: "pre",
-        age: 7,
-        nacimiento: "2019",
-        height: "1.66 m",
-        talla: "1.66 m",
-        altura_cat: "large",
-
-        disciplina: "doma",
-        nivel: "gran-prix",
-        genero: "semental",
-        perfil: "profesional",
-
-        disciplinaLabel: "Doma Clásica",
-        nivelLabel: "San Jorge · Nivel 7",
-        generoLabel: "Semental",
-        perfilLabel: "Profesional",
-
-        capa: "Torda",
-        piro: "Negativo",
-        image: "caballos/TUMERO/tumero.webp",
-
-        desc: {
-            es: "Tumero es un semental Pura Raza Española de capa torda nacido en 2019. Con tan solo 7 años ha alcanzado el Nivel 7 de Doma Clásica y el nivel San Jorge. Entero. Gran motor y presencia en la pista. Placas radiológicas en perfecto estado. Piroplasmosis negativa. San Pedro del Pinatar, Murcia.",
-            en: "Tumero is a grey PRE stallion born in 2019. At just 7 years old he has reached Level 7 of Classical Dressage and Grand Prix level. Entire. Great engine and ring presence. Perfect radiological plates. Negative piroplasmosis. San Pedro del Pinatar, Murcia."
-        },
-        tag: {
-            es: "San Jorge · Nivel 7",
-            en: "Grand Prix · Level 7"
         }
     },
     {
