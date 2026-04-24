@@ -431,7 +431,7 @@
             margin-bottom: 0.7rem;
         }
         .card-desc { font-size: 0.87rem; font-weight: 300; line-height: 1.7; color: var(--stone); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-        .card-readmore { display: inline-block; margin-top: 0.6rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gold); text-decoration: none; transition: color 0.25s; }
+        .card-readmore { display: inline-flex; align-items: center; min-height: 44px; padding: 0.4rem 0; margin-top: 0.4rem; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.1em; color: var(--gold); text-decoration: none; transition: color 0.25s; }
         .card-readmore:hover { color: var(--ink); }
         .card-footer {
             margin-top: 1rem;
@@ -861,9 +861,9 @@ function renderGrid(list) {
         return;
     }
     grid.innerHTML = list.map(h => `
-        <div class="horse-card" onclick="window.location='caballo.html?id=${h.id}'">
+        <div class="horse-card" onclick="window.location='/caballo-${h.id}/'">
             <div class="horse-img-wrap">
-                <img src="${h.image}" alt="${h.name}" class="horse-img${[2,5].includes(h.id) ? ' mirror' : ''}" loading="lazy">
+                <img src="${h.image}" alt="${h.name}" class="horse-img${['tevora','tumero'].includes(h.id) ? ' mirror' : ''}" loading="lazy">
                 ${h.sold ? `<div class="card-sold-badge">${currentLang === 'es' ? 'Vendido' : 'Sold'}</div>` : ''}
                 <div class="card-tags">
                     <span class="card-gender">${tlbl('genero', h.generoLabel)}</span>
@@ -878,7 +878,7 @@ function renderGrid(list) {
                 <p class="card-meta">${tlbl('breed', h.breed)} &nbsp;·&nbsp; ${h.age} ${t[currentLang].age_unit} &nbsp;·&nbsp; ${h.height}</p>
                 <span class="card-level">${tlbl('nivel', h.nivelLabel)} · ${tlbl('perfil', h.perfilLabel)}</span>
                 <p class="card-desc">${h.desc[currentLang]}</p>
-                <a href="caballo.html?id=${h.id}" class="card-readmore" onclick="event.stopPropagation()">${t[currentLang].card_readmore}</a>
+                <a href="/caballo-${h.id}/" class="card-readmore" onclick="event.stopPropagation()">${t[currentLang].card_readmore}</a>
                 <div class="card-footer">
                     <span class="card-tag">${h.tag[currentLang]}</span>
                 </div>
