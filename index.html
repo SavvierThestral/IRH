@@ -1011,6 +1011,15 @@
     </script>
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1256567715971355&ev=PageView&noscript=1"/></noscript>
     <!-- End Meta Pixel -->
+    <script>
+    window.addEventListener('message', function(e) {
+        if (!e.data) return;
+        var d = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
+        if (d.indexOf('form') !== -1 && (d.indexOf('submit') !== -1 || d.indexOf('success') !== -1 || d.indexOf('complete') !== -1)) {
+            if (typeof fbq !== 'undefined') fbq('track', 'Contact');
+        }
+    });
+    </script>
 </head>
 <body>
 

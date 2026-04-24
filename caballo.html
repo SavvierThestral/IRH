@@ -633,6 +633,14 @@ function render() {
 
     document.title = `${horse.name} | IRH - Iberian Riding Horses`;
 
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', {
+            content_name: horse.name,
+            content_ids: [horse.id],
+            content_type: 'product'
+        });
+    }
+
     container.innerHTML = `
         <!-- BREADCRUMB -->
         <div class="breadcrumb-bar">
@@ -704,7 +712,7 @@ function render() {
 
                 ${horse.sold
                     ? `<div class="sold-banner" style="margin-bottom:1.8rem;">${currentLang === 'es' ? 'Este caballo ya ha sido vendido' : 'This horse has been sold'}</div>`
-                    : `<a href="index.html#contact-form" class="btn-contact" style="margin-bottom:1.8rem;">
+                    : `<a href="index.html#contact-form" class="btn-contact" style="margin-bottom:1.8rem;" onclick="if(typeof fbq!=='undefined')fbq('track','Lead',{content_name:'${horse.name}',content_ids:[${horse.id}],content_type:'product'})">
                     ${l.contact_btn}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 </a>`
