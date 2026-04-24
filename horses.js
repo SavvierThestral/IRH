@@ -28,8 +28,8 @@ const horses = [
 
         capa: "Torda",
         piro: "Positivo",
-        image: "caballos/TANTO/Tanto2.webp",
-        images: ["caballos/TANTO/Tanto2.webp", "caballos/TANTO/tanto.webp"],
+        image: "caballos/TANTO/Tanto2-800.webp",
+        images: ["caballos/TANTO/Tanto2-800.webp", "caballos/TANTO/tanto.webp"],
 
         padre: "Livino de Martet",
         madre: "Fer Bonita",
@@ -69,7 +69,7 @@ const horses = [
 
         capa: "Torda",
         piro: "Negativo",
-        image: "caballos/TEVORA/tevora.webp?v=2",
+        image: "caballos/TEVORA/tevora-800.webp",
 
         desc: {
             es: "Tevora es una yegua Pura Raza Española de capa torda nacida en 2021, con Nivel 2 de Doma Clásica confirmado. Ejemplar joven con gran potencial de desarrollo, temperamento dócil y movimientos naturales propios de la raza. Placas radiológicas en perfecto estado. Piroplasmosis negativa. La opción ideal para un jinete amateur que quiera progresar en la doma clásica. San Pedro del Pinatar, Murcia.",
@@ -104,8 +104,8 @@ const horses = [
 
         capa: "Castaña",
         piro: "Negativo",
-        image: "caballos/TIMEÑO/Timeño2.webp",
-        images: ["caballos/TIMEÑO/Timeño2.webp", "caballos/TIMEÑO/timeño.webp"],
+        image: "caballos/TIMEÑO/Timeno2-800.webp",
+        images: ["caballos/TIMEÑO/Timeno2-800.webp", "caballos/TIMEÑO/timeño.webp"],
 
         desc: {
             es: "Timeño es un semental Pura Raza Española de capa castaña nacido en 2018. Su talla excepcional de 1.74 m lo convierte en uno de los ejemplares más imponentes del catálogo. Con Nivel 4 y Passage confirmados. Entero. Placas radiológicas correctas. Piroplasmosis negativa. San Pedro del Pinatar, Murcia.",

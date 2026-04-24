@@ -49,7 +49,10 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://link.ltlexpansion.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap"></noscript>
+    <link rel="preload" as="image" href="hero-main.webp" fetchpriority="high">
     <style>
         :root {
             --ivory: #F8F5EE;
@@ -1013,18 +1016,6 @@
             .credentials { gap: 1rem; }
         }
     </style>
-    <!-- Meta Pixel -->
-    <script>
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-    document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1256567715971355');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1256567715971355&ev=PageView&noscript=1"/></noscript>
-    <!-- End Meta Pixel -->
     <script>
     window.addEventListener('message', function(e) {
         if (!e.data) return;
@@ -1111,7 +1102,10 @@
         </div>
     </div>
     <div class="hero-bg">
-        <img src="Gemini_Generated_Image_w12ynzw12ynzw12y1.png" alt="Caballos ibéricos" fetchpriority="high" decoding="async">
+        <picture>
+            <source srcset="hero-main.webp" type="image/webp">
+            <img src="Gemini_Generated_Image_w12ynzw12ynzw12y1.png" alt="Caballos ibéricos" fetchpriority="high" decoding="async">
+        </picture>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-scroll">
@@ -1149,7 +1143,10 @@
     <div class="max-w">
         <div class="about-grid">
             <div class="about-image-col reveal">
-                <img src="horse-cancer-800x560-l.jpg" alt="Experto ecuestre con caballo ibérico en Murcia" class="about-image-main">
+                <picture>
+                    <source srcset="horse-about.webp" type="image/webp">
+                    <img src="horse-cancer-800x560-l.jpg" alt="Experto ecuestre con caballo ibérico en Murcia" class="about-image-main">
+                </picture>
                 <img src="https://images.unsplash.com/photo-1598974357801-cbca100e65d3?auto=format&fit=crop&w=400&q=80" alt="Caballo ibérico de doma clásica, detalle" class="about-image-accent">
             </div>
             <div class="about-text reveal" style="transition-delay:0.15s">
@@ -1190,7 +1187,22 @@
                     data-form-id="f9r5ZX6uBpSmdlwWezVI"
                     title="Form web">
                 </iframe>
-                <script src="https://link.ltlexpansion.com/js/form_embed.js"></script>
+                <script>
+                (function() {
+                    var el = document.getElementById('contact-form');
+                    var loaded = false;
+                    var obs = new IntersectionObserver(function(entries) {
+                        if (entries[0].isIntersecting && !loaded) {
+                            loaded = true;
+                            var s = document.createElement('script');
+                            s.src = 'https://link.ltlexpansion.com/js/form_embed.js';
+                            document.body.appendChild(s);
+                            obs.disconnect();
+                        }
+                    }, { rootMargin: '300px' });
+                    obs.observe(el);
+                })();
+                </script>
             </div>
             <div class="contact-info reveal" style="transition-delay:0.2s">
                 <div class="contact-info-item">
@@ -1450,5 +1462,17 @@
         if (e.target.tagName === 'IMG') e.preventDefault();
     });
 </script>
+    <!-- Meta Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1256567715971355');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1256567715971355&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel -->
 </body>
 </html>
