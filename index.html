@@ -1015,8 +1015,12 @@
     window.addEventListener('message', function(e) {
         if (!e.data) return;
         var d = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
-        if (d.indexOf('form') !== -1 && (d.indexOf('submit') !== -1 || d.indexOf('success') !== -1 || d.indexOf('complete') !== -1)) {
+        console.log('[IRH Pixel] postMessage recibido:', d);
+        var keywords = ['submit', 'success', 'complete', 'sent', 'thank', 'gracias', 'enviado'];
+        var matched = keywords.some(function(k) { return d.toLowerCase().indexOf(k) !== -1; });
+        if (matched) {
             if (typeof fbq !== 'undefined') fbq('track', 'Contact');
+            console.log('[IRH Pixel] Evento Contact disparado');
         }
     });
     </script>
