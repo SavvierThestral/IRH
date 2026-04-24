@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "iberianridinghorses.com" }],
+      "destination": "https://www.iberianridinghorses.com/:path*",
+      "permanent": true
+    }
+  ]
+}
