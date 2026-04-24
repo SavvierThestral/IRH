@@ -33,6 +33,7 @@
       "url": "https://www.iberianridinghorses.com",
       "logo": "https://www.iberianridinghorses.com/favicon.svg",
       "image": "https://www.iberianridinghorses.com/Gemini_Generated_Image_w12ynzw12ynzw12y1.png",
+      "telephone": "+34609656969",
       "email": "info@iberianridinghorses.com",
       "address": {
         "@type": "PostalAddress",
@@ -1387,7 +1388,7 @@
         grid.innerHTML = filtered.map((h, i) => `
             <div class="horse-card" style="animation-delay:${i * 0.08}s; cursor:pointer;" onclick="window.location='/caballo-${h.id}/'">
                 <div class="horse-img-wrap">
-                    <img src="${h.image}" alt="${h.name}" class="horse-img${[2,5].includes(h.id) ? ' mirror' : ''}" loading="lazy">
+                    <img src="${h.image}" alt="${h.name}" class="horse-img${['tumero'].includes(h.id) ? ' mirror' : ''}" loading="lazy">
                     ${h.sold ? `<div class="card-sold-badge">${lang === 'es' ? 'Vendido' : 'Sold'}</div>` : ''}
                     <div class="card-tags">
                         <span class="card-gender">${tlbl('genero', h.generoLabel)}</span>
