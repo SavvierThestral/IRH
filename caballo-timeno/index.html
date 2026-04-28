@@ -381,6 +381,22 @@
             .horse-name { font-size: 2.2rem; }
         }
 
+        /* ─── VIDEO EMBED ─── */
+        .video-wrap {
+            position: relative;
+            padding-bottom: 56.37%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1.8rem;
+            background: var(--ink);
+        }
+        .video-wrap iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
         /* ─── NOT FOUND ─── */
         .not-found { text-align: center; padding: 8rem 2rem; }
         .not-found h2 { font-size: 2rem; font-weight: 400; color: var(--ink); margin-bottom: 1rem; }
@@ -487,6 +503,7 @@
         .lightbox-thumb:hover { opacity: 0.8; }
         .horse-photo-col { cursor: zoom-in; }
     </style>
+    <script src="https://player.vimeo.com/api/player.js" defer></script>
     <!-- Meta Pixel -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -740,6 +757,17 @@ function render() {
 
                 <span class="section-label">${l.section_desc}</span>
                 <p class="horse-desc">${horse.desc[currentLang]}</p>
+
+                ${horse.vimeo ? `
+                <span class="section-label" style="margin-top:0.5rem;">${currentLang === 'es' ? 'Vídeo' : 'Video'}</span>
+                <div class="video-wrap">
+                    <iframe
+                        src="https://player.vimeo.com/video/${horse.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479"
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="${horse.name}">
+                    </iframe>
+                </div>` : ''}
 
                 <a href="catalogo.html" class="back-link">${l.back}</a>
             </div>

@@ -3,3 +3,6 @@ temporary screenshots/
 desktop.ini
 *.log
 .env
+
+.vercel
+index-v2.html
