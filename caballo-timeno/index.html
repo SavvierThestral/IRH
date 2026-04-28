@@ -381,29 +381,24 @@
             .horse-name { font-size: 2.2rem; }
         }
 
-        /* ─── VIDEO EMBED ─── */
-        .video-section {
-            background: var(--ink);
-            padding: 3rem;
-        }
-        .video-section .section-label {
-            color: var(--gold);
-            display: block;
-            margin-bottom: 1rem;
-        }
-        .video-wrap {
-            position: relative;
-            padding-bottom: 56.37%;
-            height: 0;
-            overflow: hidden;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-        .video-wrap iframe {
+        /* ─── VIDEO SLIDE ─── */
+        .video-slide {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            inset: 0;
+            opacity: 0.95;
+            transition: opacity 0.4s;
+            background: #000;
+            cursor: default;
+        }
+        .video-slide.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .video-slide iframe {
+            width: 100%;
+            height: 100%;
             border: none;
+            display: block;
         }
 
         /* ─── NOT FOUND ─── */
@@ -691,8 +686,14 @@ function render() {
             <!-- IZQUIERDA: foto -->
             <div class="horse-photo-col" id="photo-col">
                 ${(horse.images && horse.images.length > 1 ? horse.images : [horse.image])
-                    .map((src, i) => `<img src="${src}" alt="${horse.name} ${i+1}"${i > 0 ? ` class="hidden${['tevora','tumero'].includes(horse.id) ? ' mirror' : ''}"` : (['tevora','tumero'].includes(horse.id) ? ' class="mirror"' : '')}>`).join('')}
-                ${horse.images && horse.images.length > 1 ? `
+                    .map((src, i) => `<img src="${src}" alt="${horse.name} ${i+1}" class="slide-item${i > 0 ? ' hidden' : ''}${['tevora','tumero'].includes(horse.id) ? ' mirror' : ''}">`).join('')}
+                ${horse.vimeo ? `<div class="video-slide slide-item hidden">
+                    <iframe src="https://player.vimeo.com/video/${horse.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479"
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        title="${horse.name}"></iframe>
+                </div>` : ''}
+                ${(horse.images && horse.images.length > 1) || horse.vimeo ? `
                 <button class="slider-btn prev">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
                 </button>
@@ -700,7 +701,8 @@ function render() {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </button>
                 <div class="slider-dots">
-                    ${horse.images.map((_, i) => `<div class="slider-dot${i === 0 ? ' active' : ''}"></div>`).join('')}
+                    ${(horse.images && horse.images.length > 1 ? horse.images : [horse.image]).map((_, i) => `<div class="slider-dot${i === 0 ? ' active' : ''}"></div>`).join('')}
+                    ${horse.vimeo ? `<div class="slider-dot" title="Video">▶</div>` : ''}
                 </div>` : ''}
                 <div class="horse-photo-badge">
                     <span class="horse-photo-badge-tag">${tlbl('disciplina', horse.disciplinaLabel)} &nbsp;·&nbsp; ${horse.tag[currentLang]}</span>
@@ -772,18 +774,6 @@ function render() {
 
         </div>
 
-        ${horse.vimeo ? `
-        <div class="video-section">
-            <span class="section-label">${currentLang === 'es' ? 'Vídeo' : 'Video'}</span>
-            <div class="video-wrap">
-                <iframe
-                    src="https://player.vimeo.com/video/${horse.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    title="${horse.name}">
-                </iframe>
-            </div>
-        </div>` : ''}
     `;
 }
 
@@ -792,6 +782,8 @@ let lbImages = [];
 let lbIndex = 0;
 
 function openLightbox() {
+    const slides = document.querySelectorAll('#photo-col .slide-item');
+    if (slides[currentSlide] && slides[currentSlide].classList.contains('video-slide')) return;
     lbIndex = currentSlide;
     updateLightbox();
     document.getElementById('lightbox').classList.add('open');
@@ -835,13 +827,13 @@ document.addEventListener('keydown', e => {
 let currentSlide = 0;
 
 function slidePhoto(dir) {
-    const imgs = document.querySelectorAll('#photo-col img');
+    const slides = document.querySelectorAll('#photo-col .slide-item');
     const dots = document.querySelectorAll('.slider-dot');
-    if (!imgs.length) return;
-    imgs[currentSlide].classList.add('hidden');
+    if (!slides.length) return;
+    slides[currentSlide].classList.add('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + dir + imgs.length) % imgs.length;
-    imgs[currentSlide].classList.remove('hidden');
+    currentSlide = (currentSlide + dir + slides.length) % slides.length;
+    slides[currentSlide].classList.remove('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
 }
 
@@ -883,13 +875,13 @@ function initPhotoCol() {
 }
 
 function goToPhoto(i) {
-    const imgs = document.querySelectorAll('#photo-col img');
+    const slides = document.querySelectorAll('#photo-col .slide-item');
     const dots = document.querySelectorAll('.slider-dot');
-    if (!imgs.length || i === currentSlide) return;
-    imgs[currentSlide].classList.add('hidden');
+    if (!slides.length || i === currentSlide) return;
+    slides[currentSlide].classList.add('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
     currentSlide = i;
-    imgs[currentSlide].classList.remove('hidden');
+    slides[currentSlide].classList.remove('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
 }
 
