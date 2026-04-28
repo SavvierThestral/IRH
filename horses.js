@@ -69,7 +69,6 @@ const horses = [
 
         capa: "Castaña",
         piro: "Negativo",
-        vimeo: "1187374122",
         image: "caballos/TIMEÑO/Timeno2-800.webp",
         images: ["caballos/TIMEÑO/Timeno2-800.webp", "caballos/TIMEÑO/timeño.webp"],
 
