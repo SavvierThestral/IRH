@@ -382,13 +382,22 @@
         }
 
         /* ─── VIDEO EMBED ─── */
+        .video-section {
+            background: var(--ink);
+            padding: 3rem;
+        }
+        .video-section .section-label {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 1rem;
+        }
         .video-wrap {
             position: relative;
             padding-bottom: 56.37%;
             height: 0;
             overflow: hidden;
-            margin-bottom: 1.8rem;
-            background: var(--ink);
+            max-width: 960px;
+            margin: 0 auto;
         }
         .video-wrap iframe {
             position: absolute;
@@ -758,21 +767,23 @@ function render() {
                 <span class="section-label">${l.section_desc}</span>
                 <p class="horse-desc">${horse.desc[currentLang]}</p>
 
-                ${horse.vimeo ? `
-                <span class="section-label" style="margin-top:0.5rem;">${currentLang === 'es' ? 'Vídeo' : 'Video'}</span>
-                <div class="video-wrap">
-                    <iframe
-                        src="https://player.vimeo.com/video/${horse.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479"
-                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        title="${horse.name}">
-                    </iframe>
-                </div>` : ''}
-
                 <a href="catalogo.html" class="back-link">${l.back}</a>
             </div>
 
         </div>
+
+        ${horse.vimeo ? `
+        <div class="video-section">
+            <span class="section-label">${currentLang === 'es' ? 'Vídeo' : 'Video'}</span>
+            <div class="video-wrap">
+                <iframe
+                    src="https://player.vimeo.com/video/${horse.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    title="${horse.name}">
+                </iframe>
+            </div>
+        </div>` : ''}
     `;
 }
 
