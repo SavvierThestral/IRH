@@ -198,6 +198,39 @@
             transition: background 0.25s;
         }
         .slider-dot.active { background: var(--gold); }
+        .slider-dot.video-dot {
+            width: 18px;
+            border-radius: 3px;
+            position: relative;
+        }
+        .slider-dot.video-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-40%, -50%);
+            border-style: solid;
+            border-width: 2.5px 0 2.5px 4px;
+            border-color: transparent transparent transparent rgba(253,251,247,0.8);
+        }
+        .slider-dot.video-dot.active::after { border-left-color: var(--ink); }
+        .horse-photo-col .video-slide {
+            position: absolute;
+            inset: 0;
+            background: #000;
+            opacity: 0.95;
+            transition: opacity 0.4s;
+        }
+        .horse-photo-col .video-slide.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .horse-photo-col .video-slide iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
         .horse-photo-badge {
             position: absolute;
             bottom: 2rem;
@@ -664,18 +697,22 @@ function render() {
 
             <!-- IZQUIERDA: foto -->
             <div class="horse-photo-col" id="photo-col">
-                ${(horse.images && horse.images.length > 1 ? horse.images : [horse.image])
-                    .map((src, i) => `<img src="${src}" alt="${horse.name} ${i+1}"${i > 0 ? ` class="hidden${['tevora','tumero'].includes(horse.id) ? ' mirror' : ''}"` : (['tevora','tumero'].includes(horse.id) ? ' class="mirror"' : '')}>`).join('')}
-                ${horse.images && horse.images.length > 1 ? `
-                <button class="slider-btn prev">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-                </button>
-                <button class="slider-btn next">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </button>
-                <div class="slider-dots">
-                    ${horse.images.map((_, i) => `<div class="slider-dot${i === 0 ? ' active' : ''}"></div>`).join('')}
-                </div>` : ''}
+                ${(() => {
+                    const allImgs = horse.images && horse.images.length > 1 ? horse.images : [horse.image];
+                    const mc = ['tevora','tumero','testina'].includes(horse.id) ? ' mirror' : '';
+                    const slides = [{ type:'photo', src:allImgs[0] }];
+                    if (horse.vimeoId) slides.push({ type:'video', vid:horse.vimeoId });
+                    allImgs.slice(1).forEach(src => slides.push({ type:'photo', src }));
+                    const html = slides.map((s,i) => s.type==='photo'
+                        ? `<img src="${s.src}" alt="${horse.name} ${i+1}" class="slide-item${i>0?' hidden':''}${mc}">`
+                        : `<div class="slide-item video-slide hidden" data-vimeo="${s.vid}"><iframe src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`
+                    ).join('');
+                    const controls = slides.length > 1 ? `
+                        <button class="slider-btn prev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+                        <button class="slider-btn next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+                        <div class="slider-dots">${slides.map((s,i) => `<div class="slider-dot${i===0?' active':''}${s.type==='video'?' video-dot':''}"></div>`).join('')}</div>` : '';
+                    return html + controls;
+                })()}
                 <div class="horse-photo-badge">
                     <span class="horse-photo-badge-tag">${tlbl('disciplina', horse.disciplinaLabel)} &nbsp;·&nbsp; ${horse.tag[currentLang]}</span>
                     <span class="horse-photo-badge-name">${horse.name}</span>
@@ -754,7 +791,12 @@ let lbImages = [];
 let lbIndex = 0;
 
 function openLightbox() {
-    lbIndex = currentSlide;
+    const slides = document.querySelectorAll('#photo-col .slide-item');
+    let photoIdx = 0;
+    for (let i = 0; i < currentSlide; i++) {
+        if (!slides[i].classList.contains('video-slide')) photoIdx++;
+    }
+    lbIndex = photoIdx;
     updateLightbox();
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -797,14 +839,24 @@ document.addEventListener('keydown', e => {
 let currentSlide = 0;
 
 function slidePhoto(dir) {
-    const imgs = document.querySelectorAll('#photo-col img');
+    const slides = document.querySelectorAll('#photo-col .slide-item');
     const dots = document.querySelectorAll('.slider-dot');
-    if (!imgs.length) return;
-    imgs[currentSlide].classList.add('hidden');
+    if (!slides.length) return;
+    const leaving = slides[currentSlide];
+    if (leaving.classList.contains('video-slide')) {
+        const iframe = leaving.querySelector('iframe');
+        if (iframe && iframe.src) iframe.contentWindow.postMessage(JSON.stringify({method:'pause'}), '*');
+    }
+    leaving.classList.add('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
-    currentSlide = (currentSlide + dir + imgs.length) % imgs.length;
-    imgs[currentSlide].classList.remove('hidden');
+    currentSlide = (currentSlide + dir + slides.length) % slides.length;
+    const arriving = slides[currentSlide];
+    arriving.classList.remove('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    if (arriving.classList.contains('video-slide')) {
+        const iframe = arriving.querySelector('iframe');
+        if (iframe && !iframe.src) iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479`;
+    }
 }
 
 function initPhotoCol() {
@@ -837,22 +889,34 @@ function initPhotoCol() {
         }
     });
 
-    // Clic en la foto: abre lightbox (ignora si fue swipe)
+    // Clic en la foto: abre lightbox (ignora swipe y slide de video)
     col.addEventListener('click', e => {
         if (didSwipe) { didSwipe = false; return; }
+        const slides = document.querySelectorAll('#photo-col .slide-item');
+        if (slides[currentSlide] && slides[currentSlide].classList.contains('video-slide')) return;
         openLightbox();
     });
 }
 
 function goToPhoto(i) {
-    const imgs = document.querySelectorAll('#photo-col img');
+    const slides = document.querySelectorAll('#photo-col .slide-item');
     const dots = document.querySelectorAll('.slider-dot');
-    if (!imgs.length || i === currentSlide) return;
-    imgs[currentSlide].classList.add('hidden');
+    if (!slides.length || i === currentSlide) return;
+    const leaving = slides[currentSlide];
+    if (leaving.classList.contains('video-slide')) {
+        const iframe = leaving.querySelector('iframe');
+        if (iframe && iframe.src) iframe.contentWindow.postMessage(JSON.stringify({method:'pause'}), '*');
+    }
+    leaving.classList.add('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
     currentSlide = i;
-    imgs[currentSlide].classList.remove('hidden');
+    const arriving = slides[currentSlide];
+    arriving.classList.remove('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    if (arriving.classList.contains('video-slide')) {
+        const iframe = arriving.querySelector('iframe');
+        if (iframe && !iframe.src) iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479`;
+    }
 }
 
 /* ── INIT ── */

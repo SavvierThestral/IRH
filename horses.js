@@ -5,6 +5,7 @@
 
 const horses = [
     {
+        vimeoId: '1188167702',
         id: 'tanto',
         name: "Tanto",
         breed: "Pura Raza Española (PRE)",
@@ -46,6 +47,7 @@ const horses = [
         }
     },
     {
+        vimeoId: '1188168468',
         id: 'timeno',
         name: "Timeño",
         breed: "Pura Raza Española (PRE)",
@@ -82,6 +84,7 @@ const horses = [
         }
     },
     {
+        vimeoId: '1188168251',
         id: 'tumero',
         name: "Tumero",
         breed: "Pura Raza Española (PRE)",
@@ -152,6 +155,7 @@ const horses = [
         }
     },
     {
+        vimeoId: '1188164544',
         id: 'talconero',
         name: "Talconero",
         breed: "Pura Raza Española (PRE)",
