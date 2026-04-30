@@ -856,7 +856,7 @@ function slidePhoto(dir) {
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
     const col = document.getElementById('photo-col'); if (col) col.classList.toggle('video-active', arriving.classList.contains('video-slide')); if (arriving.classList.contains('video-slide')) {
         const iframe = arriving.querySelector('iframe');
-        if (iframe && !iframe.src.includes('vimeo')) iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479`;
+        if (iframe && !iframe.src.includes('vimeo')) { const _ap = window.innerWidth <= 860 ? '&autoplay=1&muted=1' : ''; iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479${_ap}`; }
     }
 }
 
@@ -916,7 +916,7 @@ function goToPhoto(i) {
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
     const col = document.getElementById('photo-col'); if (col) col.classList.toggle('video-active', arriving.classList.contains('video-slide')); if (arriving.classList.contains('video-slide')) {
         const iframe = arriving.querySelector('iframe');
-        if (iframe && !iframe.src.includes('vimeo')) iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479`;
+        if (iframe && !iframe.src.includes('vimeo')) { const _ap = window.innerWidth <= 860 ? '&autoplay=1&muted=1' : ''; iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479${_ap}`; }
     }
 }
 
