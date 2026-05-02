@@ -180,39 +180,54 @@
         .slider-btn:hover { background: rgba(184,147,90,0.35); }
         .slider-btn.prev { left: 1rem; }
         .slider-btn.next { right: 1rem; }
-        .slider-dots {
+        .thumb-strip {
             position: absolute;
-            bottom: 5.5rem;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 15;
+            background: rgba(20,20,18,0.88);
+            backdrop-filter: blur(4px);
             display: flex;
-            gap: 6px;
-            z-index: 10;
+            gap: 3px;
+            padding: 5px 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
         }
-        .slider-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(253,251,247,0.35);
+        .thumb-strip::-webkit-scrollbar { display: none; }
+        .thumb-item {
+            flex: 0 0 52px;
+            height: 38px;
             cursor: pointer;
-            transition: background 0.25s;
-        }
-        .slider-dot.active { background: var(--gold); }
-        .slider-dot.video-dot {
-            width: 18px;
-            border-radius: 3px;
             position: relative;
+            border: 2px solid transparent;
+            transition: border-color 0.25s;
+            overflow: hidden;
+            flex-shrink: 0;
         }
-        .slider-dot.video-dot::after {
-            content: '';
+        .thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+        .thumb-item.active { border-color: var(--gold); }
+        .thumb-item.thumb-video {
+            background: rgba(28,27,24,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-swipe-layer {
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-40%, -50%);
-            border-style: solid;
-            border-width: 2.5px 0 2.5px 4px;
-            border-color: transparent transparent transparent rgba(253,251,247,0.8);
+            inset: 0;
+            z-index: 12;
+            background: transparent;
+            pointer-events: none;
         }
-        .slider-dot.video-dot.active::after { border-left-color: var(--ink); }
+        .video-swipe-layer.active { pointer-events: auto; }
         .horse-photo-col .video-slide {
             position: absolute;
             inset: 0;
@@ -225,7 +240,6 @@
             pointer-events: none;
         }
         .horse-photo-col.video-active .horse-photo-badge { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-        .horse-photo-col.video-active .slider-dots { bottom: auto; top: 1rem; }
         .horse-photo-col .video-slide iframe {
             position: absolute;
             inset: 0;
@@ -235,7 +249,7 @@
         }
         .horse-photo-badge {
             position: absolute;
-            bottom: 2rem;
+            bottom: calc(2rem + 52px);
             left: 2rem;
             background: rgba(28,27,24,0.75);
             backdrop-filter: blur(8px);
@@ -712,8 +726,12 @@ function render() {
                     const controls = slides.length > 1 ? `
                         <button class="slider-btn prev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
                         <button class="slider-btn next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
-                        <div class="slider-dots">${slides.map((s,i) => `<div class="slider-dot${i===0?' active':''}${s.type==='video'?' video-dot':''}"></div>`).join('')}</div>` : '';
-                    return html + controls;
+                        <div class="video-swipe-layer" id="video-swipe-layer"></div>` : '';
+                    const thumbs = slides.length > 1 ? `<div class="thumb-strip" id="thumb-strip">${slides.map((s,i) => s.type==='photo'
+                        ? `<div class="thumb-item${i===0?' active':''}" data-idx="${i}"><img src="${s.src}" alt="${i+1}" loading="lazy"></div>`
+                        : `<div class="thumb-item thumb-video${i===0?' active':''}" data-idx="${i}"><svg width="18" height="18" viewBox="0 0 24 24" fill="white" opacity="0.85"><polygon points="5,3 19,12 5,21"/></svg></div>`
+                    ).join('')}</div>` : '';
+                    return html + controls + thumbs;
                 })()}
                 <div class="horse-photo-badge">
                     <span class="horse-photo-badge-tag">${tlbl('disciplina', horse.disciplinaLabel)} &nbsp;·&nbsp; ${horse.tag[currentLang]}</span>
@@ -855,7 +873,7 @@ function slidePhoto(dir) {
     const arriving = slides[currentSlide];
     arriving.classList.remove('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-    const col = document.getElementById('photo-col'); if (col) col.classList.toggle('video-active', arriving.classList.contains('video-slide')); if (arriving.classList.contains('video-slide')) {
+    const col = document.getElementById('photo-col'); if (col) col.classList.toggle('video-active', arriving.classList.contains('video-slide')); document.querySelectorAll('.thumb-item').forEach((t,i) => t.classList.toggle('active', i===currentSlide)); const vsl = document.getElementById('video-swipe-layer'); if (vsl) vsl.classList.toggle('active', arriving.classList.contains('video-slide')); if (arriving.classList.contains('video-slide')) {
         const iframe = arriving.querySelector('iframe');
         if (iframe && !iframe.src.includes('vimeo')) { const _ap = window.innerWidth <= 860 ? '&autoplay=1&muted=1' : ''; iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479${_ap}`; }
     }
@@ -898,6 +916,24 @@ function initPhotoCol() {
         if (slides[currentSlide] && slides[currentSlide].classList.contains('video-slide')) return;
         openLightbox();
     });
+
+    // Click en miniaturas
+    col.querySelectorAll('.thumb-item').forEach((thumb, i) => {
+        thumb.addEventListener('click', e => { e.stopPropagation(); goToPhoto(i); });
+    });
+
+    // Swipe layer sobre el video para permitir navegación horizontal
+    const swipeLayer = document.getElementById('video-swipe-layer');
+    if (swipeLayer) {
+        let slStart = 0, slY = 0;
+        swipeLayer.addEventListener('touchstart', e => { slStart = e.touches[0].clientX; slY = e.touches[0].clientY; }, { passive: true });
+        swipeLayer.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - slStart;
+            const dy = e.changedTouches[0].clientY - slY;
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) slidePhoto(dx < 0 ? 1 : -1);
+        });
+        swipeLayer.addEventListener('click', e => { e.stopPropagation(); });
+    }
 }
 
 function goToPhoto(i) {
@@ -915,7 +951,7 @@ function goToPhoto(i) {
     const arriving = slides[currentSlide];
     arriving.classList.remove('hidden');
     if (dots[currentSlide]) dots[currentSlide].classList.add('active');
-    const col = document.getElementById('photo-col'); if (col) col.classList.toggle('video-active', arriving.classList.contains('video-slide')); if (arriving.classList.contains('video-slide')) {
+    const col = document.getElementById('photo-col'); if (col) col.classList.toggle('video-active', arriving.classList.contains('video-slide')); document.querySelectorAll('.thumb-item').forEach((t,i) => t.classList.toggle('active', i===currentSlide)); const vsl = document.getElementById('video-swipe-layer'); if (vsl) vsl.classList.toggle('active', arriving.classList.contains('video-slide')); if (arriving.classList.contains('video-slide')) {
         const iframe = arriving.querySelector('iframe');
         if (iframe && !iframe.src.includes('vimeo')) { const _ap = window.innerWidth <= 860 ? '&autoplay=1&muted=1' : ''; iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479${_ap}`; }
     }
