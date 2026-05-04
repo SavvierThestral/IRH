@@ -783,7 +783,7 @@ function render() {
 
                 ${horse.sold
                     ? `<div class="sold-banner" style="margin-bottom:1.8rem;">${currentLang === 'es' ? 'Este caballo ya ha sido vendido' : 'This horse has been sold'}</div>`
-                    : `<a href="catalogo.html" class="btn-catalog">
+                    : `<a href="catalogo.html" class="btn-catalog" onclick="if(typeof fbq!=='undefined')fbq('trackCustom','SeeAllHorses',{content_name:'${horse.name}',content_ids:['${horse.id}'],content_type:'product'})">
                     ${l.catalog_btn}
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
                 </a>
