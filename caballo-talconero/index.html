@@ -364,6 +364,9 @@
         }
         .btn-contact:hover { background: var(--gold-light); transform: translateY(-1px); }
         .btn-contact:active { transform: translateY(0); }
+        .btn-catalog { display:flex; align-items:center; justify-content:center; gap:0.6rem; width:100%; padding:0.95rem; background:transparent; color:var(--gold); font-family:'Jost',sans-serif; font-size:0.76rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; border:1.5px solid var(--gold); cursor:pointer; text-decoration:none; transition:background 0.3s,color 0.3s,transform 0.2s; min-height:48px; margin-bottom:0.75rem; }
+        .btn-catalog:hover { background:rgba(186,152,98,0.12); transform:translateY(-1px); }
+        .btn-catalog:active { transform:translateY(0); }
         .sold-banner {
             display: flex;
             align-items: center;
@@ -615,7 +618,7 @@ const tr = {
         spec_birth:'Nacimiento', spec_coat:'Capa', spec_father:'Padre', spec_mother:'Madre', spec_breeder:'Criador', spec_owner:'Titular', spec_microchip:'Microchip',
         section_pedigree:'Pedigree & Datos Registrales', section_desc:'Descripción',
         contact_title:'¿Te interesa', contact_body:'Contáctanos para más información o coordinar una visita.',
-        contact_btn:'Solicitar información completa', location_label:'Ubicación',
+        contact_btn:'Solicitar información completa', catalog_btn:'Ver todos los caballos', location_label:'Ubicación',
         back:'← Volver al Catálogo',
         not_found_title:'Caballo no encontrado', not_found_body:'El caballo que buscas no existe o ha sido retirado del catálogo.', not_found_link:'← Volver al Catálogo',
         years:'años'
@@ -626,7 +629,7 @@ const tr = {
         spec_birth:'Born', spec_coat:'Coat', spec_father:'Sire', spec_mother:'Dam', spec_breeder:'Breeder', spec_owner:'Owner', spec_microchip:'Microchip',
         section_pedigree:'Pedigree & Registration', section_desc:'Description',
         contact_title:'Interested in', contact_body:'Contact us for more information or to arrange a visit.',
-        contact_btn:'Request full details', location_label:'Location',
+        contact_btn:'Request full details', catalog_btn:'See all horses', location_label:'Location',
         back:'← Back to Catalogue',
         not_found_title:'Horse not found', not_found_body:'The horse you are looking for does not exist or has been removed.', not_found_link:'← Back to Catalogue',
         years:'years old'
@@ -780,7 +783,11 @@ function render() {
 
                 ${horse.sold
                     ? `<div class="sold-banner" style="margin-bottom:1.8rem;">${currentLang === 'es' ? 'Este caballo ya ha sido vendido' : 'This horse has been sold'}</div>`
-                    : `<a href="index.html#contact-form" class="btn-contact" style="margin-bottom:1.8rem;" onclick="if(typeof fbq!=='undefined')fbq('track','Contact',{content_name:'${horse.name}',content_ids:['${horse.id}'],content_type:'product'})">
+                    : `<a href="catalogo.html" class="btn-catalog">
+                    ${l.catalog_btn}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </a>
+                <a href="index.html#contact-form" class="btn-contact" style="margin-bottom:1.8rem;" onclick="if(typeof fbq!=='undefined')fbq('track','Contact',{content_name:'${horse.name}',content_ids:['${horse.id}'],content_type:'product'})">
                     ${l.contact_btn}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                 </a>`
