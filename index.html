@@ -6,6 +6,8 @@
     <title>IRH · Iberian Riding Horses | Corretaje Ecuestre de Élite</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="canonical" href="https://www.iberianridinghorses.com/">
+    <link rel="preconnect" href="https://link.ltlexpansion.com">
+    <link rel="dns-prefetch" href="https://link.ltlexpansion.com">
     <meta name="description" content="Corretaje ecuestre de élite en caballos ibéricos de alta competición. Conectamos jinetes exigentes con caballos excepcionales. Doma clásica, Murcia, España.">
     <meta name="robots" content="index, follow">
     <!-- Open Graph -->
@@ -739,7 +741,13 @@
         .contact-section { background: var(--ivory); }
         .contact-inner { max-width: 700px; margin: 0 auto; }
         .contact-header { text-align: center; margin-bottom: 2rem; }
-        .contact-form { background: white; padding: 3rem; }
+        .contact-form { background: white; padding: 3rem; position: relative; min-height: 465px; }
+        #form-skeleton { position:absolute; inset:0; background:white; padding:2rem 2.5rem; z-index:2; transition:opacity 0.4s; pointer-events:none; }
+        .sk-line { height:11px; border-radius:3px; background:linear-gradient(90deg,#f0ede6 25%,#e5e0d4 50%,#f0ede6 75%); background-size:200% 100%; animation:sk-shimmer 1.4s infinite; margin-bottom:1rem; }
+        .sk-line.half { width:42%; }
+        .sk-box { height:44px; border-radius:3px; background:linear-gradient(90deg,#f0ede6 25%,#e5e0d4 50%,#f0ede6 75%); background-size:200% 100%; animation:sk-shimmer 1.4s infinite; margin-bottom:1.2rem; }
+        .sk-btn { height:48px; border-radius:3px; background:linear-gradient(90deg,rgba(232,114,26,.2) 25%,rgba(232,114,26,.38) 50%,rgba(232,114,26,.2) 75%); background-size:200% 100%; animation:sk-shimmer 1.4s infinite; margin-top:0.4rem; }
+        @keyframes sk-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
         .form-group { margin-bottom: 1.2rem; }
         .form-group:last-child { margin-bottom: 0; }
@@ -1173,6 +1181,17 @@
                 <p class="section-body" style="margin:0 auto;" data-i18n="contact_body">Tell us about your riding goals, experience, and preferences. We'll curate a selection matched specifically to your needs.</p>
             </div>
             <div class="contact-form reveal" id="contact-form" style="transition-delay:0.1s">
+                <div id="form-skeleton">
+                    <div class="sk-line half"></div>
+                    <div class="sk-box"></div>
+                    <div class="sk-line half"></div>
+                    <div class="sk-box"></div>
+                    <div class="sk-line half"></div>
+                    <div class="sk-box"></div>
+                    <div class="sk-line half"></div>
+                    <div class="sk-box"></div>
+                    <div class="sk-btn"></div>
+                </div>
                 <iframe
                     data-src="https://link.ltlexpansion.com/widget/form/f9r5ZX6uBpSmdlwWezVI"
                     style="width:100%;height:100%;border:none;border-radius:3px"
@@ -1194,16 +1213,26 @@
                 (function() {
                     var el = document.getElementById('contact-form');
                     var loaded = false;
-                    var obs = new IntersectionObserver(function(entries) {
-                        if (entries[0].isIntersecting && !loaded) {
-                            loaded = true;
-                            var iframe = document.getElementById('inline-f9r5ZX6uBpSmdlwWezVI');
-                            if (iframe) iframe.src = iframe.dataset.src;
-                            var s = document.createElement('script');
-                            s.src = 'https://link.ltlexpansion.com/js/form_embed.js';
-                            document.body.appendChild(s);
-                            obs.disconnect();
+                    var obs;
+                    function loadForm() {
+                        if (loaded) return;
+                        loaded = true;
+                        var iframe = document.getElementById('inline-f9r5ZX6uBpSmdlwWezVI');
+                        var sk = document.getElementById('form-skeleton');
+                        if (iframe) {
+                            iframe.src = iframe.dataset.src;
+                            iframe.addEventListener('load', function() {
+                                if (sk) { sk.style.opacity='0'; setTimeout(function(){ sk.style.display='none'; },400); }
+                            }, { once: true });
                         }
+                        var s = document.createElement('script');
+                        s.src = 'https://link.ltlexpansion.com/js/form_embed.js';
+                        document.body.appendChild(s);
+                        if (obs) obs.disconnect();
+                    }
+                    if (window.location.hash === '#contact-form') { loadForm(); return; }
+                    obs = new IntersectionObserver(function(entries) {
+                        if (entries[0].isIntersecting) loadForm();
                     }, { rootMargin: '200px' });
                     obs.observe(el);
                 })();
