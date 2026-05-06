@@ -143,13 +143,14 @@
             font-weight: 500;
             letter-spacing: 0.16em;
             text-transform: uppercase;
-            color: var(--gold) !important;
-            border: 1px solid var(--gold);
+            color: white !important;
+            background: #E8721A;
+            border: 1px solid #E8721A;
             padding: 0.55rem 1.4rem;
             text-decoration: none;
             transition: background 0.3s, color 0.3s !important;
         }
-        .nav-cta:hover { background: var(--gold) !important; color: white !important; }
+        .nav-cta:hover { background: #D06010 !important; border-color: #D06010; color: white !important; }
 
         /* ─── HERO ─── */
         .hero {
@@ -235,7 +236,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            background: var(--gold-bg);
+            background: #E8721A;
             color: white;
             font-size: 0.78rem;
             font-weight: 500;
@@ -247,25 +248,24 @@
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
         }
-        .btn-primary:hover { background: var(--gold-bg); transform: translateY(-1px); }
+        .btn-primary:hover { background: #D06010; transform: translateY(-1px); }
         .btn-ghost {
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            background: transparent;
-            color: rgba(253,251,247,0.85);
+            background: #E8721A;
+            color: white;
             font-size: 0.78rem;
             font-weight: 500;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            padding: 0.9rem 0;
+            padding: 0.9rem 2rem;
             text-decoration: none;
             border: none;
             cursor: pointer;
-            border-bottom: 1px solid rgba(253,251,247,0.35);
-            transition: color 0.3s, border-color 0.3s;
+            transition: background 0.3s, transform 0.2s;
         }
-        .btn-ghost:hover { color: white; border-color: white; }
+        .btn-ghost:hover { background: #D06010; transform: translateY(-1px); }
 
         .hero-scroll {
             position: absolute;
