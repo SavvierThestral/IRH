@@ -253,19 +253,20 @@
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            background: #E8721A;
-            color: white;
+            background: transparent;
+            color: rgba(253,251,247,0.85);
             font-size: 0.78rem;
             font-weight: 500;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            padding: 0.9rem 2rem;
+            padding: 0.9rem 0;
             text-decoration: none;
             border: none;
             cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
+            border-bottom: 1px solid rgba(253,251,247,0.35);
+            transition: color 0.3s, border-color 0.3s;
         }
-        .btn-ghost:hover { background: #D06010; transform: translateY(-1px); }
+        .btn-ghost:hover { color: white; border-color: white; }
 
         .hero-scroll {
             position: absolute;
@@ -469,13 +470,13 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: white;
-            border: 1px solid rgba(255,255,255,0.7);
+            border: 1px solid #E8721A;
             padding: 0.7rem 1.6rem;
             cursor: pointer;
-            background: transparent;
+            background: #E8721A;
             transition: background 0.25s;
         }
-        .card-inquire:hover { background: var(--gold); border-color: var(--gold); }
+        .card-inquire:hover { background: #D06010; border-color: #D06010; }
         .card-body {
             padding: 1.5rem 1.8rem 1.8rem;
             border: 1px solid var(--border);
