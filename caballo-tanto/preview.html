@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <title>Ficha de Caballo | IRH - Iberian Riding Horses</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://www.iberianridinghorses.com/caballo.html">
+    <meta name="description" content="Ficha detallada del caballo: genealogía, historial de competición, nivel de entrenamiento y condición veterinaria. IRH - Iberian Riding Horses, Murcia.">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.iberianridinghorses.com/caballo.html">
+    <meta property="og:title" content="Ficha de Caballo | IRH - Iberian Riding Horses">
+    <meta property="og:description" content="Consulta la ficha detallada: genealogía, historial de competición y nivel de entrenamiento.">
+    <meta property="og:image" content="https://www.iberianridinghorses.com/Gemini_Generated_Image_w12ynzw12ynzw12y1.png">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="IRH - Iberian Riding Horses">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ficha de Caballo | IRH - Iberian Riding Horses">
+    <meta name="twitter:description" content="Consulta la ficha detallada: genealogía, historial de competición y nivel de entrenamiento.">
+    <meta name="twitter:image" content="https://www.iberianridinghorses.com/Gemini_Generated_Image_w12ynzw12ynzw12y1.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ivory: #F8F5EE;
+            --warm-white: #FDFBF7;
+            --parchment: #EDE8DC;
+            --gold: #B8935A;
+            --gold-light: #D4AA78;
+            --gold-pale: #F0E4CA;
+            --ink: #1C1B18;
+            --charcoal: #2E2D29;
+            --stone: #6B6860;
+            --stone-light: #A09D96;
+            --border: rgba(28,27,24,0.12);
+            --border-strong: rgba(28,27,24,0.22);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: 'Jost', sans-serif; background: var(--warm-white); color: var(--ink); overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+        /* ─── NAV ─── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0 3rem;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(253,251,247,0.97);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: var(--ink);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .nav-logo svg { width: 26px; height: 26px; }
+        .nav-logo svg path { stroke: var(--ink); }
+        .nav-links { display: flex; align-items: center; gap: 1.8rem; list-style: none; }
+        .nav-links a {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--stone);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #E8721A !important;
+            background: white;
+            border: 1px solid #E8721A;
+            padding: 0.5rem 1.3rem;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s !important;
+        }
+        .nav-cta:hover { background: #E8721A !important; border-color: #E8721A !important; color: white !important; }
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+        .lang-switcher { display: flex; align-items: center; border: 1px solid var(--border-strong); overflow: hidden; }
+        .lang-btn { display: flex; align-items: center; justify-content: center; padding: 0.3rem 0.6rem; background: transparent; border: none; cursor: pointer; transition: background 0.25s, opacity 0.25s; opacity: 0.55; line-height: 1; }
+        .lang-btn svg { display: block; border-radius: 2px; }
+        .lang-btn.active { background: rgba(184,147,90,0.18); opacity: 1; }
+        .lang-btn:hover:not(.active) { opacity: 0.85; }
+
+        @media (max-width: 1100px) { .nav-links { display: none; } }
+        @media (max-width: 768px) {
+            .nav { padding: 0 1.2rem; height: 60px; }
+            .nav-logo-text { display: none; }
+        }
+
+        /* ─── BREADCRUMB ─── */
+        .breadcrumb-bar {
+            background: var(--parchment);
+            padding: 0.75rem 3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--stone);
+        }
+        .breadcrumb-bar a { color: var(--stone); text-decoration: none; transition: color 0.25s; }
+        .breadcrumb-bar a:hover { color: var(--gold); }
+        .breadcrumb-bar span { color: var(--gold); }
+        @media (max-width: 768px) { .breadcrumb-bar { padding: 0.65rem 1.2rem; } }
+
+        /* ─── SPLIT LAYOUT ─── */
+        .horse-split {
+            display: grid;
+            grid-template-columns: 62% 38%;
+            min-height: calc(100vh - 72px);
+        }
+
+        /* LEFT: imagen */
+        .horse-photo-col {
+            position: sticky;
+            top: 72px;
+            height: calc(100vh - 72px);
+            background: var(--ink);
+            overflow: hidden;
+        }
+        .horse-photo-col img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 15%;
+            display: block;
+            opacity: 0.95;
+            position: absolute;
+            inset: 0;
+            transition: opacity 0.4s;
+        }
+        .horse-photo-col img.mirror { transform: scaleX(-1); }
+        .horse-photo-col img.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        /* slider buttons */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 16;
+            background: rgba(28,27,24,0.55);
+            border: 1px solid rgba(184,147,90,0.4);
+            color: var(--gold-light);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(6px);
+            transition: background 0.25s;
+        }
+        .slider-btn:hover { background: rgba(184,147,90,0.35); }
+        .slider-btn.prev { left: 1rem; }
+        .slider-btn.next { right: 1rem; }
+        .thumb-strip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 15;
+            background: rgba(20,20,18,0.88);
+            backdrop-filter: blur(4px);
+            display: flex;
+            gap: 3px;
+            padding: 5px 8px;
+            overflow-x: auto;
+            justify-content: center;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+        }
+        .thumb-strip::-webkit-scrollbar { display: none; }
+        .thumb-item {
+            flex: 0 0 52px;
+            height: 38px;
+            cursor: pointer;
+            position: relative;
+            border: 2px solid transparent;
+            transition: border-color 0.25s;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .thumb-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+        }
+        .thumb-item.active { border-color: var(--gold); }
+        .thumb-item.thumb-video {
+            background: rgba(28,27,24,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-swipe-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 12;
+            background: transparent;
+            pointer-events: none;
+        }
+        .video-swipe-layer.active { pointer-events: none; }
+        .horse-photo-col .video-slide {
+            position: absolute;
+            inset: 0;
+            background: #000;
+            opacity: 0.95;
+            transition: opacity 0.4s;
+        }
+        .horse-photo-col .video-slide.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .horse-photo-col.video-active .horse-photo-badge { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .horse-photo-col .video-slide iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .horse-photo-badge {
+            position: absolute;
+            bottom: calc(2rem + 52px);
+            left: 2rem;
+            background: rgba(28,27,24,0.75);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(184,147,90,0.4);
+            padding: 0.6rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .horse-photo-badge-tag {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+        }
+        .horse-photo-badge-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--warm-white);
+            line-height: 1.1;
+        }
+
+        /* RIGHT: info */
+        .horse-info-col {
+            padding: 2rem 2rem 4rem;
+            overflow-y: auto;
+            background: var(--warm-white);
+        }
+
+        .horse-name {
+            font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+            font-weight: 400;
+            color: var(--ink);
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.3rem;
+        }
+        .horse-sub {
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--stone-light);
+            margin-bottom: 1rem;
+        }
+        .horse-price-badge {
+            display: inline-block;
+            background: #E6770E;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            padding: 0.3rem 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+        .preview-banner { background: #1C1B18; color: #D4AA78; text-align: center; padding: 0.6rem; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; }
+
+        /* specs */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-bottom: 1.8rem;
+        }
+        .spec-item { background: var(--warm-white); padding: 0.3rem 0.65rem; }
+        .spec-label {
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--stone-light);
+            display: block;
+            margin-bottom: 0.1rem;
+        }
+        .spec-value { font-size: 0.82rem; font-weight: 500; color: var(--ink); }
+        .spec-value.highlight { color: var(--gold); }
+
+        /* pedigree section */
+        .section-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 0.7rem;
+        }
+
+        /* description */
+        .horse-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--stone);
+            margin-bottom: 1.8rem;
+        }
+
+        /* contact CTA */
+        .btn-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            width: 100%;
+            padding: 0.95rem;
+            background: #E8721A;
+            color: white;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.76rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+            min-height: 48px;
+        }
+        .btn-contact:hover { background: #D06010; transform: translateY(-1px); }
+        .btn-contact:active { transform: translateY(0); }
+        .btn-catalog { display:flex; align-items:center; justify-content:center; gap:0.6rem; width:100%; padding:0.95rem; background:white; color:#E8721A; font-family:'Jost',sans-serif; font-size:0.76rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; border:1.5px solid #E8721A; cursor:pointer; text-decoration:none; transition:background 0.3s,color 0.3s,transform 0.2s; min-height:48px; margin-bottom:0.75rem; }
+        .btn-catalog:hover { background:#E8721A; color:white; border-color:#E8721A; transform:translateY(-1px); }
+        .btn-catalog:active { transform:translateY(0); }
+        .sold-banner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #CC1111;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            padding: 1.2rem 2rem;
+            width: 100%;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--stone);
+            text-decoration: none;
+            font-size: 0.76rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-strong);
+            padding-bottom: 3px;
+            transition: color 0.25s, border-color 0.25s;
+        }
+        .back-link:hover { color: var(--gold); border-color: var(--gold); }
+        .back-link-mobile {
+            display: none;
+        }
+
+        /* ─── MOBILE ─── */
+        @media (max-width: 860px) {
+            .horse-photo-badge { display: none; }
+            .thumb-item { flex: 0 0 44px; height: 32px; }
+            .horse-split { grid-template-columns: 1fr; min-height: auto; }
+            .horse-photo-col {
+                position: relative;
+                top: 0;
+                height: 60vw;
+                min-height: 280px;
+                max-height: 480px;
+            }
+            .horse-info-col { padding: 2.5rem 1.5rem 4rem; }
+            .back-link { display: none; }
+            .back-link-mobile {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                color: var(--stone);
+                text-decoration: none;
+                font-size: 0.76rem;
+                font-weight: 500;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                border-bottom: 1px solid var(--border-strong);
+                padding-bottom: 3px;
+                transition: color 0.25s, border-color 0.25s;
+                margin-bottom: 1.2rem;
+            }
+            .back-link-mobile:hover { color: var(--gold); border-color: var(--gold); }
+        }
+        @media (max-width: 480px) {
+            .horse-info-col { padding: 2rem 1rem 6rem; }
+            .horse-name { font-size: 2.2rem; }
+        }
+
+        /* ─── NOT FOUND ─── */
+        .not-found { text-align: center; padding: 8rem 2rem; }
+        .not-found h2 { font-size: 2rem; font-weight: 400; color: var(--ink); margin-bottom: 1rem; }
+        .not-found p { font-size: 0.95rem; font-weight: 300; color: var(--stone); margin-bottom: 2rem; }
+        .not-found a { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--gold); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--ink);
+            color: rgba(253,251,247,0.5);
+            padding: 2rem 3rem;
+            text-align: center;
+            font-size: 0.78rem;
+            font-weight: 300;
+        }
+        footer a { color: var(--gold-light); text-decoration: none; }
+
+        /* ─── LIGHTBOX ─── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 999;
+            background: rgba(10,10,10,0.96);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-top {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            pointer-events: none;
+        }
+        .lightbox-counter {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.6);
+            pointer-events: none;
+        }
+        .lightbox-close {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            font-size: 2.2rem;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+            pointer-events: all;
+        }
+        .lightbox-close:hover { color: white; }
+        .lightbox-img {
+            max-width: calc(100vw - 130px);
+            max-height: calc(100vh - 160px);
+            object-fit: contain;
+            user-select: none;
+        }
+        .lightbox-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.08);
+            border: none;
+            color: white;
+            width: 60px;
+            height: 100%;
+            max-height: calc(100vh - 160px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .lightbox-btn:hover { background: rgba(255,255,255,0.14); }
+        .lightbox-btn.prev { left: 0; }
+        .lightbox-btn.next { right: 0; }
+        .lightbox-thumbs {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        .lightbox-thumb {
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0.45;
+            border: 2px solid transparent;
+            transition: opacity 0.2s, border-color 0.2s;
+            flex-shrink: 0;
+        }
+        .lightbox-thumb.active {
+            opacity: 1;
+            border-color: var(--gold);
+        }
+        .lightbox-thumb:hover { opacity: 0.8; }
+        .horse-photo-col { cursor: zoom-in; }
+    </style>
+    <!-- Meta Pixel -->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1256567715971355');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1256567715971355&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel -->
+</head>
+<body>
+
+<div class="preview-banner">PREVIEW — Rango de precio (no publicado)</div>
+
+<!-- NAV -->
+<nav class="nav">
+    <a href="/" class="nav-logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 26c0-6 4-10 10-12 3-1 6-3 7-6" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 14c-1-3 0-7 3-9" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M19 5c1 0 3 1 4 3" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6 26l2-4" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M10 26l1-4" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-logo-text">IRH - Iberian Riding Horses</span>
+    </a>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="catalogo.html" data-i18n="nav_catalog">Catálogo</a></li>
+            <li><a href="index.html#contact" class="nav-cta" data-i18n="nav_contact">Contacto</a></li>
+        </ul>
+        <div class="lang-switcher">
+            <button class="lang-btn" data-lang="es" onclick="setLang('es')" title="Español">
+                <svg width="22" height="15" viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="15" fill="#c60b1e"/><rect y="3.75" width="22" height="7.5" fill="#ffc400"/></svg>
+            </button>
+            <button class="lang-btn active" data-lang="en" onclick="setLang('en')" title="English">
+                <svg width="22" height="15" viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="15" fill="#012169"/><path d="M0,0 L22,15 M22,0 L0,15" stroke="white" stroke-width="3"/><path d="M0,0 L22,15 M22,0 L0,15" stroke="#C8102E" stroke-width="1.8"/><path d="M11,0 V15 M0,7.5 H22" stroke="white" stroke-width="5"/><path d="M11,0 V15 M0,7.5 H22" stroke="#C8102E" stroke-width="3"/></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- DYNAMIC CONTENT -->
+<div id="page-content"></div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-top">
+        <span class="lightbox-counter" id="lightbox-counter"></span>
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+    </div>
+    <button class="lightbox-btn prev" id="lb-prev">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <button class="lightbox-btn next" id="lb-next">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="lightbox-thumbs" id="lightbox-thumbs"></div>
+</div>
+
+<footer>
+    <p>&copy; 2025 IRH - Iberian Riding Horses &nbsp;·&nbsp; Finca Lo Tacon s/n, San Pedro del Pinatar 30740 (Murcia) &nbsp;·&nbsp; <a href="index.html" data-i18n="nav_home">Home</a> &nbsp;·&nbsp; <a href="catalogo.html" data-i18n="nav_catalog">Catalogue</a></p>
+</footer>
+
+<script src="horses.js"></script>
+<script>
+const tr = {
+    es: {
+        nav_home:'Inicio', nav_catalog:'Catálogo', nav_contact:'Contacto',
+        spec_discipline:'Disciplina', spec_level:'Nivel', spec_gender:'Género', spec_age:'Edad', spec_height:'Alzada', spec_profile:'Perfil jinete',
+        spec_birth:'Nacimiento', spec_coat:'Capa', spec_father:'Padre', spec_mother:'Madre', spec_breeder:'Criador', spec_owner:'Titular', spec_microchip:'Microchip',
+        section_pedigree:'Pedigree & Datos Registrales', section_desc:'Descripción',
+        contact_title:'¿Te interesa', contact_body:'Contáctanos para más información o coordinar una visita.',
+        contact_btn:'Solicitar información completa', catalog_btn:'Ver todos los caballos', location_label:'Ubicación',
+        back:'← Volver al Catálogo',
+        not_found_title:'Caballo no encontrado', not_found_body:'El caballo que buscas no existe o ha sido retirado del catálogo.', not_found_link:'← Volver al Catálogo',
+        years:'años'
+    },
+    en: {
+        nav_home:'Home', nav_catalog:'Catalogue', nav_contact:'Contact',
+        spec_discipline:'Discipline', spec_level:'Level', spec_gender:'Gender', spec_age:'Age', spec_height:'Height', spec_profile:'Rider profile',
+        spec_birth:'Born', spec_coat:'Coat', spec_father:'Sire', spec_mother:'Dam', spec_breeder:'Breeder', spec_owner:'Owner', spec_microchip:'Microchip',
+        section_pedigree:'Pedigree & Registration', section_desc:'Description',
+        contact_title:'Interested in', contact_body:'Contact us for more information or to arrange a visit.',
+        contact_btn:'Request full details', catalog_btn:'See all horses', location_label:'Location',
+        back:'← Back to Catalogue',
+        not_found_title:'Horse not found', not_found_body:'The horse you are looking for does not exist or has been removed.', not_found_link:'← Back to Catalogue',
+        years:'years old'
+    }
+};
+let currentLang = 'en';
+
+const horseLabelTrans = {
+    genero: { en: { 'Semental':'Stallion', 'Yegua':'Mare', 'Castrado':'Gelding' } },
+    perfil: { en: { 'Profesional':'Professional', 'Amateur':'Amateur' } },
+    disciplina: { en: { 'Doma Clásica':'Classical Dressage' } },
+    breed:  { en: { 'Pura Raza Española (PRE)':'Pure Spanish Breed (PRE)', 'Pony':'Pony' } },
+    nivel: { en: {
+        'Nivel 2':'Level 2', 'Nivel 4':'Level 4', 'Nivel 4 · Passage':'Level 4 · Passage',
+        'Nivel II-III':'Level II-III',
+        'San Jorge · Piaffe · Passage':'Grand Prix · Piaffe · Passage',
+        'San Jorge · Nivel 7':'Grand Prix · Level 7',
+        'Consultar':'Inquire'
+    }}
+};
+
+function tlbl(category, val) {
+    if (currentLang === 'es') return val;
+    return (horseLabelTrans[category] && horseLabelTrans[category].en && horseLabelTrans[category].en[val]) || val;
+}
+
+function setLang(lang) {
+    currentLang = lang;
+    try { localStorage.setItem('irh-lang', lang); } catch(e) {}
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (tr[lang][key] !== undefined) el.innerHTML = tr[lang][key];
+    });
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    render();
+    initPhotoCol();
+}
+
+function getParam(name) {
+    const qs = new URLSearchParams(window.location.search).get(name);
+    if (qs) return qs;
+    if (name === 'id') {
+        const m = window.location.pathname.match(/\/caballo-([^/]+)\/?/);
+        if (m) return m[1];
+    }
+    return null;
+}
+
+function render() {
+    const l = tr[currentLang];
+    const id = getParam('id');
+    const horse = horses.find(h => h.id === id);
+    const container = document.getElementById('page-content');
+
+    if (!horse) {
+        container.innerHTML = `
+            <div class="not-found">
+                <h2>${l.not_found_title}</h2>
+                <p>${l.not_found_body}</p>
+                <a href="catalogo.html">${l.not_found_link}</a>
+            </div>`;
+        return;
+    }
+
+    document.title = `${horse.name} | IRH - Iberian Riding Horses`;
+
+    if (typeof fbq !== 'undefined') {
+        fbq('track', 'ViewContent', {
+            content_name: horse.name,
+            content_ids: [horse.id],
+            content_type: 'product'
+        });
+    }
+
+    container.innerHTML = `
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb-bar">
+            <a href="index.html">${l.nav_home}</a>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <a href="catalogo.html">${l.nav_catalog}</a>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>${horse.name}</span>
+        </div>
+
+        <!-- SPLIT LAYOUT -->
+        <div class="horse-split">
+
+            <!-- IZQUIERDA: foto -->
+            <div class="horse-photo-col" id="photo-col">
+                ${(() => {
+                    const allImgs = horse.images && horse.images.length > 1 ? horse.images : [horse.image];
+                    const mc = ['tevora','tumero','testina'].includes(horse.id) ? ' mirror' : '';
+                    const slides = [{ type:'photo', src:allImgs[0] }];
+                    if (horse.vimeoId) slides.push({ type:'video', vid:horse.vimeoId });
+                    allImgs.slice(1).forEach(src => slides.push({ type:'photo', src }));
+                    const html = slides.map((s,i) => s.type==='photo'
+                        ? `<img src="${s.src}" alt="${horse.name} ${i+1}" class="slide-item${i>0?' hidden':''}${mc}">`
+                        : `<div class="slide-item video-slide hidden" data-vimeo="${s.vid}"><iframe src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`
+                    ).join('');
+                    const controls = slides.length > 1 ? `
+                        <button class="slider-btn prev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+                        <button class="slider-btn next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+                        <div class="video-swipe-layer" id="video-swipe-layer"></div>` : '';
+                    const thumbs = slides.length > 1 ? `<div class="thumb-strip" id="thumb-strip">${slides.map((s,i) => s.type==='photo'
+                        ? `<div class="thumb-item${i===0?' active':''}" data-idx="${i}"><img src="${s.src}" alt="${i+1}" loading="lazy"></div>`
+                        : `<div class="thumb-item thumb-video${i===0?' active':''}" data-idx="${i}"><svg width="18" height="18" viewBox="0 0 24 24" fill="white" opacity="0.85"><polygon points="5,3 19,12 5,21"/></svg></div>`
+                    ).join('')}</div>` : '';
+                    return html + controls + thumbs;
+                })()}
+                <div class="horse-photo-badge">
+                    <span class="horse-photo-badge-tag">${tlbl('disciplina', horse.disciplinaLabel)} &nbsp;·&nbsp; ${horse.tag[currentLang]}</span>
+                    <span class="horse-photo-badge-name">${horse.name}</span>
+                </div>
+            </div>
+
+            <!-- DERECHA: info -->
+            <div class="horse-info-col">
+                <a href="catalogo.html" class="back-link-mobile">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    ${l.back}
+                </a>
+                <h1 class="horse-name">${horse.name}</h1>
+                <p class="horse-sub">${tlbl('breed', horse.breed)} &nbsp;·&nbsp; ${horse.age} ${l.years} &nbsp;·&nbsp; ${horse.height}</p>
+                <span class="horse-price-badge">€33.000 – €53.000</span>
+
+                <div class="specs-grid">
+                    <div class="spec-item">
+                        <span class="spec-label">${l.spec_discipline}</span>
+                        <span class="spec-value highlight">${tlbl('disciplina', horse.disciplinaLabel)}</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">${l.spec_level}</span>
+                        <span class="spec-value">${tlbl('nivel', horse.nivelLabel)}</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">${l.spec_gender}</span>
+                        <span class="spec-value">${tlbl('genero', horse.generoLabel)}</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">${l.spec_age}</span>
+                        <span class="spec-value">${horse.age} ${l.years}</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">${l.spec_height}</span>
+                        <span class="spec-value">${horse.height}</span>
+                    </div>
+                    <div class="spec-item">
+                        <span class="spec-label">${l.spec_profile}</span>
+                        <span class="spec-value">${tlbl('perfil', horse.perfilLabel)}</span>
+                    </div>
+                </div>
+
+                ${horse.sold
+                    ? `<div class="sold-banner" style="margin-bottom:1.8rem;">${currentLang === 'es' ? 'Este caballo ya ha sido vendido' : 'This horse has been sold'}</div>`
+                    : `<a href="catalogo.html" class="btn-catalog" onclick="if(typeof fbq!=='undefined')fbq('trackCustom','SeeAllHorses',{content_name:'${horse.name}',content_ids:['${horse.id}'],content_type:'product'})">
+                    ${l.catalog_btn}
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+                </a>
+                <a href="index.html#contact-form" class="btn-contact" style="margin-bottom:1.8rem;" onclick="if(typeof fbq!=='undefined')fbq('track','Contact',{content_name:'${horse.name}',content_ids:['${horse.id}'],content_type:'product'})">
+                    ${l.contact_btn}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </a>`
+                }
+
+                ${horse.padre ? `
+                <span class="section-label" style="margin-top:0.5rem;">${l.section_pedigree}</span>
+                <div class="specs-grid" style="margin-bottom:2.5rem;">
+                    ${horse.nacimiento ? `<div class="spec-item"><span class="spec-label">${l.spec_birth}</span><span class="spec-value">${horse.nacimiento}</span></div>` : ''}
+                    ${horse.capa ? `<div class="spec-item"><span class="spec-label">${l.spec_coat}</span><span class="spec-value">${horse.capa}</span></div>` : ''}
+                    ${horse.padre ? `<div class="spec-item"><span class="spec-label">${l.spec_father}</span><span class="spec-value">${horse.padre}</span></div>` : ''}
+                    ${horse.madre ? `<div class="spec-item"><span class="spec-label">${l.spec_mother}</span><span class="spec-value">${horse.madre}</span></div>` : ''}
+                    ${horse.criador ? `<div class="spec-item"><span class="spec-label">${l.spec_breeder}</span><span class="spec-value">${horse.criador}</span></div>` : ''}
+                    ${horse.titular ? `<div class="spec-item"><span class="spec-label">${l.spec_owner}</span><span class="spec-value">${horse.titular}</span></div>` : ''}
+                    ${horse.microchip ? `<div class="spec-item" style="grid-column:1/-1;"><span class="spec-label">${l.spec_microchip}</span><span class="spec-value" style="font-size:0.8rem;letter-spacing:0.04em;">${horse.microchip}</span></div>` : ''}
+                </div>` : ''}
+
+                <span class="section-label">${l.section_desc}</span>
+                <p class="horse-desc">${horse.desc[currentLang]}</p>
+
+                <a href="catalogo.html" class="back-link">${l.back}</a>
+            </div>
+
+        </div>
+    `;
+}
+
+/* ── LIGHTBOX ── */
+let lbImages = [];
+let lbIndex = 0;
+
+function openLightbox() {
+    const slides = document.querySelectorAll('#photo-col .slide-item');
+    let photoIdx = 0;
+    for (let i = 0; i < currentSlide; i++) {
+        if (!slides[i].classList.contains('video-slide')) photoIdx++;
+    }
+    lbIndex = photoIdx;
+    updateLightbox();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+}
+function lbSlide(dir) {
+    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+    updateLightbox();
+}
+function updateLightbox() {
+    document.getElementById('lightbox-img').src = lbImages[lbIndex];
+    const multi = lbImages.length > 1;
+    document.getElementById('lightbox-counter').textContent = multi ? `${lbIndex + 1} / ${lbImages.length}` : '';
+    document.getElementById('lb-prev').style.display = multi ? 'flex' : 'none';
+    document.getElementById('lb-next').style.display = multi ? 'flex' : 'none';
+    const thumbsEl = document.getElementById('lightbox-thumbs');
+    thumbsEl.innerHTML = multi ? lbImages.map((src, i) =>
+        `<img class="lightbox-thumb${i === lbIndex ? ' active' : ''}" src="${src}" alt="">`
+    ).join('') : '';
+    thumbsEl.querySelectorAll('.lightbox-thumb').forEach((th, i) => {
+        th.addEventListener('click', e => { e.stopPropagation(); lbIndex = i; updateLightbox(); });
+    });
+}
+document.getElementById('lightbox').addEventListener('click', closeLightbox);
+document.getElementById('lightbox-img').addEventListener('click', e => e.stopPropagation());
+document.getElementById('lightbox-close').addEventListener('click', e => { e.stopPropagation(); closeLightbox(); });
+document.getElementById('lb-prev').addEventListener('click', e => { e.stopPropagation(); lbSlide(-1); });
+document.getElementById('lb-next').addEventListener('click', e => { e.stopPropagation(); lbSlide(1); });
+document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbSlide(-1);
+    if (e.key === 'ArrowRight') lbSlide(1);
+});
+
+/* ── SLIDER ── */
+let currentSlide = 0;
+
+function slidePhoto(dir) {
+    const slides = document.querySelectorAll('#photo-col .slide-item');
+    const dots = document.querySelectorAll('.slider-dot');
+    if (!slides.length) return;
+    const leaving = slides[currentSlide];
+    if (leaving.classList.contains('video-slide')) {
+        const iframe = leaving.querySelector('iframe');
+        if (iframe && iframe.src) iframe.contentWindow.postMessage(JSON.stringify({method:'pause'}), '*');
+    }
+    leaving.classList.add('hidden');
+    if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + dir + slides.length) % slides.length;
+    const arriving = slides[currentSlide];
+    arriving.classList.remove('hidden');
+    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    const col = document.getElementById('photo-col'); if (col) col.classList.toggle('video-active', arriving.classList.contains('video-slide')); document.querySelectorAll('.thumb-item').forEach((t,i) => t.classList.toggle('active', i===currentSlide)); const vsl = document.getElementById('video-swipe-layer'); if (vsl) vsl.classList.toggle('active', arriving.classList.contains('video-slide')); if (arriving.classList.contains('video-slide')) {
+        const iframe = arriving.querySelector('iframe');
+        if (iframe && !iframe.src.includes('vimeo')) { const _ap = window.innerWidth <= 860 ? '&autoplay=1&muted=1' : ''; iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479${_ap}`; }
+    }
+}
+
+function initPhotoCol() {
+    currentSlide = 0;
+    const col = document.getElementById('photo-col');
+    if (!col) return;
+
+    // Flechas: solo cambian foto
+    const prev = col.querySelector('.slider-btn.prev');
+    const next = col.querySelector('.slider-btn.next');
+    if (prev) prev.addEventListener('click', e => { e.stopPropagation(); slidePhoto(-1); });
+    if (next) next.addEventListener('click', e => { e.stopPropagation(); slidePhoto(1); });
+    col.querySelectorAll('.slider-dot').forEach((dot, i) => {
+        dot.addEventListener('click', e => { e.stopPropagation(); goToPhoto(i); });
+    });
+
+    // Touch: swipe cambia foto, tap abre lightbox
+    let txStart = 0, tyStart = 0, didSwipe = false;
+    col.addEventListener('touchstart', e => {
+        txStart = e.touches[0].clientX;
+        tyStart = e.touches[0].clientY;
+        didSwipe = false;
+    }, { passive: true });
+    col.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - txStart;
+        const dy = e.changedTouches[0].clientY - tyStart;
+        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+            didSwipe = true;
+            slidePhoto(dx < 0 ? 1 : -1);
+        }
+    });
+
+    // Clic en la foto: abre lightbox (ignora swipe y slide de video)
+    col.addEventListener('click', e => {
+        if (didSwipe) { didSwipe = false; return; }
+        const slides = document.querySelectorAll('#photo-col .slide-item');
+        if (slides[currentSlide] && slides[currentSlide].classList.contains('video-slide')) return;
+        openLightbox();
+    });
+
+    // Click en miniaturas
+    col.querySelectorAll('.thumb-item').forEach((thumb, i) => {
+        thumb.addEventListener('click', e => { e.stopPropagation(); goToPhoto(i); });
+    });
+
+    // Swipe layer sobre el video para permitir navegación horizontal
+    const swipeLayer = document.getElementById('video-swipe-layer');
+    if (swipeLayer) {
+        let slStart = 0, slY = 0;
+        swipeLayer.addEventListener('touchstart', e => { slStart = e.touches[0].clientX; slY = e.touches[0].clientY; }, { passive: true });
+        swipeLayer.addEventListener('touchend', e => {
+            const dx = e.changedTouches[0].clientX - slStart;
+            const dy = e.changedTouches[0].clientY - slY;
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) slidePhoto(dx < 0 ? 1 : -1);
+        });
+        swipeLayer.addEventListener('click', e => { e.stopPropagation(); });
+    }
+}
+
+function goToPhoto(i) {
+    const slides = document.querySelectorAll('#photo-col .slide-item');
+    const dots = document.querySelectorAll('.slider-dot');
+    if (!slides.length || i === currentSlide) return;
+    const leaving = slides[currentSlide];
+    if (leaving.classList.contains('video-slide')) {
+        const iframe = leaving.querySelector('iframe');
+        if (iframe && iframe.src) iframe.contentWindow.postMessage(JSON.stringify({method:'pause'}), '*');
+    }
+    leaving.classList.add('hidden');
+    if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+    currentSlide = i;
+    const arriving = slides[currentSlide];
+    arriving.classList.remove('hidden');
+    if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+    const col = document.getElementById('photo-col'); if (col) col.classList.toggle('video-active', arriving.classList.contains('video-slide')); document.querySelectorAll('.thumb-item').forEach((t,i) => t.classList.toggle('active', i===currentSlide)); const vsl = document.getElementById('video-swipe-layer'); if (vsl) vsl.classList.toggle('active', arriving.classList.contains('video-slide')); if (arriving.classList.contains('video-slide')) {
+        const iframe = arriving.querySelector('iframe');
+        if (iframe && !iframe.src.includes('vimeo')) { const _ap = window.innerWidth <= 860 ? '&autoplay=1&muted=1' : ''; iframe.src = `https://player.vimeo.com/video/${arriving.dataset.vimeo}?badge=0&autopause=0&player_id=0&app_id=58479${_ap}`; }
+    }
+}
+
+/* ── INIT ── */
+document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+});
+
+function getLang() { try { return localStorage.getItem('irh-lang') || 'en'; } catch(e) { return 'en'; } }
+currentLang = getLang();
+render();
+const _id = getParam('id');
+const _horse = horses.find(h => h.id === _id);
+if (_horse) lbImages = (_horse.images && _horse.images.length > 1) ? _horse.images : [_horse.image];
+initPhotoCol();
+setLang(currentLang);
+</script>
+</body>
+</html>
