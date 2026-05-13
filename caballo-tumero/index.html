@@ -734,7 +734,7 @@ function render() {
                     const allImgs = horse.images && horse.images.length > 1 ? horse.images : [horse.image];
                     const mc = ['tevora','tumero','testina'].includes(horse.id) ? ' mirror' : '';
                     const slides = [{ type:'photo', src:allImgs[0] }];
-                    if (horse.vimeoId) slides.push({ type:'video', vid:horse.vimeoId });
+                    (horse.vimeoIds || (horse.vimeoId ? [horse.vimeoId] : [])).forEach(vid => slides.push({ type:'video', vid }));
                     allImgs.slice(1).forEach(src => slides.push({ type:'photo', src }));
                     const html = slides.map((s,i) => s.type==='photo'
                         ? `<img src="${s.src}" alt="${horse.name} ${i+1}" class="slide-item${i>0?' hidden':''}${mc}">`
