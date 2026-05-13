@@ -244,9 +244,12 @@
         .horse-photo-col.video-active .horse-photo-badge { opacity: 0; pointer-events: none; transition: opacity 0.3s; }
         .horse-photo-col .video-slide iframe {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 52px;
             width: 100%;
-            height: 100%;
+            height: calc(100% - 52px);
             border: none;
         }
         .horse-photo-badge {
