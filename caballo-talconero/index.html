@@ -297,7 +297,17 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--stone-light);
-            margin-bottom: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .horse-price-badge {
+            display: inline-block;
+            background: #302E31;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            padding: 0.3rem 0.85rem;
+            margin-bottom: 1.5rem;
         }
 
         /* specs */
@@ -754,6 +764,7 @@ function render() {
                 </a>
                 <h1 class="horse-name">${horse.name}</h1>
                 <p class="horse-sub">${tlbl('breed', horse.breed)} &nbsp;·&nbsp; ${horse.age} ${l.years} &nbsp;·&nbsp; ${horse.height}</p>
+                ${horse.priceMin ? `<span class="horse-price-badge">€${horse.priceMin.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')} – €${horse.priceMax.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')}</span>` : ''}
 
                 <div class="specs-grid">
                     <div class="spec-item">

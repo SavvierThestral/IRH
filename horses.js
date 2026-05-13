@@ -41,6 +41,8 @@ const horses = [
             es: "Tanto es un semental Pura Raza Española de capa torda nacido en 2020, con Nivel 4 de Doma Clásica confirmado. Entero. Placas radiológicas correctas. San Pedro del Pinatar, Murcia.",
             en: "Tanto is a grey PRE stallion born in 2020, with confirmed Level 4 Classical Dressage. Entire. Correct radiological plates. San Pedro del Pinatar, Murcia."
         },
+        priceMin: 33000,
+        priceMax: 53000,
         tag: {
             es: "Nivel 4 · Doma",
             en: "Level 4 · Dressage"
@@ -78,6 +80,8 @@ const horses = [
             es: "Timeño es un semental Pura Raza Española de capa castaña nacido en 2018. Su talla excepcional de 1.74 m lo convierte en uno de los ejemplares más imponentes del catálogo. Con Nivel 4 y Passage confirmados. Entero. Placas radiológicas correctas. Piroplasmosis negativa. San Pedro del Pinatar, Murcia.",
             en: "Timeño is a chestnut PRE stallion born in 2018. His exceptional height of 1.74 m makes him one of the most impressive horses in the catalogue. Confirmed Level 4 with Passage. Entire. Correct radiological plates. Negative piroplasmosis. San Pedro del Pinatar, Murcia."
         },
+        priceMin: 35000,
+        priceMax: 55000,
         tag: {
             es: "Nivel 4 · Passage",
             en: "Level 4 · Passage"
@@ -114,6 +118,8 @@ const horses = [
             es: "Tumero es un semental Pura Raza Española de capa torda nacido en 2019. Con tan solo 7 años ha alcanzado el Nivel 7 de Doma Clásica y el nivel San Jorge. Entero. Gran motor y presencia en la pista. Placas radiológicas en perfecto estado. Piroplasmosis negativa. San Pedro del Pinatar, Murcia.",
             en: "Tumero is a grey PRE stallion born in 2019. At just 7 years old he has reached Level 7 of Classical Dressage and Grand Prix level. Entire. Great engine and ring presence. Perfect radiological plates. Negative piroplasmosis. San Pedro del Pinatar, Murcia."
         },
+        priceMin: 60000,
+        priceMax: 80000,
         tag: {
             es: "San Jorge · Nivel 7",
             en: "Grand Prix · Level 7"
@@ -149,6 +155,8 @@ const horses = [
             es: "Tevora es una yegua Pura Raza Española de capa torda nacida en 2021, con Nivel 2 de Doma Clásica confirmado. Ejemplar joven con gran potencial de desarrollo, temperamento dócil y movimientos naturales propios de la raza. Placas radiológicas en perfecto estado. Piroplasmosis negativa. La opción ideal para un jinete amateur que quiera progresar en la doma clásica. San Pedro del Pinatar, Murcia.",
             en: "Tevora is a grey PRE mare born in 2021, with confirmed Level 2 Classical Dressage. A young horse with great development potential, a gentle temperament and natural movements typical of the breed. Perfect radiological plates. Negative piroplasmosis. The ideal choice for an amateur rider looking to progress in classical dressage. San Pedro del Pinatar, Murcia."
         },
+        priceMin: 12000,
+        priceMax: 32000,
         tag: {
             es: "Nivel 2 · Doma",
             en: "Level 2 · Dressage"
@@ -186,6 +194,8 @@ const horses = [
             es: "Talconero es un macho Pura Raza Española castrado de capa castaña nacido en 2015. El ejemplar más experimentado del catálogo: Nivel San Jorge completo con Piaffe y Passage confirmados. Equilibrado y de fácil manejo. Placas radiológicas correctas. Piroplasmosis negativa. San Pedro del Pinatar, Murcia.",
             en: "Talconero is a chestnut PRE gelding born in 2015. The most experienced horse in the catalogue: full Grand Prix level with confirmed Piaffe and Passage. Balanced and easy to handle. Correct radiological plates. Negative piroplasmosis. San Pedro del Pinatar, Murcia."
         },
+        priceMin: 30000,
+        priceMax: 50000,
         tag: {
             es: "San Jorge · Piaffe · Passage",
             en: "Grand Prix · Piaffe · Passage"
@@ -222,6 +232,8 @@ const horses = [
             es: "Tsweet es una yegua Pony de capa Alazán nacida en 2013, con Nivel II-III de Doma Clásica confirmado. 13 años de edad, talla 1.48 m. San Pedro del Pinatar, Murcia.",
             en: "Tsweet is a chestnut Pony mare born in 2013, with confirmed Level II-III Classical Dressage. 13 years old, 1.48 m height. San Pedro del Pinatar, Murcia."
         },
+        priceMin: 10000,
+        priceMax: 20000,
         tag: {
             es: "Nivel II-III · Doma",
             en: "Level II-III · Dressage"
