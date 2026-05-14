@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRH · Iberian Riding Horses | Corretaje Ecuestre de Élite</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="canonical" href="https://www.iberianridinghorses.com/">
+    <link rel="preconnect" href="https://link.ltlexpansion.com">
+    <link rel="dns-prefetch" href="https://link.ltlexpansion.com">
+    <meta name="description" content="Corretaje ecuestre de élite en caballos ibéricos de alta competición. Conectamos jinetes exigentes con caballos excepcionales. Doma clásica, Murcia, España.">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.iberianridinghorses.com/">
+    <meta property="og:title" content="IRH - Iberian Riding Horses | Corretaje Ecuestre de Élite">
+    <meta property="og:description" content="Corretaje ecuestre de élite especializado en caballos ibéricos de alta competición. Conectamos jinetes exigentes con caballos excepcionales.">
+    <meta property="og:image" content="https://www.iberianridinghorses.com/Gemini_Generated_Image_w12ynzw12ynzw12y1.png">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="IRH - Iberian Riding Horses">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@iberianridinghorses">
+    <meta name="twitter:creator" content="@iberianridinghorses">
+    <meta name="twitter:title" content="IRH - Iberian Riding Horses | Corretaje Ecuestre de Élite">
+    <meta name="twitter:description" content="Corretaje ecuestre de élite en caballos ibéricos de alta competición. Murcia, España.">
+    <meta name="twitter:image" content="https://www.iberianridinghorses.com/Gemini_Generated_Image_w12ynzw12ynzw12y1.png">
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "IRH - Iberian Riding Horses",
+      "description": "Corretaje ecuestre de élite especializado en caballos ibéricos de alta competición en Murcia, España.",
+      "url": "https://www.iberianridinghorses.com",
+      "logo": "https://www.iberianridinghorses.com/favicon.svg",
+      "image": "https://www.iberianridinghorses.com/Gemini_Generated_Image_w12ynzw12ynzw12y1.png",
+      "telephone": "+34609656969",
+      "email": "jorgelotacon@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Finca Lo Tacon s/n",
+        "addressLocality": "San Pedro del Pinatar",
+        "postalCode": "30740",
+        "addressRegion": "Murcia",
+        "addressCountry": "ES"
+      },
+      "areaServed": ["ES", "EU"],
+      "knowsLanguage": ["es", "en"]
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://link.ltlexpansion.com">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/playfairdisplay/v40/nuFiD-vYSZviVYUb_rj3ij__anPXDTzYgEM86xQ.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/jost/v20/92zatBhPNqw73oTd4jQmfxI.woff2">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap">
+    <link rel="preload" as="image" href="hero-main.webp" type="image/webp" fetchpriority="high">
+    <style>
+        :root {
+            --ivory: #F8F5EE;
+            --warm-white: #FDFBF7;
+            --parchment: #EDE8DC;
+            --gold: #B8935A;
+            --gold-light: #D4AA78;
+            --gold-pale: #F0E4CA;
+            --gold-bg: #7A5C2E;
+            --ink: #1C1B18;
+            --charcoal: #2E2D29;
+            --stone: #6B6860;
+            --stone-light: #A09D96;
+            --moss: #4A5240;
+            --border: rgba(28,27,24,0.12);
+            --border-strong: rgba(28,27,24,0.22);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; font-size: 16px; scroll-padding-top: 80px; }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--warm-white);
+            color: var(--ink);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .serif { font-family: 'Playfair Display', serif; }
+
+        /* ─── NAVBAR ─── */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 0 3rem;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.4s, border-color 0.4s;
+        }
+        .nav.scrolled {
+            background: rgba(253,251,247,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            color: var(--warm-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            transition: color 0.4s;
+        }
+        .nav.scrolled .nav-logo { color: var(--ink); }
+        .nav-logo svg { width: 28px; height: 28px; transition: stroke 0.4s; }
+        .nav-logo svg path { stroke: currentColor; }
+        .nav-logo-short { display: none; font-family: 'Playfair Display', serif; }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav.scrolled .nav-links a { color: var(--stone); }
+        .nav-links a:hover { color: var(--gold-light) !important; }
+        .nav-cta {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #E8721A !important;
+            background: white;
+            border: 1px solid #E8721A;
+            padding: 0.55rem 1.4rem;
+            text-decoration: none;
+            transition: background 0.3s, color 0.3s !important;
+        }
+        .nav-cta:hover { background: #E8721A !important; border-color: #E8721A !important; color: white !important; }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: sticky;
+            top: 0;
+            z-index: 0;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        /* Full-bleed background image */
+        .hero-left { display: none; }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+        }
+        /* Dark gradient: solid black on left (where text is) fading to transparent on right */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to right,
+                    rgba(8,6,4,0.92) 0%,
+                    rgba(8,6,4,0.70) 38%,
+                    rgba(8,6,4,0.15) 72%,
+                    rgba(8,6,4,0.0) 100%
+                ),
+                linear-gradient(
+                    to top,
+                    rgba(8,6,4,0.75) 0%,
+                    transparent 50%
+                );
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 120px 4rem 7rem 8%;
+            max-width: 860px;
+        }
+        .hero-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 1.5rem;
+        }
+        .hero-title {
+            font-size: clamp(2rem, 3.2vw, 3.6rem);
+            font-weight: 400;
+            line-height: 1.12;
+            color: var(--warm-white);
+            margin-bottom: 1.8rem;
+        }
+        .hero-title em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(253,251,247,0.7);
+            max-width: 480px;
+            margin-bottom: 2.8rem;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #E8721A;
+            color: white;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-primary:hover { background: #D06010; transform: translateY(-1px); }
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: transparent;
+            color: rgba(253,251,247,0.85);
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 0.9rem 0;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(253,251,247,0.35);
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .btn-ghost:hover { color: white; border-color: white; }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .hero-scroll span {
+            font-size: 0.65rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: rgba(253,251,247,0.5);
+        }
+        .scroll-line {
+            width: 1px;
+            height: 48px;
+            background: rgba(253,251,247,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gold-light);
+            animation: scrollLine 2s 2s ease-in-out infinite;
+        }
+        @keyframes scrollLine {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        /* ─── SECTION SHARED ─── */
+        .section {
+            position: relative;
+            z-index: 1;
+            background: var(--warm-white);
+            padding: 5rem 3rem;
+        }
+        .section-eyebrow {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.15;
+            color: var(--ink);
+            margin-bottom: 1.2rem;
+        }
+        .section-body {
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.85;
+            color: var(--stone);
+            max-width: 540px;
+        }
+        .max-w { max-width: 1200px; margin: 0 auto; }
+
+        /* ─── HORSES SECTION ─── */
+        .horses-section {
+            background: var(--warm-white);
+            box-shadow: 0 -8px 40px rgba(0,0,0,0.18);
+        }
+        .horses-header { text-align: center; margin-bottom: 3.5rem; }
+        .horses-header .section-body { margin: 0 auto; }
+
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            padding: 0.55rem 1.4rem;
+            border: 1px solid var(--border-strong);
+            background: transparent;
+            color: var(--stone);
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        .filter-btn:hover { border-color: var(--gold); color: var(--gold); }
+        .filter-btn.active {
+            background: var(--ink);
+            border-color: var(--ink);
+            color: var(--warm-white);
+        }
+
+        /* Horse Grid */
+        .horse-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+        .horse-card {
+            background: var(--warm-white);
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: cardIn 0.6s ease-out forwards;
+        }
+        @keyframes cardIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .horse-card:hover .horse-img { transform: scale(1.06); }
+        .horse-card:hover .horse-img.mirror { transform: scaleX(-1) scale(1.06); }
+        .horse-card:hover .card-overlay { opacity: 1; }
+        .horse-img-wrap {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+        .horse-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .card-tags {
+            position: absolute;
+            bottom: 0.8rem;
+            left: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.3rem;
+        }
+        .card-discipline {
+            font-size: 0.52rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: var(--gold-bg);
+            color: white;
+            padding: 0.2rem 0.55rem;
+        }
+        .card-gender {
+            font-size: 0.52rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background: rgba(28,27,24,0.75);
+            color: rgba(253,251,247,0.9);
+            padding: 0.2rem 0.55rem;
+            backdrop-filter: blur(4px);
+        }
+        .horse-img.mirror { transform: scaleX(-1); }
+        .card-sold-badge {
+            position: absolute;
+            top: 1rem; right: 1rem;
+            background: #1C1B18;
+            color: #D4AA78;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.75rem;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .card-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(28,27,24,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .card-inquire {
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: white;
+            border: 1px solid white;
+            padding: 0.7rem 1.6rem;
+            cursor: pointer;
+            background: transparent;
+            transition: background 0.25s, color 0.25s;
+        }
+        .card-inquire:hover { background: white; color: var(--ink); }
+        .card-price-badge {
+            position: absolute;
+            top: 0.8rem;
+            right: 0.8rem;
+            background: #302E31;
+            color: white;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            padding: 0.22rem 0.65rem;
+            white-space: nowrap;
+            z-index: 4;
+            pointer-events: none;
+        }
+        .card-body {
+            padding: 1.5rem 1.8rem 1.8rem;
+            border: 1px solid var(--border);
+            border-top: none;
+        }
+        .card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 0.3rem;
+        }
+        .card-meta {
+            font-size: 0.73rem;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            color: var(--stone-light);
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+        }
+        .card-desc {
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.75;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: var(--stone);
+        }
+        .card-footer {
+            margin-top: 1.2rem;
+            padding-top: 1.1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-readmore {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 0.8rem;
+            padding: 0.65rem 1.5rem;
+            min-height: 44px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: white;
+            background: #E8721A;
+            border: 1px solid #E8721A;
+            text-decoration: none;
+            transition: background 0.25s, color 0.25s;
+        }
+        .card-readmore:hover { background: #D06010; border-color: #D06010; color: white; }
+        .card-tag {
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        .card-wishlist {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--stone-light);
+            transition: color 0.25s;
+            display: flex;
+            align-items: center;
+        }
+        .card-wishlist:hover { color: var(--gold); }
+
+        /* ─── SERVICES ─── */
+        .services-section { background: var(--ivory); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        .services-list { margin-top: 3rem; display: flex; flex-direction: column; gap: 2rem; }
+        .service-item { display: flex; gap: 1.4rem; }
+        .service-icon {
+            width: 46px;
+            height: 46px;
+            background: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .service-icon svg { width: 20px; height: 20px; stroke: var(--gold-light); fill: none; stroke-width: 1.5; }
+        .service-item h3 {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+        .service-item p {
+            font-size: 0.88rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--stone);
+        }
+        .services-image-wrap { position: relative; }
+        .services-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+        }
+        .services-quote {
+            position: absolute;
+            bottom: -2rem;
+            left: -2rem;
+            background: var(--ink);
+            padding: 1.8rem 2rem;
+            max-width: 280px;
+        }
+        .services-quote p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1rem;
+            line-height: 1.65;
+            color: rgba(253,251,247,0.85);
+            margin-bottom: 0.8rem;
+        }
+        .services-quote cite {
+            font-size: 0.68rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        /* ─── TESTIMONIAL ─── */
+        .testimonial-section {
+            position: relative;
+            padding: 8rem 3rem;
+            overflow: hidden;
+        }
+        .testimonial-bg {
+            position: absolute;
+            inset: 0;
+        }
+        .testimonial-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .testimonial-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(28,27,24,0.88);
+        }
+        .testimonial-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            line-height: 0.5;
+            color: var(--gold);
+            opacity: 0.4;
+            margin-bottom: 2rem;
+            display: block;
+        }
+        .testimonial-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.55;
+            color: rgba(253,251,247,0.92);
+            margin-bottom: 2.5rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+        .author-info { text-align: left; }
+        .author-name {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 0.2rem;
+        }
+        .author-title {
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* ─── ABOUT ─── */
+        .about-section { background: var(--warm-white); }
+        .about-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .about-image-col { display: none; }
+        .about-text .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); white-space: nowrap; }
+        .about-text p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--stone);
+            margin-bottom: 1.2rem;
+        }
+        .credentials {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            justify-content: center;
+        }
+        .cred {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .cred-org {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--ink);
+        }
+        .cred-label {
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--stone-light);
+        }
+        .cred-divider { width: 1px; background: var(--border); align-self: stretch; }
+
+        /* ─── CONTACT ─── */
+        .contact-section { background: var(--ivory); }
+        .contact-inner { max-width: 700px; margin: 0 auto; }
+        .contact-header { text-align: center; margin-bottom: 2rem; }
+        .contact-form { background: white; padding: 3rem; position: relative; min-height: 465px; }
+        #form-skeleton { position:absolute; inset:0; background:white; padding:2rem 2.5rem; z-index:2; transition:opacity 0.4s; pointer-events:none; }
+        .sk-line { height:11px; border-radius:3px; background:linear-gradient(90deg,#f0ede6 25%,#e5e0d4 50%,#f0ede6 75%); background-size:200% 100%; animation:sk-shimmer 1.4s infinite; margin-bottom:1rem; }
+        .sk-line.half { width:42%; }
+        .sk-box { height:44px; border-radius:3px; background:linear-gradient(90deg,#f0ede6 25%,#e5e0d4 50%,#f0ede6 75%); background-size:200% 100%; animation:sk-shimmer 1.4s infinite; margin-bottom:1.2rem; }
+        .sk-btn { height:48px; border-radius:3px; background:linear-gradient(90deg,rgba(232,114,26,.2) 25%,rgba(232,114,26,.38) 50%,rgba(232,114,26,.2) 75%); background-size:200% 100%; animation:sk-shimmer 1.4s infinite; margin-top:0.4rem; }
+        @keyframes sk-shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group:last-child { margin-bottom: 0; }
+        label {
+            display: block;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--stone);
+            margin-bottom: 0.5rem;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-strong);
+            background: var(--warm-white);
+            font-family: 'Jost', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: var(--ink);
+            outline: none;
+            transition: border-color 0.25s;
+            appearance: none;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--gold);
+        }
+        textarea { resize: vertical; min-height: 120px; }
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--ink);
+            color: white;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            margin-top: 1.5rem;
+        }
+        .btn-submit:hover { background: var(--charcoal); }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .contact-info-item p { font-size: 0.88rem; font-weight: 400; color: var(--ink); margin-top: 0.4rem; }
+        .contact-info-item span { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--stone-light); }
+        .info-icon { color: var(--gold); margin-bottom: 0.6rem; }
+
+        /* ─── FOOTER ─── */
+        footer {
+            position: relative;
+            z-index: 1;
+            background: var(--ink);
+            color: rgba(253,251,247,0.6);
+            padding: 4rem 3rem 2.5rem;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .footer-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--warm-white);
+            margin-bottom: 0.8rem;
+        }
+        .footer-tagline {
+            font-size: 0.85rem;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 280px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-social { display: flex; gap: 0.8rem; }
+        .social-link {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: border-color 0.25s, color 0.25s;
+        }
+        .social-link:hover { border-color: var(--gold); color: var(--gold); }
+        .social-link svg { width: 16px; height: 16px; }
+        .footer-col h3, .footer-col h4, .footer-grid div h3, .footer-grid div h4 {
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .footer-links a {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba(253,251,247,0.55);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+        .footer-links a:hover { color: var(--warm-white); }
+        .footer-legal-inline { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+        .footer-legal-inline a { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+        .footer-legal-inline a:hover { color: var(--warm-white); }
+        .footer-sep { color: rgba(255,255,255,0.25); font-size: 0.8rem; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            font-weight: 300;
+        }
+
+        /* ─── NAV RIGHT GROUP ─── */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        /* ─── LANG SWITCHER ─── */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            border: 1px solid rgba(255,255,255,0.35);
+            overflow: hidden;
+            transition: border-color 0.4s;
+        }
+        .nav.scrolled .lang-switcher { border-color: var(--border-strong); }
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.3rem 0.6rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background 0.25s, opacity 0.25s;
+            opacity: 0.55;
+            line-height: 1;
+        }
+        .lang-btn svg { display: block; border-radius: 2px; }
+        .nav.scrolled .lang-btn { opacity: 0.55; }
+        .lang-btn.active { background: rgba(184,147,90,0.25); opacity: 1; }
+        .lang-btn:hover:not(.active) { opacity: 0.85; }
+        .nav.scrolled .lang-btn.active { background: rgba(184,147,90,0.18); }
+
+        /* ─── MOBILE MENU ─── */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: white;
+            transition: background 0.4s;
+        }
+        .nav.scrolled .hamburger span { background: var(--ink); }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            background: var(--ink);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: rgba(253,251,247,0.8);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+        .mobile-menu a:hover { color: var(--gold-light); }
+        .mobile-close {
+            position: absolute;
+            top: 1.8rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+
+        /* ─── REVEAL ANIMATION ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1024px) {
+            .horse-grid { grid-template-columns: repeat(2, 1fr); }
+            .services-grid, .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .services-quote { position: static; max-width: 100%; margin-top: 1.5rem; }
+        }
+        @media (max-width: 1100px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-logo-text { display: none; }
+            .nav-logo-short { display: inline; }
+        }
+        @media (max-width: 768px) {
+            html { scroll-padding-top: 64px; }
+            .nav { padding: 0 1.2rem; height: 64px; }
+            .section { padding: 3rem 1.2rem; }
+            .stats { padding: 2.5rem 1.2rem; }
+            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .horse-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .contact-info { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+            .credentials { flex-wrap: wrap; }
+            .about-image-accent { display: none; }
+            .hero-content { padding: 90px 1.2rem 5rem; max-width: 100%; }
+            .hero-scroll { left: 50%; transform: translateX(-50%); }
+            .hero-bg img { object-position: 30% center; }
+            .nav-logo-text { display: none; }
+            .nav-logo-short { display: inline; }
+            .hamburger { display: flex; }
+            .hero-title { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+            .btn-primary, .btn-ghost { padding: 1rem 1.6rem; min-height: 48px; }
+            .filter-btn { min-height: 44px; padding: 0.6rem 1rem; }
+            .nav-cta { padding: 0.7rem 1rem; min-height: 44px; }
+        }
+        @media (max-width: 480px) {
+            .hero { min-height: 600px; }
+            .hero-content { padding: 0 1rem; }
+            .hero-title { font-size: clamp(2rem, 10vw, 2.8rem); }
+            .hero-subtitle { font-size: 0.9rem; }
+            .section { padding: 2.5rem 1rem; }
+            .contact-info { grid-template-columns: 1fr; }
+            .footer-grid { padding-bottom: 2rem; }
+            .credentials { gap: 1rem; }
+        }
+    </style>
+    <script>
+    window.addEventListener('message', function(e) {
+        if (!e.data) return;
+        var d = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
+        console.log('[IRH Pixel] postMessage recibido:', d);
+        var keywords = ['submit', 'success', 'complete', 'sent', 'thank', 'gracias', 'enviado'];
+        var matched = keywords.some(function(k) { return d.toLowerCase().indexOf(k) !== -1; });
+        if (matched) {
+            if (typeof fbq !== 'undefined') fbq('track', 'Lead');
+            console.log('[IRH Pixel] Evento Lead disparado (form enviado)');
+        }
+    });
+    </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="navbar">
+    <a href="/" class="nav-logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 26c0-6 4-10 10-12 3-1 6-3 7-6" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M16 14c-1-3 0-7 3-9" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M19 5c1 0 3 1 4 3" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M6 26l2-4" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M10 26l1-4" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-logo-text">IRH - Iberian Riding Horses</span>
+        <span class="nav-logo-short">IRH</span>
+    </a>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" data-i18n="nav_home">Home</a></li>
+            <li><a href="/catalogo/" style="color:var(--gold-light) !important; font-weight:600;" data-i18n="nav_catalog">Catálogo</a></li>
+            <li><a href="#about" data-i18n="nav_about">About</a></li>
+            <li><a href="#contact" class="nav-cta" data-i18n="nav_contact" onclick="if(typeof fbq!=='undefined')fbq('track','Contact',{source:'nav'})">Contact</a></li>
+        </ul>
+        <div class="lang-switcher">
+            <button class="lang-btn" id="btn-es" onclick="setLanguage('es')" title="Español">
+                <svg width="22" height="15" viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="15" fill="#c60b1e"/><rect y="3.75" width="22" height="7.5" fill="#ffc400"/></svg>
+            </button>
+            <button class="lang-btn active" id="btn-en" onclick="setLanguage('en')" title="English">
+                <svg width="22" height="15" viewBox="0 0 22 15" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="15" fill="#012169"/><path d="M0,0 L22,15 M22,0 L0,15" stroke="white" stroke-width="3"/><path d="M0,0 L22,15 M22,0 L0,15" stroke="#C8102E" stroke-width="1.8"/><path d="M11,0 V15 M0,7.5 H22" stroke="white" stroke-width="5"/><path d="M11,0 V15 M0,7.5 H22" stroke="#C8102E" stroke-width="3"/></svg>
+            </button>
+        </div>
+        <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-close" onclick="toggleMenu()">✕</button>
+    <a href="#" onclick="toggleMenu();window.scrollTo({top:0,behavior:'smooth'});return false;" data-i18n="nav_home">Home</a>
+    <a href="/catalogo/" onclick="toggleMenu()" data-i18n="nav_catalog">Catálogo</a>
+    <a href="#about" onclick="toggleMenu()" data-i18n="nav_about">About</a>
+    <a href="#contact" onclick="toggleMenu();if(typeof fbq!=='undefined')fbq('track','Contact',{source:'nav_mobile'})" data-i18n="nav_contact">Contact</a>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <p class="hero-eyebrow" data-i18n="hero_eyebrow">Corretaje Ecuestre de Élite</p>
+        <h1 class="hero-title" data-i18n="hero_title">
+            Conectando Jinetes<br>
+            <em>Exigentes</em> con Caballos<br>
+            Excepcionales
+        </h1>
+        <p class="hero-subtitle" data-i18n="hero_subtitle">
+            Especializados en unir caballos de deporte de élite con jinetes competitivos y entusiastas exigentes. Expertos en doma clásica.
+        </p>
+        <div class="hero-actions">
+            <a href="/catalogo/" class="btn-primary">
+                <span>Find your next PRE in our catalogue ⬇️</span>
+            </a>
+            <a href="#contact-form" class="btn-ghost" onclick="if(typeof fbq!=='undefined')fbq('track','Contact',{source:'hero'})" >
+                <span data-i18n="hero_btn_consult">Schedule Consultation</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+    <div class="hero-bg">
+        <picture>
+            <source srcset="hero-main.webp" type="image/webp">
+            <img src="Gemini_Generated_Image_w12ynzw12ynzw12y1.png" alt="Caballos ibéricos" fetchpriority="high" decoding="async">
+        </picture>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-scroll">
+        <span data-i18n="hero_scroll">Deslizar</span>
+        <div class="scroll-line"></div>
+    </div>
+</section>
+
+
+<!-- HORSES -->
+<section class="horses-section section" id="horses">
+    <div class="max-w">
+        <div class="horses-header reveal">
+            <span class="section-eyebrow" data-i18n="horses_eyebrow">Current Selection</span>
+            <h2 class="section-title" data-i18n="horses_title">Available Horses</h2>
+            <p class="section-body" data-i18n="horses_body">Each horse has been carefully evaluated for temperament, training, and competition potential. All horses are vetted and available for trial.</p>
+        </div>
+
+
+        <div class="horse-grid" id="horse-grid"></div>
+
+        <div style="text-align:center; margin-top:3.5rem;" class="reveal">
+            <a href="/catalogo/" class="btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem;">
+                <span data-i18n="catalog_btn">See all Horses</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- ABOUT -->
+<section class="about-section section" id="about">
+    <div class="max-w">
+        <div class="about-grid">
+            <div class="about-image-col reveal">
+                <picture>
+                    <source srcset="horse-about.webp" type="image/webp">
+                    <img src="horse-cancer-800x560-l.jpg" alt="Experto ecuestre con caballo ibérico en Murcia" class="about-image-main">
+                </picture>
+                <img src="https://images.unsplash.com/photo-1598974357801-cbca100e65d3?auto=format&fit=crop&w=400&q=80" alt="Caballo ibérico de doma clásica, detalle" class="about-image-accent">
+            </div>
+            <div class="about-text reveal" style="transition-delay:0.15s">
+                <span class="section-eyebrow" data-i18n="about_eyebrow">About Us</span>
+                <h2 class="section-title" data-i18n="about_title">Decades of Equine Expertise</h2>
+                <p data-i18n="about_p1">Founded by professional riders and trainers, we bridge the gap between exceptional horses and ambitious riders. We understand that buying a horse is more than a transaction — it's the beginning of a partnership.</p>
+                <p data-i18n="about_p2">Our selective approach means we only represent horses we believe in. Every prospect undergoes rigorous evaluation for soundness, temperament, and training level. We specialize in competition prospects from amateur-friendly to Grand Prix level.</p>
+                <p data-i18n="about_p3">With connections across the United States, Canada, and Europe, we access inventory unavailable to the general public. Our reputation depends on successful matches, not quick sales.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section section" id="contact">
+    <div class="max-w">
+        <div class="contact-inner">
+            <div class="contact-header reveal">
+                <span class="section-eyebrow" data-i18n="contact_eyebrow">Get Started</span>
+                <h2 class="section-title" data-i18n="contact_title">Begin Your Search</h2>
+                <p class="section-body" style="margin:0 auto;" data-i18n="contact_body">Tell us about your riding goals, experience, and preferences. We'll curate a selection matched specifically to your needs.</p>
+            </div>
+            <div class="contact-form reveal" id="contact-form" style="transition-delay:0.1s">
+                <div id="form-skeleton">
+                    <div class="sk-line half"></div>
+                    <div class="sk-box"></div>
+                    <div class="sk-line half"></div>
+                    <div class="sk-box"></div>
+                    <div class="sk-line half"></div>
+                    <div class="sk-box"></div>
+                    <div class="sk-line half"></div>
+                    <div class="sk-box"></div>
+                    <div class="sk-btn"></div>
+                </div>
+                <iframe
+                    data-src="https://link.ltlexpansion.com/widget/form/f9r5ZX6uBpSmdlwWezVI"
+                    style="width:100%;height:100%;border:none;border-radius:3px"
+                    id="inline-f9r5ZX6uBpSmdlwWezVI"
+                    data-layout="{'id':'INLINE'}"
+                    data-trigger-type="alwaysShow"
+                    data-trigger-value=""
+                    data-activation-type="alwaysActivated"
+                    data-activation-value=""
+                    data-deactivation-type="neverDeactivate"
+                    data-deactivation-value=""
+                    data-form-name="Form web"
+                    data-height="465"
+                    data-layout-iframe-id="inline-f9r5ZX6uBpSmdlwWezVI"
+                    data-form-id="f9r5ZX6uBpSmdlwWezVI"
+                    title="Form web">
+                </iframe>
+                <script>
+                (function() {
+                    var el = document.getElementById('contact-form');
+                    var loaded = false;
+                    var obs;
+                    function loadForm() {
+                        if (loaded) return;
+                        loaded = true;
+                        var iframe = document.getElementById('inline-f9r5ZX6uBpSmdlwWezVI');
+                        var sk = document.getElementById('form-skeleton');
+                        if (iframe) {
+                            iframe.src = iframe.dataset.src;
+                            iframe.addEventListener('load', function() {
+                                if (sk) { sk.style.opacity='0'; setTimeout(function(){ sk.style.display='none'; },400); }
+                            }, { once: true });
+                        }
+                        var s = document.createElement('script');
+                        s.src = 'https://link.ltlexpansion.com/js/form_embed.js';
+                        document.body.appendChild(s);
+                        if (obs) obs.disconnect();
+                    }
+                    if (window.location.hash === '#contact-form') { loadForm(); return; }
+                    obs = new IntersectionObserver(function(entries) {
+                        if (entries[0].isIntersecting) loadForm();
+                    }, { rootMargin: '200px' });
+                    obs.observe(el);
+                })();
+                </script>
+            </div>
+            <div class="contact-info reveal" style="transition-delay:0.2s">
+                <div class="contact-info-item">
+                    <div class="info-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <p>Finca Lo Tacon s/n, San Pedro del Pinatar 30740 (Murcia)</p>
+                    <span data-i18n="info_office">Ubicación</span>
+                </div>
+                <div class="contact-info-item">
+                    <div class="info-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <p>jorgelotacon@gmail.com</p>
+                    <span data-i18n="info_email">Email</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <p class="footer-brand-name">IRH - Iberian Riding Horses</p>
+            <p class="footer-tagline" data-i18n="footer_tagline">Elite horse brokerage specializing in competition prospects and partnership matching for discerning equestrians.</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/iberianridinghorses/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="https://www.facebook.com/jsanchezmartinez" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@JorgeSanchez-io5gn" class="social-link" aria-label="YouTube" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                </a>
+            </div>
+        </div>
+        <div>
+            <h3 data-i18n="footer_links_title">Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#horses" data-i18n="footer_horses">Available Horses</a></li>
+                <li><a href="#about" data-i18n="footer_about">About Us</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3 data-i18n="footer_legal_title">Legal</h3>
+            <p class="footer-legal-inline">
+                <a href="/privacy/" data-i18n="footer_privacy">Privacy Policy</a>
+                <span class="footer-sep">/</span>
+                <a href="/terms/" data-i18n="footer_terms">Terms of Service</a>
+            </p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p data-i18n="footer_copy">&copy; 2025 IRH - Iberian Riding Horses. All rights reserved.</p>
+        <p data-i18n="footer_sub">Iberian Riding Horses · Murcia, Spain</p>
+    </div>
+</footer>
+
+<script src="horses.js"></script>
+<script>
+    /* ── TRANSLATIONS ── */
+    const translations = {
+        en: {
+            nav_home: 'Home', nav_catalog: 'Catalogue', nav_horses: 'Horses', nav_services: 'Services', nav_about: 'About', nav_contact: 'Contact',
+            hero_eyebrow: 'Elite Horse Brokerage',
+            hero_title: 'Connecting Discerning <em>Riders</em> with Exceptional Horses',
+            hero_subtitle: 'Specialized in matching elite sport horses with competitive riders and discerning enthusiasts. Experts in classical dressage.',
+            hero_btn_listings: 'See All Horses', hero_btn_consult: 'Schedule Consultation', hero_scroll: 'Slide for more',
+            horses_eyebrow: 'Current Selection', horses_title: 'Horses <em>for Sale</em>',
+            horses_body: 'Pura Raza Española selected for dressage level, genetics and temperament. All located in San Pedro del Pinatar, Murcia, Spain.',
+            catalog_btn: 'See all Horses',
+            filter_all: 'All Horses', filter_dressage: 'Dressage', card_readmore: 'Details →',
+            horses_upcoming: 'Inquire About Upcoming Listings', card_inquire: 'Inquire Now',
+            svc_eyebrow: 'What We Offer', svc_title: 'Comprehensive Brokerage Services',
+            svc_body: 'From initial consultation to final purchase, we provide end-to-end support for buyers and sellers — ensuring the perfect match between horse and rider.',
+            svc1_title: 'Horse Sourcing', svc1_body: 'Access to an exclusive network of breeders and private sellers across North America and Europe.',
+            svc2_title: 'Pre-Purchase Evaluation', svc2_body: 'Comprehensive vetting coordination, trial arrangement, and professional assessment of every prospect.',
+            svc3_title: 'Sales Representation', svc3_body: 'Professional marketing, showing, and skilled negotiation services for sellers seeking the right partnership.',
+            svc4_title: 'Import & Export', svc4_body: 'Complete logistics handling including quarantine management, international transport, and documentation.',
+            svc_quote: '"Exceptional attention to detail and an extraordinary understanding of both horse and rider."',
+            svc_cite: '— International Grand Prix Rider',
+            testimonial_text: 'They found me the perfect Grand Prix prospect. Their knowledge of bloodlines and honest assessment saved me months of searching — and the match has been extraordinary.',
+            testimonial_title: 'Grand Prix Show Jumper · Wellington, FL',
+            about_eyebrow: 'About Us', about_title: 'Decades of Equine Expertise',
+            about_p1: "Founded by professional riders and trainers, we bridge the gap between exceptional horses and ambitious riders. We understand that buying a horse is more than a transaction — it's the beginning of a partnership.",
+            about_p2: 'Our selective approach means we only represent horses we believe in. Every prospect undergoes rigorous evaluation for soundness, temperament, and training level. We specialize in competition prospects from amateur-friendly to Grand Prix level.',
+            about_p3: 'With connections across the United States, Canada, and Europe, we access inventory unavailable to the general public. Our reputation depends on successful matches, not quick sales.',
+            cred_member: 'Member', cred_registered: 'Registered', cred_certified: 'Certified',
+            contact_eyebrow: 'Get Started', contact_title: 'Begin Your Search',
+            contact_body: "Tell us about your riding goals, experience, and preferences. We'll curate a selection matched specifically to your needs.",
+            form_firstname: 'First Name', form_lastname: 'Last Name', form_email: 'Email', form_phone: 'Phone',
+            form_discipline: 'Discipline', form_experience: 'Experience Level', form_message: 'Message', form_submit: 'Send Inquiry',
+            disc_dr: 'Dressage', disc_ot: 'Other',
+            exp_am: 'Amateur / Adult Amateur', exp_jr: 'Junior Competitor', exp_pr: 'Professional', exp_pl: 'Pleasure / Trail',
+            info_office: 'Location', info_email: 'Email',
+            footer_tagline: 'Elite selection of Iberian horses for competition and equestrian sport in Murcia, Spain.',
+            footer_links_title: 'Quick Links', footer_horses: 'Available Horses', footer_about: 'About Us',
+            footer_testimonials: 'Testimonials', footer_sold: 'Sold Horses',
+            footer_legal_title: 'Legal', footer_privacy: 'Privacy Policy', footer_terms: 'Terms of Service', footer_purchase: 'Purchase Agreement',
+            footer_copy: '© 2025 IRH - Iberian Riding Horses. All rights reserved.',
+            footer_sub: 'Iberian Riding Horses · Murcia, Spain',
+            alert_msg: 'Thank you for your inquiry! We will contact you within 24 hours to discuss your horse search.'
+        },
+        es: {
+            nav_home: 'Inicio', nav_catalog: 'Catálogo', nav_horses: 'Caballos', nav_services: 'Servicios', nav_about: 'Nosotros', nav_contact: 'Contacto',
+            hero_eyebrow: 'Corretaje Ecuestre de Élite',
+            hero_title: 'Conectando Jinetes <em>Exigentes</em> con Caballos Excepcionales',
+            hero_subtitle: 'Especializados en unir caballos de deporte de élite con jinetes competitivos y entusiastas exigentes. Expertos en doma clásica.',
+            hero_btn_listings: 'Ver Caballos', hero_btn_consult: 'Agendar Consulta', hero_scroll: 'Deslizar',
+            horses_eyebrow: 'Selección Actual', horses_title: 'Caballos <em>en Venta</em>',
+            horses_body: 'Pura Raza Española seleccionados por nivel de doma, genética y temperamento. Todos ubicados en San Pedro del Pinatar, Murcia.',
+            catalog_btn: 'Ver todos los caballos',
+            filter_all: 'Todos', filter_dressage: 'Doma', card_readmore: 'Detalles →',
+            horses_upcoming: 'Consultar Próximas Incorporaciones', card_inquire: 'Consultar Ahora',
+            svc_eyebrow: 'Lo Que Ofrecemos', svc_title: 'Servicios Integrales de Corretaje',
+            svc_body: 'Desde la consulta inicial hasta la compra final, brindamos apoyo integral a compradores y vendedores — garantizando la combinación perfecta entre caballo y jinete.',
+            svc1_title: 'Búsqueda de Caballos', svc1_body: 'Acceso a una red exclusiva de criadores y vendedores privados en América del Norte y Europa.',
+            svc2_title: 'Evaluación Precompra', svc2_body: 'Coordinación completa de revisión veterinaria y evaluación profesional de cada prospecto.',
+            svc3_title: 'Representación de Ventas', svc3_body: 'Servicios profesionales de marketing, presentación y negociación para vendedores que buscan la asociación correcta.',
+            svc4_title: 'Importación y Exportación', svc4_body: 'Gestión logística completa incluyendo cuarentena, transporte internacional y documentación.',
+            svc_quote: '"Atención excepcional al detalle y una comprensión extraordinaria tanto del caballo como del jinete."',
+            svc_cite: '— Jinete Internacional de Gran Premio',
+            testimonial_text: 'Encontraron para mí el prospecto perfecto de Gran Premio. Su conocimiento de líneas de sangre y su evaluación honesta me ahorraron meses de búsqueda — y la combinación ha sido extraordinaria.',
+            testimonial_title: 'Saltadora de Gran Premio · Wellington, FL',
+            about_eyebrow: 'Sobre Nosotros', about_title: 'Décadas de Experiencia Ecuestre',
+            about_p1: 'Fundada por jinetes y entrenadores profesionales, unimos a caballos excepcionales con jinetes ambiciosos. Entendemos que comprar un caballo es más que una transacción — es el inicio de una sociedad.',
+            about_p2: 'Nuestro enfoque selectivo significa que solo representamos caballos en los que creemos. Cada prospecto es evaluado rigurosamente en salud, temperamento y nivel de entrenamiento. Nos especializamos en prospectos de competencia desde nivel aficionado hasta Gran Premio.',
+            about_p3: 'Con conexiones en Estados Unidos, Canadá y Europa, accedemos a inventario no disponible al público general. Nuestra reputación depende de combinaciones exitosas, no de ventas rápidas.',
+            cred_member: 'Miembro', cred_registered: 'Registrado', cred_certified: 'Certificado',
+            contact_eyebrow: 'Comenzar', contact_title: 'Inicia tu Búsqueda',
+            contact_body: 'Cuéntanos sobre tus objetivos ecuestres, experiencia y preferencias. Crearemos una selección adaptada específicamente a tus necesidades.',
+            form_firstname: 'Nombre', form_lastname: 'Apellido', form_email: 'Correo Electrónico', form_phone: 'Teléfono',
+            form_discipline: 'Disciplina', form_experience: 'Nivel de Experiencia', form_message: 'Mensaje', form_submit: 'Enviar Consulta',
+            disc_dr: 'Doma Clásica', disc_ot: 'Otro',
+            exp_am: 'Aficionado / Amateur Adulto', exp_jr: 'Competidor Junior', exp_pr: 'Profesional', exp_pl: 'Placer / Paseo',
+            info_office: 'Ubicación', info_email: 'Correo',
+            footer_tagline: 'Selección de caballos ibéricos de élite para competición y deporte ecuestre en Murcia, España.',
+            footer_links_title: 'Enlaces Rápidos', footer_horses: 'Caballos Disponibles', footer_about: 'Nosotros',
+            footer_testimonials: 'Testimonios', footer_sold: 'Caballos Vendidos',
+            footer_legal_title: 'Legal', footer_privacy: 'Política de Privacidad', footer_terms: 'Términos de Servicio', footer_purchase: 'Contrato de Compra',
+            footer_copy: '© 2025 IRH - Iberian Riding Horses. Todos los derechos reservados.',
+            footer_sub: 'Iberian Riding Horses · Murcia, España',
+            alert_msg: '¡Gracias por tu consulta! Nos pondremos en contacto contigo en 24 horas para hablar sobre tu búsqueda.'
+        }
+    };
+
+    let currentLang = 'en';
+
+    const horseLabelTrans = {
+        genero: { en: { 'Semental':'Stallion', 'Yegua':'Mare', 'Castrado':'Gelding' } },
+        breed:  { en: { 'Pura Raza Española (PRE)':'Pure Spanish Breed (PRE)', 'Pony':'Pony' } }
+    };
+    function tlbl(category, val) {
+        if (currentLang === 'es') return val;
+        return (horseLabelTrans[category] && horseLabelTrans[category].en && horseLabelTrans[category].en[val]) || val;
+    }
+
+    function getLang() { try { return localStorage.getItem('irh-lang') || 'en'; } catch(e) { return 'en'; } }
+    function saveLang(l) { try { localStorage.setItem('irh-lang', l); } catch(e) {} }
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        saveLang(lang);
+        const t = translations[lang];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+        // Update textarea placeholder separately
+        const ta = document.getElementById('form-textarea');
+        if (ta) ta.placeholder = lang === 'es'
+            ? 'Cuéntanos sobre tu experiencia, caballo actual y lo que buscas...'
+            : 'Tell us about your experience, current horse, and what you\'re looking for...';
+        // Toggle active state on lang buttons
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+        // Re-render cards so "Inquire Now" text updates
+        const activeFilter = document.querySelector('.filter-btn.active');
+        renderHorses(activeFilter ? activeFilter.dataset.filter : 'all');
+    }
+
+    /* Datos cargados desde horses.js */
+
+    function renderHorses(filter) {
+        const grid = document.getElementById('horse-grid');
+        const filtered = (filter === 'all' ? horses : horses.filter(h => h.disciplina === filter)).filter(h => !h.hidden).slice(0, 3);
+        const lang = currentLang;
+        const disciplineLabel = lang === 'es' ? 'Doma Clásica' : 'Classical Dressage';
+        const detailsLabel = lang === 'es' ? 'Ver Detalles →' : 'View Details →';
+        grid.innerHTML = filtered.map((h, i) => `
+            <div class="horse-card" style="animation-delay:${i * 0.08}s; cursor:pointer;" onclick="window.location='/caballo-${h.id}/'">
+                <div class="horse-img-wrap">
+                    <img src="${h.image}" alt="${h.name}" class="horse-img${['tumero'].includes(h.id) ? ' mirror' : ''}" loading="lazy">
+                    ${h.sold ? `<div class="card-sold-badge">${lang === 'es' ? 'Vendido' : 'Sold'}</div>` : ''}
+                    ${h.priceMin ? `<span class="card-price-badge">€${h.priceMin.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')} – €${h.priceMax.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')}</span>` : ''}
+                    <div class="card-tags">
+                        <span class="card-gender">${tlbl('genero', h.generoLabel)}</span>
+                        <span class="card-discipline">${disciplineLabel}</span>
+                    </div>
+                    <div class="card-overlay">
+                        <span class="card-inquire">${detailsLabel}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-name">${h.name}</p>
+                    <p class="card-meta">${h.breedShort} &nbsp;·&nbsp; ${h.age ? h.age + ' ' + (lang === 'es' ? 'años' : 'yrs') : '—'} &nbsp;·&nbsp; ${h.height}</p>
+                    <p class="card-desc">${h.desc[lang]}</p>
+                    <a href="/caballo-${h.id}/" class="card-readmore" onclick="event.stopPropagation()">${translations[lang].card_readmore}</a>
+                    <div class="card-footer">
+                        <span class="card-tag">${h.tag[lang]}</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function filterHorses(filter, btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderHorses(filter);
+    }
+
+    function scrollToContact() {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+        document.getElementById('mobile-menu').classList.toggle('open');
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        alert(translations[currentLang].alert_msg);
+        e.target.reset();
+    }
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+        document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Init
+    setLanguage(getLang());
+
+    // Disable right-click on images
+    document.addEventListener('contextmenu', e => {
+        if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+</script>
+    <!-- Meta Pixel -->
+    <script>
+    (window.requestIdleCallback || function(cb){ setTimeout(cb, 1) })(function() {
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1256567715971355');
+        fbq('track', 'PageView');
+    });
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1256567715971355&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel -->
+</body>
+</html>
