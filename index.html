@@ -1441,7 +1441,7 @@
 
     function renderHorses(filter) {
         const grid = document.getElementById('horse-grid');
-        const filtered = (filter === 'all' ? horses : horses.filter(h => h.disciplina === filter)).filter(h => !h.hidden).slice(0, 3);
+        const filtered = (filter === 'all' ? horses.filter(h => h.homeFeatured) : horses.filter(h => h.disciplina === filter)).filter(h => !h.hidden).slice(0, 3);
         const lang = currentLang;
         const disciplineLabel = lang === 'es' ? 'Doma Clásica' : 'Classical Dressage';
         const detailsLabel = lang === 'es' ? 'Ver Detalles →' : 'View Details →';

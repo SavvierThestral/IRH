@@ -49,6 +49,46 @@ const horses = [
         }
     },
     {
+        homeFeatured: true,
+        id: 'testina',
+        name: "Testina",
+        breed: "Pura Raza Española (PRE)",
+        breedShort: "P.R.E.",
+        raza: "pre",
+        age: 9,
+        nacimiento: "2017",
+        priceMin: 150000,
+        priceMax: 180000,
+        height: "1.62 m",
+        talla: "1.62 m",
+        altura_cat: "medium",
+
+        disciplina: "doma",
+        nivel: "gran-prix",
+        genero: "yegua",
+        perfil: "profesional",
+
+        disciplinaLabel: "Doma Clásica",
+        nivelLabel: "Intermedia · Ejercicios de Gran Premio",
+        generoLabel: "Yegua",
+        perfilLabel: "Profesional",
+
+        capa: "Torda",
+        piro: "Negativo",
+        image: "caballos/TESTINA/testina1.jpeg",
+        images: ["caballos/TESTINA/testina1.jpeg", "caballos/TESTINA/testina2.jpeg", "caballos/TESTINA/testina3.jpeg"],
+
+        desc: {
+            es: "Testina es una yegua Pura Raza Española de capa torda, talla 1.62 m. Nivel San Jorge / Intermedia con ejercicios de Gran Premio en trabajo. Placas radiológicas correctas. Piroplasmosis negativa. Precio a consultar. Ubicación: Madrid.",
+            en: "Testina is a grey PRE mare, 1.62 m tall. Competing at Intermediate / San Jorge level with Grand Prix exercises in training. Correct radiological plates. Negative piroplasmosis. Price on request. Location: Madrid."
+        },
+        tag: {
+            es: "Intermedia · Ejercicios GP",
+            en: "Intermediate · GP Exercises"
+        }
+    },
+    {
+        homeFeatured: true,
         vimeoId: '1188168468',
         id: 'timeno',
         name: "Timeño",
@@ -88,6 +128,7 @@ const horses = [
         }
     },
     {
+        homeFeatured: true,
         vimeoId: '1188168251',
         id: 'tumero',
         name: "Tumero",
@@ -237,44 +278,6 @@ const horses = [
         tag: {
             es: "Nivel II-III · Doma",
             en: "Level II-III · Dressage"
-        }
-    },
-    {
-        id: 'testina',
-        name: "Testina",
-        breed: "Pura Raza Española (PRE)",
-        breedShort: "P.R.E.",
-        raza: "pre",
-        age: 9,
-        nacimiento: "2017",
-        priceMin: 150000,
-        priceMax: 180000,
-        height: "1.62 m",
-        talla: "1.62 m",
-        altura_cat: "medium",
-
-        disciplina: "doma",
-        nivel: "gran-prix",
-        genero: "yegua",
-        perfil: "profesional",
-
-        disciplinaLabel: "Doma Clásica",
-        nivelLabel: "Intermedia · Ejercicios de Gran Premio",
-        generoLabel: "Yegua",
-        perfilLabel: "Profesional",
-
-        capa: "Torda",
-        piro: "Negativo",
-        image: "caballos/TESTINA/testina1.jpeg",
-        images: ["caballos/TESTINA/testina1.jpeg", "caballos/TESTINA/testina2.jpeg", "caballos/TESTINA/testina3.jpeg"],
-
-        desc: {
-            es: "Testina es una yegua Pura Raza Española de capa torda, talla 1.62 m. Nivel San Jorge / Intermedia con ejercicios de Gran Premio en trabajo. Placas radiológicas correctas. Piroplasmosis negativa. Precio a consultar. Ubicación: Madrid.",
-            en: "Testina is a grey PRE mare, 1.62 m tall. Competing at Intermediate / San Jorge level with Grand Prix exercises in training. Correct radiological plates. Negative piroplasmosis. Price on request. Location: Madrid."
-        },
-        tag: {
-            es: "Intermedia · Ejercicios GP",
-            en: "Intermediate · GP Exercises"
         }
     }
 ];
