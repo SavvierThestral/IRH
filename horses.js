@@ -5,7 +5,7 @@
 
 const horses = [
     {
-        vimeoIds: ['1192033331', '1188167702'],
+        vimeoIds: ['1192033331', '1188167702', '1194068090'],
         id: 'tanto',
         name: "Tanto",
         breed: "Pura Raza Española (PRE)",
